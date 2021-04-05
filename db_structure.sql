@@ -12,8 +12,8 @@ CREATE TABLE category (
 );
 CREATE TABLE item ( 
     item_id INT PRIMARY KEY AUTO_INCREMENT, 
-    quantity INT NOT NULL, 
-    price FLOAT(11,2) NOT NULL, 
+    quantity INT UNSIGNED NOT NULL, 
+    price FLOAT(11,2) UNSIGNED NOT NULL, 
     category_id CHAR(4) NOT NULL, 
     item_name VARCHAR(30) NOT NULL, 
     item_description VARCHAR(300) NOT NULL, 
