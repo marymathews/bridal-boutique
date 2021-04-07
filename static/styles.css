@@ -7,8 +7,12 @@
     }
 }
 
+body{
+	font-family: 'Mulish', sans-serif;
+}
+
 .section1{
-	background-color: #9e180ae3 !important; 
+	background-color: #F79489 !important; 
 	border-radius: 3px; 
 	min-width: 100vw; 
 	height: 30%;
@@ -81,7 +85,7 @@
 
 .breadcrumb{
 	width:50%; 
-	background-color: #f2c7c7;
+	background-color: #F9F1F0;
 }
 
 #pages{
@@ -91,7 +95,7 @@
 
 .section3{
 	position: fixed; 
-	background-color: #9e180ae3 !important; 
+	background-color: #F79489 !important; 
 	min-width: 100vw;
 	text-align: center;
 	background-color: #00BFFF;
