@@ -29,7 +29,7 @@ def showSignUp():
 	return render_template("signUp.html")
 
 #route to sign up new user
-@app.route("/signUp")
+@app.route("/signUp", methods = ['POST'])
 def signUp():
 
 	try:
@@ -65,7 +65,7 @@ def signUp():
 	finally:
 		cursor.close()
 		cxn.close()
-#todo - check if email is already in db and show error, return proper response or redirect to correct page
+#todo - return proper response or redirect to correct page
 
 #make sure the right script is being run
 if __name__ == "__main__":
