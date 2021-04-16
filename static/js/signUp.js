@@ -2,13 +2,15 @@ $(document).ready(function() {
     $("#submit").click(function(event) {
         if(!isEmailValid($("#email").val())) {
             event.preventDefault();
-            console.log("Invalid email");
-            //todo show email is not valid error
+            $("#email-validation").css({
+                'color': 'red'
+            });
         }
         if(!isPasswordValid($("#password").val())) {
             event.preventDefault();
-            console.log("Invalid password")
-            //todo show password is not strong enough error
+            $("#pwd-validation").css({
+                'color': 'red'
+            });
         }
     });
 
@@ -38,8 +40,8 @@ function isEmailValid(email) {
 
 function isPasswordValid(pwd) {
     console.log(pwd)
-    //minimum 6, maximum 30; at least one uppercase, at least one lowercase, at least one digit, at least one special character
-    var pwdRegex = new RegExp('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]).{6,30}$');
+    //minimum 6, maximum 30; at least one uppercase, at least one lowercase, at least one digit
+    var pwdRegex = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,30}/;
     if(pwdRegex.test(pwd))
         return true;
     return false;
