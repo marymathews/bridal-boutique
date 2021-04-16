@@ -51,27 +51,25 @@
             </div>
         </nav>
         <!-- Entire middle section -->
-        <div class="container-fluid">
+        <div class="container-fluid h-100">
             <!-- Main row -->
-            <div class="row">
+            <div class="row h-100">
                 <!-- Main column with images, details, and thumbnails-->
-                <div class="mt-2">
-					<form class="sign-up-form col-lg-4" method="POST" action="/signUp">
-						<div class="form-group">
-							<label for="name">Name:</label>
-							<input type="text" class="form-control" name="name" id="name" required autofocus>
-						</div>
-						<div class="form-group">
-							<label for="email">Email ID:</label>
-							<input type="email" class="form-control" name="email" id="email" required>
-						</div>
-						<div class="form-group">
-							<label for="password">Password:</label>
-							<input type="password" class="form-control" name="password" id="password" required>
-						</div>
-						<input type="submit" id="submit" class="btn btn-lg btn-primary btn-block">
-					</form>			
-                </div>
+				<form class="sign-up-form mx-auto" method="POST" action="/signUp">
+					<div class="form-group">
+						<label for="name">Name:</label>
+						<input type="text" class="form-control" name="name" id="name" required autofocus>
+					</div>
+					<div class="form-group">
+						<label for="email">Email ID:</label>
+						<input type="email" class="form-control" name="email" id="email" required>
+					</div>
+					<div class="form-group">
+						<label for="password">Password:</label>
+						<input type="password" class="form-control" name="password" id="password" required>
+					</div>
+					<input type="submit" id="submit" class="btn btn-lg btn-block" value="Create Your Account">
+				</form>			
             </div>
         </div>
          <!-- Bottom row/footer -->

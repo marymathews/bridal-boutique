@@ -2,6 +2,7 @@ html, body {
     height: 100%;
     margin: 0;
     font-family: 'Mulish', sans-serif;
+    color: #391306;
   }
   a {
 	  color: #391306!important;
@@ -48,5 +49,14 @@ html, body {
   .media a {
 	  color: #0a262b!important;
 	  font-size: large;
+  }
+  .sign-up-form #submit {
+    background-color: #391306;
+    color: whitesmoke;
+    padding: 0.75rem 2rem!important;
+    margin-top: 2rem!important;
+  }
+  .sign-up-form {
+    margin-top: 3rem!important;
   }
   
