@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flaskext.mysql import MySQL
 from flask_bcrypt import Bcrypt
 
@@ -51,7 +51,7 @@ def signUp():
 			data = cursor.fetchall()
 			if(len(data) == 0):
 				cxn.commit()
-				return ('', 204)
+				return redirect("/")
 			else:
 				return render_template("error.html", error = 'Something Went Wrong!')
 		else:

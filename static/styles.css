@@ -66,8 +66,12 @@ html, body {
     position: relative; 
     z-index: 1; 
     height: -3rem; 
+    margin-top: 20rem!important;
   }
-  #main-wrapper {
+  #pwd-validation, #email-validation {
+    display: none;
+  }
+  /* #main-wrapper {
     margin-bottom: 5rem;
-  }
+  } */
   
