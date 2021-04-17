@@ -12,6 +12,9 @@ $(document).ready(function() {
                 'color': 'red'
             });
         }
+        if(isEmailUsed($("#email").val())) {
+            event.preventDefault();
+        }
     });
 
     $("#email").focus(function() {
@@ -39,10 +42,27 @@ function isEmailValid(email) {
 }
 
 function isPasswordValid(pwd) {
-    console.log(pwd)
     //minimum 6, maximum 30; at least one uppercase, at least one lowercase, at least one digit
     var pwdRegex = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,30}/;
     if(pwdRegex.test(pwd))
         return true;
     return false;
+}
+
+function isEmailUsed(value) {
+    var result = false;
+    $.get({
+        url: '/checkExistingEmail/' + value,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function(response) {
+            $.each(response, function(key, value) {
+                if(key == 'error' && value == 'Existing Account') {
+                    result = true;
+                }
+            });
+        }
+    });
+    return result;
 }

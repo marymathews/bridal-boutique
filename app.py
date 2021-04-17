@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, json
 from flaskext.mysql import MySQL
 from flask_bcrypt import Bcrypt
 
@@ -66,6 +66,26 @@ def signUp():
 		cursor.close()
 		cxn.close()
 #todo - return proper response or redirect to correct page
+
+@app.route("/checkExistingEmail/<string:email>", methods = ['GET'])
+def checkExistingEmail(email):
+	#connect to db
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	#check if email is already in db
+	existingUser = False
+	cursor.execute("SELECT * FROM account WHERE email = %s", email)
+	if(len(cursor.fetchall()) > 0):
+		existingUser = True
+
+	cursor.close()
+	cxn.close()
+
+	if(existingUser):
+		return json.dumps({'error': 'Existing Account'})
+	else:
+		return ('', 204)
 
 #make sure the right script is being run
 if __name__ == "__main__":
