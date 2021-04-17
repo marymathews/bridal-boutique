@@ -68,7 +68,7 @@ html, body {
     height: -3rem; 
     margin-top: 20rem!important;
   }
-  #pwd-validation, #email-validation {
+  #pwd-validation, #email-validation, #existing-email {
     display: none;
   }
   /* #main-wrapper {

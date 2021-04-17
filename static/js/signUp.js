@@ -14,11 +14,15 @@ $(document).ready(function() {
         }
         if(isEmailUsed($("#email").val())) {
             event.preventDefault();
+            $("#existing-email").show().css({
+                'color': 'red'
+            });
         }
     });
 
     $("#email").focus(function() {
         $("#email-validation").show();
+        $("#existing-email").hide()
     });
 
     $("#email").blur(function() {
