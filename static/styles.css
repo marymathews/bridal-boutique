@@ -1,0 +1,88 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Mulish', sans-serif;
+    color: #391306;
+  }
+  a {
+	  color: #391306!important;
+	  font-family: 'Mulish', sans-serif!important;
+	  font-weight: 600;
+  }
+  a:hover {
+	  color: #cc7c68!important;
+  }
+  .nav-link-text {
+	  vertical-align: middle;
+  }
+  .navbar-1, .footer-2 {
+	  background-color: #f9f1f1!important;
+  }
+  .navbar-2, .footer-1 {
+	  background-color: #8f746d!important;
+  }
+  h1 {
+	  font-family: Lobster, Verdana, Geneva, Tahoma, sans-serif;
+	  font-size: x-large!important;
+  }
+  .list-group-item.heading {
+	  background-color: #17a2b8;
+	  color: #efefef;
+  }
+  /* li a {
+	  color: #17a2b8!important;
+  } */
+  .card a {
+	  color: #17a2b8!important;
+	  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  p {
+	  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  h4, h5 {
+	  font-family: Verdana, Geneva, Tahoma, sans-serif;
+	  color: #efefef;
+  }
+  hr {
+	  background-color: white;
+  }
+  .media a {
+	  color: #0a262b!important;
+	  font-size: large;
+  }
+  .sign-up-form #submit {
+    background-color: #391306;
+    color: whitesmoke;
+    padding: 0.75rem 2rem!important;
+    margin-top: 2rem!important;
+    white-space:normal !important;
+    word-wrap: break-word; 
+  }
+  .sign-up-form {
+    margin-top: 3rem!important;
+  }
+  footer {
+    clear: both;
+    position: relative; 
+    z-index: 1; 
+    height: -3rem; 
+    margin-top: 20rem!important;
+  }
+  #pwd-validation, #email-validation, #existing-email {
+    display: none;
+  }
+  .error-text {
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: 'Mulish', Lobster, Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .error-image, .error-text {
+    margin-top: 3rem!important;
+  }
+  /* .error-container {
+    vertical-align: middle;
+  } */
+  /* #main-wrapper {
+    margin-bottom: 5rem;
+  } */
+  
