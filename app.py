@@ -67,6 +67,46 @@ def signUp():
 		cxn.close()
 #todo - return proper response or redirect to correct page
 
+#route to show signin page
+@app.route("/showSignIn")
+def showSignIn():
+	return render_template("signIn.html")
+
+
+#route to sign in existing user
+@app.route("/signIn", methods = ['POST'])
+def signIn():
+
+	try:
+		#read the form data
+		_email = request.form['email']
+		_pwd = request.form['password']
+
+		#connect to the db
+		cxn = mysql.connect()
+		cursor = cxn.cursor()
+
+		if _email:
+			cursor.execute("SELECT * FROM account WHERE email = %s", (_email))
+			data = cursor.fetchall()
+			is_same = bcrypt.check_password_hash(data[0][2], _pwd)
+
+			if(is_same):
+				return redirect("/")
+			else:
+				return render_template("error.html", error = 'Incorrect Details!')
+		else:
+			return render_template("error.html", error = 'A required field is missing!')
+
+	#show the error page if anything goes wrong	
+	except Exception:
+		return render_template("error.html", error = 'Error Signing In!')
+
+	#close the cursor and db connection
+	finally:
+		cursor.close()
+		cxn.close()
+
 @app.route("/checkExistingEmail/<string:email>", methods = ['GET'])
 def checkExistingEmail(email):
 	#connect to db

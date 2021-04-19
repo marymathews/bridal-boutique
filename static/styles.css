@@ -50,7 +50,7 @@ html, body {
 	  color: #0a262b!important;
 	  font-size: large;
   }
-  .sign-up-form #submit {
+  .sign-up-form #submit, .sign-in-form #submit {
     background-color: #391306;
     color: whitesmoke;
     padding: 0.75rem 2rem!important;
@@ -58,7 +58,7 @@ html, body {
     white-space:normal !important;
     word-wrap: break-word; 
   }
-  .sign-up-form {
+  .sign-up-form, .sign-in-form {
     margin-top: 3rem!important;
   }
   footer {
