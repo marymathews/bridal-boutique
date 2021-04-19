@@ -10,6 +10,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../static/flexslider/flexslider.css" type="text/css">
+        <script src="../static/flexslider/jquery.flexslider.js"></script>
+        <script src="../static/js/index.js"></script>
         <title>Bridal Boutique</title> 
     </head>
     <body>
@@ -95,208 +98,109 @@
         </nav>
         <!-- Entire middle section -->
         <div class="container-fluid">
-            <!-- Main row -->
-            <div class="row">
-                <!-- Left-most column with filters and categories-->
-                <div class="col-md-2">
-                    <!-- <ul class="list-group my-3 border border-info">
-                        <li class="list-group-item heading pl-2">Continents</li>
-                        <li class="list-group-item pl-2"><a href="#">Africa</a></li>
-                        <li class="list-group-item pl-2"><a href="#">Asia</a></li>
-                        <li class="list-group-item pl-2"><a href="#">Europe</a></li>
-                        <li class="list-group-item pl-2"><a href="#">North America</a></li>
-                        <li class="list-group-item pl-2"><a href="#">South America</a></li>
-                    </ul>
-                    <ul class="list-group my-3 border border-info">
-                        <li class="list-group-item heading pl-2">Popular Countries</li>
-                        <li class="list-group-item pl-2"><a href="#">Canada</a></li>
-                        <li class="list-group-item pl-2"><a href="#">France</a></li>
-                        <li class="list-group-item pl-2"><a href="#">Italy</a></li>
-                        <li class="list-group-item pl-2"><a href="#">Germany</a></li>
-                        <li class="list-group-item pl-2"><a href="#">Ghana</a></li>
-                        <li class="list-group-item pl-2"><a href="#">Greece</a></li>
-                        <li class="list-group-item pl-2"><a href="#">Hungary</a></li>
-                        <li class="list-group-item pl-2"><a href="#">Spain</a></li>
-                        <li class="list-group-item pl-2"><a href="#">United States</a></li>
-                        <li class="list-group-item pl-2"><a href="#">United Kingdom</a></li>
-                    </ul> -->
+            <div class="col-md-12 mt-2">
+                <!-- First row with western images -->
+                <div class="row flexslider">
+                    <ul class="slides">
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_1.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_2.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_3.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_4.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_5.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                    </ul> 
                 </div>
-                <!-- Main column with images, details, and thumbnails-->
-                <div class="col-md-10 mt-2">
-                    <!-- First row with image and details -->
-                    <div class="row">
-                        <!-- Column with image and caption -->
-                        <div class="col-md-12">
-                            <div class="row justify-content-start">
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb bg-white">
-                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">About</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Contact</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Browse</a></li>
-                                    </ol>
-                                </nav> 
-                            </div>  
-                            <!-- <img class="img-fluid my-3 w-100" src="images/temple.jpg" alt="Temple of Hephaistos">
-                            <p class="text-dark text-justify">
-                                Located on the western perimeter of Agora in Athens. Built in 460-415 BCE, it is the best-preserved temple of antiquity.
-                            </p> -->
-                            <p>Items are listed here</p>
-                        </div>
-                        <!-- Column with image details and tags -->
-                        <!-- <div class="col-md-4">
-                            <h2 class="text-secondary my-3">Temple of Hephaistos</h2>
-                            <div class="card shadow">
-                                <div class="card-body">
-                                    By: <a href="#">Ellie Sullivan</a>
-                                    <br>
-                                    Country: <a href="#">Greece</a>
-                                    <br>
-                                    City: <a href="#">Athens</a>
-                                    <br>
-                                    Taken on August 8, 2017
-                                </div>
-                            </div>
-                            <div class="btn-group d-flex my-3" role="group">
-                                <button type="button" class="btn btn-outline-info">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                    </svg>
-                                </button>
-                                <button type="button" class="btn btn-outline-info">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-download-fill" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.095 0 5.555 0 7.318 0 9.366 1.708 11 3.781 11H7.5V5.5a.5.5 0 0 1 1 0V11h4.188C14.502 11 16 9.57 16 7.773c0-1.636-1.242-2.969-2.834-3.194C12.923 1.999 10.69 0 8 0zm-.354 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V11h-1v3.293l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/>
-                                    </svg>
-                                </button>
-                                <button type="button" class="btn btn-outline-info">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
-                                        <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
-                                        <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
-                                    </svg>
-                                </button>
-                                <button type="button" class="btn btn-outline-info">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-fill" viewBox="0 0 16 16">
-                                        <path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <p>Tags</p>
-                            <div class="card shadow">
-                                <div class="card-body">
-                                    <span class="badge badge-info">ancient</span>
-                                    <span class="badge badge-info">garden</span>
-                                    <span class="badge badge-info">ruin</span>
-                                    <span class="badge badge-info">hill</span>
-                                    <span class="badge badge-info">sunshine</span>
-                                    <span class="badge badge-info">temple</span>
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
-                    <!-- Second row with pagination -->
-                    <div class="row justify-content-center">
-                        <!-- <div class="border mb-2 mx-3 col-md text-center">
-                            <img class="img-thumbnail mt-2" src="images/related/8710320515.jpg" alt="Lorem Ipsum Dolor">
-                            <p class="text-dark my-2">
-                                Lorem Ipsum Dolor
-                            </p>
-                            <div class="btn-group btn-group-sm mb-2 mx-2" role="group">
-                                <button type="button" class="btn btn-outline-info mr-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                    </svg>
-                                    View
-                                </button>
-                                <button type="button" class="btn btn-outline-info ml-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
-                                        <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
-                                    </svg>
-                                    Favourite
-                                </button>
-                            </div>                        
-                        </div>
-                        <div class="border mb-2 mx-3 col-md text-center">
-                            <img class="img-thumbnail mt-2" src="images/related/8710513053.jpg" alt="Theatre of Dionysos">
-                            <p class="text-dark my-2">
-                                Theatre of Dionysos
-                            </p>
-                            <div class="btn-group btn-group-sm mb-2 mx-2" role="group">
-                                <button type="button" class="btn btn-outline-info mr-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                    </svg>
-                                    View
-                                </button>
-                                <button type="button" class="btn btn-outline-info ml-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
-                                        <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
-                                    </svg>
-                                    Favourite
-                                </button>
-                            </div> 
-                        </div>
-                        <div class="border mb-2 mx-3 col-md text-center">
-                            <img class="img-thumbnail mt-2" src="images/related/8711623884.jpg" alt="Roman Agora">
-                            <p class="text-dark my-2">
-                                Roman Agora
-                            </p>
-                            <div class="btn-group btn-group-sm mb-2 mx-2" role="group">
-                                <button type="button" class="btn btn-outline-info mr-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                    </svg>
-                                    View
-                                </button>
-                                <button type="button" class="btn btn-outline-info ml-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
-                                        <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
-                                    </svg>
-                                    Favourite
-                                </button>
-                            </div> 
-                        </div>
-                        <div class="border mb-2 mx-3 col-md text-center"> -->
-                            <!-- <img class="img-thumbnail mt-2" src="images/related/9498388516.jpg" alt="Lorem Ipsum Dolor">
-                            <p class="text-dark my-2">
-                                Lorem Ipsum Dolor
-                            </p>
-                            <div class="btn-group btn-group-sm mb-2 mx-2" role="group">
-                                <button type="button" class="btn btn-outline-info mr-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                    </svg>
-                                    View
-                                </button>
-                                <button type="button" class="btn btn-outline-info ml-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
-                                        <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
-                                    </svg>
-                                    Favourite
-                                </button>
-                            </div>  -->
-                        <!-- </div> -->
-                        <ul class="pagination" id="pages">
-    						<li class="page-item">
-      							<a class="page-link" href="#" aria-label="Previous">
-        							<span aria-hidden="true"> &laquo; </span>
-        							<span class="sr-only"> Previous </span>
-      							</a>
-    						</li>
-    						<li class="page-item"> <a class="page-link" href="#"> 1 </a> </li>
-    						<li class="page-item"> <a class="page-link" href="#"> 2 </a> </li>
-    						<li class="page-item"> <a class="page-link" href="#"> 3 </a> </li>
-    						<li class="page-item">
-      							<a class="page-link" href="#" aria-label="Next">
-        							<span aria-hidden="true"> &raquo; </span>
-        							<span class="sr-only"> Next </span>
-      							</a>
-    						</li>
- 						 </ul>
-                    </div>
+                <div class="row flexslider">
+                    <ul class="slides">
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/cosm_1.jpg" alt="Cosmetics" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/cosm_2.jpg" alt="Cosmetics" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/cosm_3.jpg" alt="Cosmetics" class="img-fluid h-50"></a>
+                        </li>
+                    </ul> 
+                </div>
+                <div class="row flexslider">
+                    <ul class="slides">
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/acli_1.jpg" alt="Accessories and Lingerie" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/acli_2.jpg" alt="Accessories and Lingerie" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/acli_3.jpg" alt="Accessories and Lingerie" class="img-fluid"></a>
+                        </li>
+                    </ul> 
+                </div>
+                <div class="row flexslider">
+                    <ul class="slides">
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_1.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_2.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_3.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_4.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_5.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                    </ul> 
+                </div>
+                <div class="row flexslider">
+                    <ul class="slides">
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_1.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_2.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_3.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_4.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_5.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                    </ul> 
+                </div>
+                <div class="row flexslider">
+                    <ul class="slides">
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_1.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_2.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_3.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_4.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="../static/images/homepage/west_5.jpg" alt="Western Wedding Dress" class="img-fluid"></a>
+                        </li>
+                    </ul> 
                 </div>
             </div>
         </div>
