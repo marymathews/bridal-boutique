@@ -102,7 +102,16 @@ html, body {
     border-color: #f9f1f1;
     box-shadow: 0 0 0 0.1rem rgba(167, 40, 61, 0.25);
   } 
-  /* .error-container {
+  .listing-image {
+    padding: 0!important;
+    border: 0!important;
+  }
+  .item-name {
+    font-family: 'Domine', 'Mulish', Lobster, Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    font-size: larger;
+    vertical-align: middle;
+  }  /* .error-container {
     vertical-align: middle;
   } */
   /* #main-wrapper {
