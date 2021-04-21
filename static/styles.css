@@ -79,6 +79,29 @@ html, body {
   .error-image, .error-text {
     margin-top: 3rem!important;
   }
+  .side-bar-header {
+    font-weight: bold;
+    /* font-style: italic; */
+    font-size: large; 
+    font-family: 'Domine', 'Mulish', Lobster, Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .side-bar-divider {
+    height: 2px;
+    border-width:0;
+    color: #391306;
+    background-color: #391306;
+  }
+  .search-button {
+    background-color: #391306;
+    color: #efefef;
+  }
+  .search-button:hover {
+    color: aliceblue;
+  }
+  .form-control:focus {
+    border-color: #f9f1f1;
+    box-shadow: 0 0 0 0.1rem rgba(167, 40, 61, 0.25);
+  } 
   /* .error-container {
     vertical-align: middle;
   } */

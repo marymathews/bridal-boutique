@@ -72,7 +72,6 @@ def signUp():
 def showSignIn():
 	return render_template("signIn.html")
 
-
 #route to sign in existing user
 @app.route("/signIn", methods = ['POST'])
 def signIn():
@@ -126,6 +125,36 @@ def checkExistingEmail(email):
 		return json.dumps({'error': 'Existing Account'})
 	else:
 		return ('', 204)
+
+#route for showing western category page
+@app.route("/showWestern")
+def showWestern():
+	return render_template("western.html")
+
+#route for showing cosmetics category page
+@app.route("/showCosmetics")
+def showCosmetics():
+	return render_template("cosmetics.html")
+
+#route for showing jewellery category page
+@app.route("/showJewellery")
+def showJewellery():
+	return render_template("jewellery.html")
+
+#route for showing accessories and lingerie category page
+@app.route("/showAccessories")
+def showAccessories():
+	return render_template("accessories.html")
+
+#route for showing north indian category page
+@app.route("/showNorthIndian")
+def showNorthIndian():
+	return render_template("north-indian.html")
+
+#route for showing north indian category page
+@app.route("/showSouthIndian")
+def showSouthIndian():
+	return render_template("south-indian.html")
 
 #make sure the right script is being run
 if __name__ == "__main__":
