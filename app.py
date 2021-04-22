@@ -156,6 +156,12 @@ def showNorthIndian():
 def showSouthIndian():
 	return render_template("south-indian.html")
 
+#todo - add parameter to route with id for product, db query and send response to FE
+#route for showing product details
+@app.route("/showProductDetails") 
+def showProductDetails():
+	return render_template("product-details.html")
+
 #make sure the right script is being run
 if __name__ == "__main__":
 	#runs the application from the app variable
