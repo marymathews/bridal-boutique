@@ -13,6 +13,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../static/flexslider/flexslider.css" type="text/css">
         <script src="../static/flexslider/jquery.flexslider.js"></script>
+        <script src="../static/js/productDetails.js"></script>
         <title>Bridal Boutique</title> 
     </head>
     <body>
@@ -58,17 +59,7 @@
             <!-- Main row -->
             <div class="row h-100">
                 <!-- Left-most column with filters, search, and categories-->
-                <div class="col-md-3">
-                    <div class="input-group mt-3 search-bar">
-                        <div class="input-group-prepend">
-                            <button class="btn my-2 my-sm-0 search-button" type="submit">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <input class="form-control my-auto" type="search" placeholder="Search" aria-label="search" name="search" id="search">
-                    </div>                    
+                <div class="col-md-3">                   
                     <div class="categories mt-3">
                         <p class="side-bar-header pl-2">Explore</p>
                         <hr class="side-bar-divider mr-3">
@@ -81,40 +72,57 @@
                             <li class="list-group-item pl-2 border-0"><a href="/showCosmetics">Cosmetics</a></li>
                         </ul>
                     </div>
-                    <div class="filters mt-3">
-                        <p class="side-bar-header pl-2">Filter By</p>
-                        <hr class="side-bar-divider mr-3">
-                        <ul class="list-group border-0">
-                            <li class="list-group-item pl-2 border-0">
-                                <div class="form-group">
-                                    <label for="min-price">Minimum Price:</label>
-                                    <input class="form-control" type="number" id="min-price">
-                                </div>
-                            </li>
-                            <li class="list-group-item pl-2 border-0">
-                                <div class="form-group">
-                                    <label for="max-price">Maximum Price:</label>
-                                    <input class="form-control" type="number" id="max-price">
-                                </div>
-                            </li>                        
-                        </ul>
-                    </div>
                 </div>
-                <!-- Main column with images, details, and thumbnails-->
+                <!-- Main column with images and details-->
                 <div class="col-md-9 mt-2">
-                    <!-- First row with image and details -->
+                    <!-- First row with breadcrumbs -->
                     <div class="row">
-                        <!-- Column with image and caption -->
                         <div class="col-md-12">
-                            <div class="row justify-content-start">
+                        <div class="row justify-content-start">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb bg-white">
                                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Western</a></li>
+                                        <li class="breadcrumb-item"><a href="/showWestern">Western</a></li>
+                                        <!-- todo add actual product name -->
+                                        <li class="breadcrumb-item"><a href="#">Product Name</a></li>
                                     </ol> 
                                 </nav> 
-                            </div> 
-                            <div class="row">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Row with images and details -->
+                    <div class="row">
+                        <div class="col-md-6"> 
+                            <!-- todo replace alt text with actual product name -->
+                            <!-- todo may be multiple images -->
+                            <div class="row flexslider">
+                                <ul class="slides">
+                                    <li>
+                                        <img src="../static/images/homepage/west_3.jpg" class="img-fluid" alt="Product Name">
+                                    </li>
+                                    <li>
+                                        <img src="../static/images/homepage/west_2.jpg" class="img-fluid" alt="Product Name">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- todo add actual item name, desc, price -->
+                        <div class="col-md-6">
+                            <div class="card product-desc-container">
+                                <div class="card-body">
+                                    <h2 class="card-title text-uppercase">Crepe Off-Shoulder Sheath Wedding Dress</h2>
+                                    <h3>&#36; 200</h3>
+                                    <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    <div class="mr-1 mt-1 text-left">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                        </svg>
+                                        <a class="text-decoration-none ml-1" href="#">Add to Wishlist</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- <div class="row">
                                 <div class="col-lg-3 text-center product-container">
                                     <img class="img-thumbnail listing-image" src="../static/images/homepage/west_1.jpg" alt="Western Wedding Dress">
                                     <div class="mt-2 item-name text-left text-uppercase">
@@ -130,11 +138,10 @@
                                         &#36; 200
                                     </div>
                                 </div>
-                            </div> 
-                        </div>
+                            </div>  -->
                     </div>
-                    <!-- Second row with pagination -->
-                    <div class="row justify-content-center">
+                    <!-- Bottom row with pagination -->
+                    <div class="row justify-content-center mt-2">
                         <ul class="pagination" id="pages">
     						<li class="page-item">
       							<a class="page-link" href="#" aria-label="Previous">
