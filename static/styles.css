@@ -114,6 +114,7 @@ html, body {
   }
   .product-desc-container {
     font-family: 'Domine', 'Mulish', Lobster, Verdana, Geneva, Tahoma, sans-serif;
+    border-color: #f9f1f1;
   }
   .product-desc-container h2 {
     font-size: x-large;
