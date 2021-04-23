@@ -129,7 +129,7 @@ def checkExistingEmail(email):
 #route for showing western category page
 @app.route("/showWestern")
 def showWestern():
-	return render_template("western.html")
+	return render_template("western.html", data = getProducts('west', 1))
 
 #route for showing cosmetics category page
 @app.route("/showCosmetics")
@@ -161,6 +161,30 @@ def showSouthIndian():
 @app.route("/showProductDetails") 
 def showProductDetails():
 	return render_template("product-details.html")
+
+#route for getting list of products
+# @app.route("/getProducts/<category>/<page>")
+
+def getProducts(category, page):
+	#connect to the db
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	#pagination - fetch 20 items per page, offset = 20 * page number - 20
+	limit = 20
+	page = int(page)
+	offset = (page * limit) - limit
+	cursor.execute("SELECT * FROM item WHERE category_id = %s AND deleted <> 1 ORDER BY item_id LIMIT %s OFFSET %s", (category, limit, offset))
+
+	desc = cursor.description
+	column_names = [col[0] for col in desc]
+	data = [dict(zip(column_names, row))  
+        for row in cursor.fetchall()]
+
+	cursor.close()
+	cxn.close()
+
+	return data
 
 #make sure the right script is being run
 if __name__ == "__main__":

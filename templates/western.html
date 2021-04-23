@@ -13,6 +13,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../static/flexslider/flexslider.css" type="text/css">
         <script src="../static/flexslider/jquery.flexslider.js"></script>
+        <script src="../static/js/western.js"></script>
         <title>Bridal Boutique</title> 
     </head>
     <body>
@@ -114,25 +115,35 @@
                                     </ol> 
                                 </nav> 
                             </div> 
-                            <div class="row">
-                                <div class="col-lg-3 text-center product-container">
-                                    <a href="/showProductDetails">
-                                        <img class="img-thumbnail listing-image" src="../static/images/west_1a.jpeg" alt="Western Wedding Dress">
-                                    </a>
-                                    <div class="mt-2 item-name text-left text-uppercase">
-                                        Wedding Dress
+                           
+                            {% for record in data %}
+                                {% if loop.index0 % 4 == 0 %}  
+                                    <div class="row my-3">
+                                {% endif %}
+                                        <div class="col-lg-3 product-container">
+                                            <a href="/showProductDetails">
+                                                <img class="img-thumbnail listing-image" src="../static/images/western/west_1a.jpeg" alt='{{ record["item_name"] }}''>
+                                            </a>
+                                            <div class="mt-2 item-name text-left text-uppercase">
+                                                {{ record["item_name"] }}
+                                            </div>
+                                            <div class="mr-1 mt-1 text-left">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                                </svg>
+                                                <a class="nav-link-text text-decoration-none ml-1" href="#">Add to Wishlist</a>
+                                            </div>
+                                            <div class="text-left mt-1 mt-2">
+                                                &#36; {{ record["price"] }}
+                                            </div>
+                                        </div>
+                                {% if loop.index0 % 4 == 3 %}
                                     </div>
-                                    <div class="mr-1 mt-1 text-left">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                        </svg>
-                                        <a class="nav-link-text text-decoration-none ml-1" href="#">Add to Wishlist</a>
-                                    </div>
-                                    <div class="text-left mt-1">
-                                        &#36; 200
-                                    </div>
-                                </div>
-                            </div> 
+                                {% endif %}
+                            {% endfor %}
+
+
+
                         </div>
                     </div>
                     <!-- Second row with pagination -->
