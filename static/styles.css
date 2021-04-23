@@ -139,6 +139,13 @@ html, body {
   .size {
     font-size: medium;
   }
+  .pagination {
+    margin-top: 3rem!important;
+  }
+  .page-item.active .page-link {
+    background-color: #f9f1f1;
+    border-color: #8f746d;
+  }
   .hovereffect {
     width: 100%;
     height: 100%;
