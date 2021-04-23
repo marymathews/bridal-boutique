@@ -771,3 +771,395 @@ INSERT INTO item_images VALUES(
     105,
     'west_51b.jpeg'
 );
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('55', '0', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('55', '2', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('55', '4', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('55', '6', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('55', '8', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('55', '10', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('55', '12', '10');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('56', '0', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('56', '2', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('56', '4', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('56', '6', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('56', '8', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('56', '10', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('56', '12', '10');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('57', '0', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('57', '2', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('57', '4', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('57', '6', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('57', '8', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('57', '10', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('57', '12', '10');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('58', '0', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('58', '2', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('58', '4', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('58', '6', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('58', '8', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('58', '10', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('58', '12', '10');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('59', '0', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('59', '2', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('59', '4', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('59', '6', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('59', '8', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('59', '10', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('59', '12', '10');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('60', '0', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('60', '2', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('60', '4', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('60', '6', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('60', '8', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('60', '10', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('60', '12', '10');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('61', '0', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('61', '2', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('61', '4', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('61', '6', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('61', '8', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('61', '10', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('61', '12', '10');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('62', '0', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('62', '2', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('62', '4', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('62', '6', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('62', '8', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('62', '10', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('62', '12', '10');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('63', '0', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('63', '2', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('63', '4', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('63', '6', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('63', '8', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('63', '10', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('63', '12', '10');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('64', '0', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('64', '2', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('64', '4', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('64', '6', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('64', '8', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('64', '10', '10');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('64', '12', '10');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('65', '0', '12');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('65', '2', '14');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('65', '4', '16');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('65', '6', '18');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('65', '8', '20');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('66', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('66', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('66', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('66', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('66', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('66', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('66', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('67', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('67', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('67', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('67', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('67', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('67', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('67', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('68', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('68', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('68', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('68', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('68', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('68', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('68', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('69', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('69', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('69', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('69', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('69', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('69', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('69', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('70', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('70', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('70', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('70', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('70', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('70', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('70', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('71', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('71', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('71', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('71', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('71', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('71', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('71', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('72', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('72', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('72', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('72', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('72', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('72', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('72', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('73', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('73', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('73', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('73', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('73', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('73', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('73', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('74', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('74', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('74', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('74', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('74', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('74', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('74', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('75', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('75', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('75', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('75', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('75', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('75', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('75', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('76', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('76', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('76', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('76', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('76', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('76', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('76', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('77', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('77', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('77', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('77', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('77', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('77', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('77', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('78', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('78', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('78', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('78', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('78', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('78', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('78', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('79', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('79', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('79', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('79', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('79', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('79', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('79', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('80', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('80', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('80', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('80', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('80', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('80', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('80', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('81', '12', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('81', '14', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('81', '16', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('81', '18', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('81', '20', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('82', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('82', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('82', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('82', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('82', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('82', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('82', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('83', '12', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('83', '14', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('83', '16', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('83', '18', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('83', '20', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('84', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('84', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('84', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('84', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('84', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('84', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('84', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('85', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('85', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('85', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('85', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('85', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('85', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('85', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('86', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('86', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('86', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('86', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('86', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('86', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('86', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('87', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('87', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('87', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('87', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('87', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('87', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('87', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('88', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('88', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('88', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('88', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('88', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('88', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('88', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('89', '0', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('89', '2', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('89', '4', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('89', '6', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('89', '8', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('89', '10', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('89', '12', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('90', '12', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('90', '14', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('90', '16', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('90', '18', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('90', '20', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('91', '12', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('91', '14', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('91', '16', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('91', '18', '25');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('91', '20', '25');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('92', '0', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('92', '2', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('92', '4', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('92', '6', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('92', '8', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('92', '10', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('92', '12', '45');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('93', '0', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('93', '2', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('93', '4', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('93', '6', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('93', '8', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('93', '10', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('93', '12', '45');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('94', '0', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('94', '2', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('94', '4', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('94', '6', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('94', '8', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('94', '10', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('94', '12', '45');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('95', '0', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('95', '2', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('95', '4', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('95', '6', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('95', '8', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('95', '10', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('95', '12', '45');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('96', '0', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('96', '2', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('96', '4', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('96', '6', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('96', '8', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('96', '10', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('96', '12', '45');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('97', '0', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('97', '2', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('97', '4', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('97', '6', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('97', '8', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('97', '10', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('97', '12', '45');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('98', '0', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('98', '2', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('98', '4', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('98', '6', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('98', '8', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('98', '10', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('98', '12', '45');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('99', '0', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('99', '2', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('99', '4', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('99', '6', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('99', '8', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('99', '10', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('99', '12', '45');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('100', '0', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('100', '2', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('100', '4', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('100', '6', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('100', '8', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('100', '10', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('100', '12', '45');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('101', '12', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('101', '14', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('101', '16', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('101', '18', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('101', '20', '45');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('102', '12', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('102', '14', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('102', '16', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('102', '18', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('102', '20', '45');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('103', '12', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('103', '14', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('103', '16', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('103', '18', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('103', '20', '45');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('104', '0', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('104', '2', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('104', '4', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('104', '6', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('104', '8', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('104', '10', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('104', '12', '45');
+
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('105', '0', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('105', '2', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('105', '4', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('105', '6', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('105', '8', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('105', '10', '45');
+INSERT INTO `item_size` (`item_id`, `size`, `quantity`) VALUES ('105', '12', '45');
