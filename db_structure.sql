@@ -29,7 +29,7 @@ CREATE TABLE item_size (
 );
 CREATE TABLE item_images (
     item_id INT,
-    image_id VARCHAR(10),
+    image_id VARCHAR(20),
     PRIMARY KEY(image_id, item_id),
     CONSTRAINT image_item_fk FOREIGN KEY(item_id) REFERENCES item(item_id)
 );

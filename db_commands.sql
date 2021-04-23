@@ -362,3 +362,412 @@ INSERT INTO item(price, category_id, item_name, item_description, deleted) VALUE
     'Hand-beaded with almost 4,500 opal beads and crystal stones, this spaghetti strap wedding dress lends opulence and drama to a classic ball gown silhouette. The layered skirt is finished with horsehair trim, giving the appearance of crisp ruffles.',
     0
 );
+
+INSERT INTO item_images VALUES(
+    55,
+    'west_1a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    55,
+    'west_1b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    56,
+    'west_2a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    56,
+    'west_2b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    57,
+    'west_3a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    57,
+    'west_3b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    58,
+    'west_4a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    58,
+    'west_4b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    59,
+    'west_5a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    59,
+    'west_5b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    60,
+    'west_6a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    60,
+    'west_6b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    61,
+    'west_7a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    61,
+    'west_7b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    62,
+    'west_8a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    62,
+    'west_8b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    63,
+    'west_9a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    63,
+    'west_9b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    64,
+    'west_10a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    64,
+    'west_10b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    65,
+    'west_11a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    65,
+    'west_11b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    66,
+    'west_12a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    66,
+    'west_12b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    67,
+    'west_13a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    67,
+    'west_13b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    68,
+    'west_14a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    68,
+    'west_14b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    69,
+    'west_15a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    69,
+    'west_15b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    70,
+    'west_16a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    70,
+    'west_16b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    71,
+    'west_17a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    71,
+    'west_17b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    72,
+    'west_18a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    72,
+    'west_18b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    73,
+    'west_19a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    73,
+    'west_19b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    74,
+    'west_20a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    74,
+    'west_20b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    75,
+    'west_21a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    75,
+    'west_21b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    76,
+    'west_22a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    76,
+    'west_22b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    77,
+    'west_23a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    77,
+    'west_23b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    78,
+    'west_24a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    78,
+    'west_24b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    79,
+    'west_25a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    79,
+    'west_25b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    80,
+    'west_26a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    80,
+    'west_26b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    81,
+    'west_27a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    81,
+    'west_27b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    82,
+    'west_28a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    82,
+    'west_28b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    83,
+    'west_29a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    83,
+    'west_29b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    84,
+    'west_30a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    84,
+    'west_30b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    85,
+    'west_31a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    85,
+    'west_31b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    86,
+    'west_32a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    86,
+    'west_32b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    87,
+    'west_33a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    87,
+    'west_33b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    88,
+    'west_34a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    88,
+    'west_34b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    89,
+    'west_35a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    89,
+    'west_35b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    90,
+    'west_36a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    90,
+    'west_36b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    91,
+    'west_37a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    91,
+    'west_37b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    92,
+    'west_38a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    92,
+    'west_38b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    93,
+    'west_39a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    93,
+    'west_39b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    94,
+    'west_40a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    94,
+    'west_40b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    95,
+    'west_41a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    95,
+    'west_41b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    96,
+    'west_42a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    96,
+    'west_42b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    97,
+    'west_43a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    97,
+    'west_43b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    98,
+    'west_44a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    98,
+    'west_44b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    99,
+    'west_45a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    99,
+    'west_45b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    100,
+    'west_46a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    100,
+    'west_46b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    101,
+    'west_47a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    101,
+    'west_47b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    102,
+    'west_48a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    102,
+    'west_48b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    103,
+    'west_49a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    103,
+    'west_49b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    104,
+    'west_50a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    104,
+    'west_50b.jpeg'
+);
+INSERT INTO item_images VALUES(
+    105,
+    'west_51a.jpeg'
+);
+INSERT INTO item_images VALUES(
+    105,
+    'west_51b.jpeg'
+);
