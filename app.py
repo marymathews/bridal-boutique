@@ -158,9 +158,20 @@ def showSouthIndian():
 
 #todo - add parameter to route with id for product, db query and send response to FE
 #route for showing product details
-@app.route("/showProductDetails") 
-def showProductDetails():
-	return render_template("product-details.html")
+@app.route("/showProductDetails/<id>") 
+def showProductDetails(id):
+	#connect to the db
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	#query to fetch item data from the db
+	cursor.execute("SELECT * FROM item WHERE item_id = %s", id)
+	desc = cursor.description
+	column_names = [col[0] for col in desc]
+	data = [dict(zip(column_names, row))  
+        for row in cursor.fetchall()]
+
+	return render_template("product-details.html", data = data)
 
 def getProducts(category, page):
 	#connect to the db

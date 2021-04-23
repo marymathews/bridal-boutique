@@ -84,7 +84,7 @@
                                         <li class="breadcrumb-item"><a href="/">Home</a></li>
                                         <li class="breadcrumb-item"><a href="/showWestern/1">Western</a></li>
                                         <!-- todo add actual product name -->
-                                        <li class="breadcrumb-item"><a href="#">Product Name</a></li>
+                                        <li class="breadcrumb-item"><a href="#">{{ data[0]["item_name"] }}</a></li>
                                     </ol> 
                                 </nav> 
                             </div>
@@ -98,10 +98,10 @@
                             <div class="row flexslider">
                                 <ul class="slides">
                                     <li>
-                                        <img src="../static/images/western/west_1a.jpeg" class="img-fluid" alt="Product Name">
+                                        <img src="../static/images/western/west_1a.jpeg" class="img-fluid" alt='{{ data[0]["item_name"] }}'>
                                     </li>
                                     <li>
-                                        <img src="../static/images/western/west_1b.jpeg" class="img-fluid" alt="Product Name">
+                                        <img src="../static/images/western/west_1b.jpeg" class="img-fluid" alt='{{ data[0]["item_name"] }}'>
                                     </li>
                                 </ul>
                             </div>
@@ -110,9 +110,9 @@
                         <div class="col-md-8">
                             <div class="card product-desc-container">
                                 <div class="card-body">
-                                    <h2 class="card-title text-uppercase">Crepe Off-Shoulder Sheath Wedding Dress</h2>
-                                    <h3>&#36; 200</h3>
-                                    <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    <h2 class="card-title text-uppercase">{{ data[0]["item_name"] }}</h2>
+                                    <h3>&#36; {{ data[0]["price"] }}</h3>
+                                    <p class="card-text">{{ data[0]["item_description"] }}</p>
                                     <div class="size-container">
                                         <span class="card-text">Sizes Available: </span>
                                         <span class="badge size">0</span>
