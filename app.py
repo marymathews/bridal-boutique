@@ -174,7 +174,7 @@ def getProducts(category, page):
 	limit = 20
 	page = int(page)
 	offset = (page * limit) - limit
-	cursor.execute("SELECT * FROM item WHERE category_id = %s AND deleted <> 1 ORDER BY item_id LIMIT %s OFFSET %s", (category, limit, offset))
+	cursor.execute("SELECT *, (SELECT image_id FROM item_images img WHERE img.item_id = it.item_id limit 1) AS image FROM item it WHERE it.category_id = %s AND it.deleted <> 1 ORDER BY it.item_id LIMIT %s OFFSET %s", (category, limit, offset))
 
 	desc = cursor.description
 	column_names = [col[0] for col in desc]
