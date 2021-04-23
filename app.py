@@ -127,9 +127,9 @@ def checkExistingEmail(email):
 		return ('', 204)
 
 #route for showing western category page
-@app.route("/showWestern")
-def showWestern():
-	return render_template("western.html", data = getProducts('west', 1))
+@app.route("/showWestern/<page>")
+def showWestern(page):
+	return render_template("western.html", data = getProducts('west', page))
 
 #route for showing cosmetics category page
 @app.route("/showCosmetics")
@@ -161,9 +161,6 @@ def showSouthIndian():
 @app.route("/showProductDetails") 
 def showProductDetails():
 	return render_template("product-details.html")
-
-#route for getting list of products
-# @app.route("/getProducts/<category>/<page>")
 
 def getProducts(category, page):
 	#connect to the db
