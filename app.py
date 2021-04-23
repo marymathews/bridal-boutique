@@ -127,9 +127,9 @@ def checkExistingEmail(email):
 		return ('', 204)
 
 #route for showing western category page
-@app.route("/showWestern")
-def showWestern():
-	return render_template("western.html")
+@app.route("/showWestern/<page>")
+def showWestern(page):
+	return render_template("western.html", data = getProducts('west', page))
 
 #route for showing cosmetics category page
 @app.route("/showCosmetics")
@@ -155,6 +155,33 @@ def showNorthIndian():
 @app.route("/showSouthIndian")
 def showSouthIndian():
 	return render_template("south-indian.html")
+
+#todo - add parameter to route with id for product, db query and send response to FE
+#route for showing product details
+@app.route("/showProductDetails") 
+def showProductDetails():
+	return render_template("product-details.html")
+
+def getProducts(category, page):
+	#connect to the db
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	#pagination - fetch 20 items per page, offset = 20 * page number - 20
+	limit = 20
+	page = int(page)
+	offset = (page * limit) - limit
+	cursor.execute("SELECT *, (SELECT image_id FROM item_images img WHERE img.item_id = it.item_id limit 1) AS image FROM item it WHERE it.category_id = %s AND it.deleted <> 1 ORDER BY it.item_id LIMIT %s OFFSET %s", (category, limit, offset))
+
+	desc = cursor.description
+	column_names = [col[0] for col in desc]
+	data = [dict(zip(column_names, row))  
+        for row in cursor.fetchall()]
+
+	cursor.close()
+	cxn.close()
+
+	return data
 
 #make sure the right script is being run
 if __name__ == "__main__":

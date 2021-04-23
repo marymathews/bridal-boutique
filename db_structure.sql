@@ -7,28 +7,29 @@ CREATE TABLE account (
 );
 CREATE TABLE category (
     category_id CHAR(4) PRIMARY KEY, 
-    category_name VARCHAR(20), 
+    category_name VARCHAR(50), 
+    /* todo remove frame_id if not used */
     frame_id VARCHAR(10)
 );
 CREATE TABLE item ( 
     item_id INT PRIMARY KEY AUTO_INCREMENT, 
-    quantity INT UNSIGNED NOT NULL, 
     price FLOAT(11,2) UNSIGNED NOT NULL, 
     category_id CHAR(4) NOT NULL, 
-    item_name VARCHAR(30) NOT NULL, 
-    item_description VARCHAR(300) NOT NULL, 
+    item_name VARCHAR(100) NOT NULL, 
+    item_description VARCHAR(1000) NOT NULL, 
     deleted BOOLEAN, 
     CONSTRAINT item_cat_fk FOREIGN KEY(category_id) REFERENCES category(category_id)
 );
 CREATE TABLE item_size ( 
     item_id INT, 
-    size ENUM('0', '2', '4', '6', '8', '10', '12', '14', '16', '18', '20') NOT NULL, 
+    size ENUM('one-size', '0', '2', '4', '6', '8', '10', '12', '14', '16', '18', '20') NOT NULL, 
+    quantity INT UNSIGNED NOT NULL, 
     PRIMARY KEY(item_id, size), 
     CONSTRAINT size_item_fk FOREIGN KEY(item_id) REFERENCES item(item_id) 
 );
 CREATE TABLE item_images (
     item_id INT,
-    image_id VARCHAR(10),
+    image_id VARCHAR(20),
     PRIMARY KEY(image_id, item_id),
     CONSTRAINT image_item_fk FOREIGN KEY(item_id) REFERENCES item(item_id)
 );

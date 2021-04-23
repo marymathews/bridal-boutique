@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../static/styles.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="shortcut icon" href="../static/images/favicon.ico"/>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../static/flexslider/flexslider.css" type="text/css">
+        <script src="../static/flexslider/jquery.flexslider.js"></script>
+        <script src="../static/js/productDetails.js"></script>
+        <title>Bridal Boutique</title> 
+    </head>
+    <body>
+        <!-- Top-most Navbar with Logout, Profile, Wishlist, and Logo-->
+        <nav class="navbar navbar-light navbar-expand-md bg-light justify-content-end navbar-1">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="justify-content-start ml-3 mr-0">
+                <div class="navbar-nav">
+                    <div class="nav-link">
+                        <a class="nav-link-text text-decoration-none" href="/"><img src="../static/images/logo_small_circle.png" class="img-fluid w-50 rounded-circle" alt="Logo"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="navbar-nav">
+                    <div class="nav-link mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
+                            <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                        </svg>
+                        <a class="nav-link-text text-decoration-none" href="#">Logout</a>
+                    </div>
+                    <div class="nav-link mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+                        </svg>
+                        <!-- temporary link to sign up page -->
+                        <a class="nav-link-text text-decoration-none" href="/showSignUp">Profile</a>
+                    </div>
+                    <div class="nav-link mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                        </svg>
+                        <a class="nav-link-text text-decoration-none" href="#">Wishlist</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Entire middle section -->
+        <div class="container-fluid">
+            <!-- Main row -->
+            <div class="row h-100">
+                <!-- Left-most column with filters, search, and categories-->
+                <div class="col-md-3">                   
+                    <div class="categories mt-3">
+                        <p class="side-bar-header pl-2">Explore</p>
+                        <hr class="side-bar-divider mr-3">
+                        <ul class="list-group border-0">
+                            <li class="list-group-item pl-2 border-0"><a href="#">Western</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/showNorthIndian">North Indian</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/showSouthIndian">South Indian</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/showAccessories">Accessories &amp; Lingerie</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/showJewellery">Jewellery</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/showCosmetics">Cosmetics</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Main column with images and details-->
+                <div class="col-md-9 mt-2">
+                    <!-- First row with breadcrumbs -->
+                    <div class="row">
+                        <div class="col-md-12">
+                        <div class="row justify-content-start">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb bg-white">
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="/showWestern/1">Western</a></li>
+                                        <!-- todo add actual product name -->
+                                        <li class="breadcrumb-item"><a href="#">Product Name</a></li>
+                                    </ol> 
+                                </nav> 
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Row with images and details -->
+                    <div class="row">
+                        <div class="col-md-4"> 
+                            <!-- todo replace alt text with actual product name -->
+                            <!-- todo may be multiple images -->
+                            <div class="row flexslider">
+                                <ul class="slides">
+                                    <li>
+                                        <img src="../static/images/western/west_1a.jpeg" class="img-fluid" alt="Product Name">
+                                    </li>
+                                    <li>
+                                        <img src="../static/images/western/west_1b.jpeg" class="img-fluid" alt="Product Name">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- todo add actual item name, desc, price -->
+                        <div class="col-md-8">
+                            <div class="card product-desc-container">
+                                <div class="card-body">
+                                    <h2 class="card-title text-uppercase">Crepe Off-Shoulder Sheath Wedding Dress</h2>
+                                    <h3>&#36; 200</h3>
+                                    <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    <div class="size-container">
+                                        <span class="card-text">Sizes Available: </span>
+                                        <span class="badge size">0</span>
+                                        <span class="badge size">2</span>
+                                        <span class="badge size">4</span>
+                                        <span class="badge size">6</span>
+                                        <span class="badge size">8</span>
+                                        <span class="badge size">10</span>
+                                        <span class="badge size">12</span>
+                                    </div>
+                                    <div class="mr-1 mt-3 text-left">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                        </svg>
+                                        <a class="text-decoration-none ml-1" href="#">Add to Wishlist</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- Bottom row/footer -->
+        <footer class="container-fluid">
+            <!-- Bottom row with copyright-->
+            <div class="row bg-dark justify-content-center footer-2">
+                <p class="text-dark px-4 pt-4">Copyright © 2021</p>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    </body>
+</html>
