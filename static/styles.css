@@ -133,6 +133,12 @@ html, body {
   .product-desc-container a:hover {
     color: #cc7c68!important;
   }
+  .size-container {
+    font-family: 'Mulish', Lobster, Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .size {
+    font-size: medium;
+  }
   .hovereffect {
     width: 100%;
     height: 100%;
