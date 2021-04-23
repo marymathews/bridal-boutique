@@ -1,6 +1,5 @@
 $(document).ready(function() {
     var path = window.location.pathname
-    console.log(path);
 
     if(path.includes(1)) {
         $("#page-1").addClass("active");
