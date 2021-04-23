@@ -97,12 +97,11 @@
                             <!-- todo may be multiple images -->
                             <div class="row flexslider">
                                 <ul class="slides">
+                                    {% for image in images %}
                                     <li>
-                                        <img src="../static/images/western/west_1a.jpeg" class="img-fluid" alt='{{ data[0]["item_name"] }}'>
+                                        <img src='../static/images/western/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
                                     </li>
-                                    <li>
-                                        <img src="../static/images/western/west_1b.jpeg" class="img-fluid" alt='{{ data[0]["item_name"] }}'>
-                                    </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
