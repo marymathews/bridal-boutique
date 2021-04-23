@@ -178,7 +178,14 @@ def showProductDetails(id):
 	images = [dict(zip(column_names, row))  
         for row in cursor.fetchall()]
 
-	return render_template("product-details.html", data = data, images = images)
+	#query to fetch item size from the db
+	cursor.execute("SELECT * FROM item_size WHERE item_id = %s", id)
+	desc = cursor.description
+	column_names = [col[0] for col in desc]
+	sizes = [dict(zip(column_names, row))  
+        for row in cursor.fetchall()]
+
+	return render_template("product-details.html", data = data, images = images, sizes = sizes)
 
 def getProducts(category, page):
 	#connect to the db

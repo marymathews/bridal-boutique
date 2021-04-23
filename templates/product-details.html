@@ -114,13 +114,11 @@
                                     <p class="card-text">{{ data[0]["item_description"] }}</p>
                                     <div class="size-container">
                                         <span class="card-text">Sizes Available: </span>
-                                        <span class="badge size">0</span>
-                                        <span class="badge size">2</span>
-                                        <span class="badge size">4</span>
-                                        <span class="badge size">6</span>
-                                        <span class="badge size">8</span>
-                                        <span class="badge size">10</span>
-                                        <span class="badge size">12</span>
+                                        {% for item_size in sizes %}
+                                            {% if item_size["quantity"] > 0 %}
+                                                <span class="badge size">{{ item_size["size"] }}</span>
+                                            {% endif %}
+                                        {% endfor %}
                                     </div>
                                     <div class="mr-1 mt-3 text-left">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
