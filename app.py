@@ -133,9 +133,9 @@ def showWestern(page):
 	return render_template("western.html", data = getProducts('west', page))
 
 #route for showing cosmetics category page
-@app.route("/showCosmetics")
-def showCosmetics():
-	return render_template("cosmetics.html")
+@app.route("/showCosmetics/<page>")
+def showCosmetics(page):
+	return render_template("cosmetics.html", data = getProducts('cosm', page))
 
 #route for showing jewellery category page
 @app.route("/showJewellery")
