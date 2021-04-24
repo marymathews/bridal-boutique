@@ -81,8 +81,24 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb bg-white">
                                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                        <!-- todo change to current category -->
-                                        <li class="breadcrumb-item"><a href="/showWestern/1">Western</a></li>
+                                        {% if data[0]["category_id"] == "west" %}
+                                            <li class="breadcrumb-item"><a href="/showWestern/1">Western</a></li>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "noin" %}
+                                            <li class="breadcrumb-item"><a href="/showNorthIndian/1">North Indian</a></li>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "soin" %}
+                                            <li class="breadcrumb-item"><a href="/showSouthIndian/1">South Indian</a></li>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "jewe" %}
+                                            <li class="breadcrumb-item"><a href="/showJewellery/1">Jewellery</a></li>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "cosm" %}
+                                            <li class="breadcrumb-item"><a href="/showCosmetics/1">Cosmetics</a></li>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "acli" %}
+                                            <li class="breadcrumb-item"><a href="/showAccessories/1">Accessories &amp; Lingerie</a></li>
+                                        {% endif %}
                                         <li class="breadcrumb-item"><a href="#">{{ data[0]["item_name"] }}</a></li>
                                     </ol> 
                                 </nav> 
