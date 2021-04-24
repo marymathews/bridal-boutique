@@ -114,7 +114,24 @@
                                 <ul class="slides">
                                     {% for image in images %}
                                     <li>
-                                        <img src='../static/images/western/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
+                                        {% if data[0]["category_id"] == "west" %}
+                                            <img src='../static/images/western/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "noin" %}
+                                            <img src='../static/images/north-indian/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "soin" %}
+                                            <img src='../static/images/south-indian/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "jewe" %}
+                                            <img src='../static/images/jewellery/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "cosm" %}
+                                            <img src='../static/images/cosmetics/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "acli" %}
+                                            <img src='../static/images/accessories/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
+                                        {% endif %}
                                     </li>
                                     {% endfor %}
                                 </ul>
