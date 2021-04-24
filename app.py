@@ -138,24 +138,24 @@ def showCosmetics(page):
 	return render_template("cosmetics.html", data = getProducts('cosm', page))
 
 #route for showing jewellery category page
-@app.route("/showJewellery")
-def showJewellery():
-	return render_template("jewellery.html")
+@app.route("/showJewellery/<page>")
+def showJewellery(page):
+	return render_template("jewellery.html", data = getProducts('jewe', page))
 
 #route for showing accessories and lingerie category page
-@app.route("/showAccessories")
-def showAccessories():
-	return render_template("accessories.html")
+@app.route("/showAccessories/<page>")
+def showAccessories(page):
+	return render_template("accessories.html", data = getProducts('acli', page))
 
 #route for showing north indian category page
-@app.route("/showNorthIndian")
-def showNorthIndian():
-	return render_template("north-indian.html")
+@app.route("/showNorthIndian/<page>")
+def showNorthIndian(page):
+	return render_template("north-indian.html", data = getProducts('noin', page))
 
 #route for showing north indian category page
-@app.route("/showSouthIndian")
-def showSouthIndian():
-	return render_template("south-indian.html")
+@app.route("/showSouthIndian/<page>")
+def showSouthIndian(page):
+	return render_template("south-indian.html", data = getProducts('soin', page))
 
 #todo - add parameter to route with id for product, db query and send response to FE
 #route for showing product details
