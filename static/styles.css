@@ -146,6 +146,9 @@ html, body {
     background-color: #f9f1f1;
     border-color: #8f746d;
   }
+  #logout {
+    display: none;
+  }
   .hovereffect {
     width: 100%;
     height: 100%;

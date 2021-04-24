@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, json
+from flask import Flask, render_template, request, redirect, json, session
 from flaskext.mysql import MySQL
 from flask_bcrypt import Bcrypt
 
@@ -51,6 +51,7 @@ def signUp():
 			data = cursor.fetchall()
 			if(len(data) == 0):
 				cxn.commit()
+				session['email'] = _email
 				return redirect("/")
 			else:
 				return render_template("error.html", error = 'Something Went Wrong!')
@@ -65,7 +66,6 @@ def signUp():
 	finally:
 		cursor.close()
 		cxn.close()
-#todo - return proper response or redirect to correct page
 
 #route to show signin page
 @app.route("/showSignIn")
@@ -91,9 +91,10 @@ def signIn():
 			is_same = bcrypt.check_password_hash(data[0][2], _pwd)
 
 			if(is_same):
+				session['email'] = data[0][0]
 				return redirect("/")
 			else:
-				return render_template("error.html", error = 'Incorrect Details!')
+				return render_template("error.html", error = 'Incorrect Username or Password!')
 		else:
 			return render_template("error.html", error = 'A required field is missing!')
 
@@ -132,35 +133,60 @@ def showWestern(page):
 	return render_template("western.html", data = getProducts('west', page))
 
 #route for showing cosmetics category page
-@app.route("/showCosmetics")
-def showCosmetics():
-	return render_template("cosmetics.html")
+@app.route("/showCosmetics/<page>")
+def showCosmetics(page):
+	return render_template("cosmetics.html", data = getProducts('cosm', page))
 
 #route for showing jewellery category page
-@app.route("/showJewellery")
-def showJewellery():
-	return render_template("jewellery.html")
+@app.route("/showJewellery/<page>")
+def showJewellery(page):
+	return render_template("jewellery.html", data = getProducts('jewe', page))
 
 #route for showing accessories and lingerie category page
-@app.route("/showAccessories")
-def showAccessories():
-	return render_template("accessories.html")
+@app.route("/showAccessories/<page>")
+def showAccessories(page):
+	return render_template("accessories.html", data = getProducts('acli', page))
 
 #route for showing north indian category page
-@app.route("/showNorthIndian")
-def showNorthIndian():
-	return render_template("north-indian.html")
+@app.route("/showNorthIndian/<page>")
+def showNorthIndian(page):
+	return render_template("north-indian.html", data = getProducts('noin', page))
 
 #route for showing north indian category page
-@app.route("/showSouthIndian")
-def showSouthIndian():
-	return render_template("south-indian.html")
+@app.route("/showSouthIndian/<page>")
+def showSouthIndian(page):
+	return render_template("south-indian.html", data = getProducts('soin', page))
 
 #todo - add parameter to route with id for product, db query and send response to FE
 #route for showing product details
-@app.route("/showProductDetails") 
-def showProductDetails():
-	return render_template("product-details.html")
+@app.route("/showProductDetails/<id>") 
+def showProductDetails(id):
+	#connect to the db
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	#query to fetch item data from the db
+	cursor.execute("SELECT * FROM item WHERE item_id = %s", id)
+	desc = cursor.description
+	column_names = [col[0] for col in desc]
+	data = [dict(zip(column_names, row))  
+        for row in cursor.fetchall()]
+
+	#query to fetch item images from the db
+	cursor.execute("SELECT * FROM item_images WHERE item_id = %s", id)
+	desc = cursor.description
+	column_names = [col[0] for col in desc]
+	images = [dict(zip(column_names, row))  
+        for row in cursor.fetchall()]
+
+	#query to fetch item size from the db
+	cursor.execute("SELECT * FROM item_size WHERE item_id = %s", id)
+	desc = cursor.description
+	column_names = [col[0] for col in desc]
+	sizes = [dict(zip(column_names, row))  
+        for row in cursor.fetchall()]
+
+	return render_template("product-details.html", data = data, images = images, sizes = sizes)
 
 def getProducts(category, page):
 	#connect to the db
@@ -182,6 +208,20 @@ def getProducts(category, page):
 	cxn.close()
 
 	return data
+
+#route to check if user is signed in
+@app.route("/checkSignedIn")
+def checkSignedIn():
+	if('email' in session):
+		return json.dumps({'message': 'Logged In'})
+	else:
+		return json.dumps({'message': 'Logged Out'})
+
+#route to logout
+@app.route("/logout")
+def logout():
+	session.pop('email', None)
+	return redirect("/")
 
 #make sure the right script is being run
 if __name__ == "__main__":

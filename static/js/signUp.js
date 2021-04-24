@@ -2,13 +2,13 @@ $(document).ready(function() {
     $("#submit").click(function(event) {
         if(!isEmailValid($("#email").val())) {
             event.preventDefault();
-            $("#email-validation").css({
+            $("#email-validation").show().css({
                 'color': 'red'
             });
         }
         if(!isPasswordValid($("#password").val())) {
             event.preventDefault();
-            $("#pwd-validation").css({
+            $("#pwd-validation").show().css({
                 'color': 'red'
             });
         }

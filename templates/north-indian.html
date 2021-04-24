@@ -13,6 +13,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../static/flexslider/flexslider.css" type="text/css">
         <script src="../static/flexslider/jquery.flexslider.js"></script>
+        <script src="../static/js/itemListing.js"></script>
         <title>Bridal Boutique</title> 
     </head>
     <body>
@@ -30,19 +31,18 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <div class="navbar-nav">
-                    <div class="nav-link mr-1">
+                    <div class="nav-link mr-1" id="logout">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
                             <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
                         </svg>
-                        <a class="nav-link-text text-decoration-none" href="#">Logout</a>
+                        <a class="nav-link-text text-decoration-none" href="/logout">Logout</a>
                     </div>
                     <div class="nav-link mr-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
                             <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
                         </svg>
-                        <!-- temporary link to sign up page -->
-                        <a class="nav-link-text text-decoration-none" href="/showSignUp">Profile</a>
+                        <a class="nav-link-text text-decoration-none" id="profile" href="/showSignIn">Profile</a>
                     </div>
                     <div class="nav-link mr-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
@@ -56,7 +56,7 @@
         <!-- Entire middle section -->
         <div class="container-fluid">
             <!-- Main row -->
-            <div class="row">
+            <div class="row h-100">
                 <!-- Left-most column with filters, search, and categories-->
                 <div class="col-md-3">
                     <div class="input-group mt-3 search-bar">
@@ -75,10 +75,10 @@
                         <ul class="list-group border-0">
                             <li class="list-group-item pl-2 border-0"><a href="/showWestern/1">Western</a></li>
                             <li class="list-group-item pl-2 border-0"><a href="#">North Indian</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/showSouthIndian">South Indian</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/showAccessories">Accessories &amp; Lingerie</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/showJewellery">Jewellery</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/showCosmetics">Cosmetics</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/showSouthIndian/1">South Indian</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/showAccessories/1">Accessories &amp; Lingerie</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/showJewellery/1">Jewellery</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/showCosmetics/1">Cosmetics</a></li>
                         </ul>
                     </div>
                     <div class="filters mt-3">
@@ -113,28 +113,42 @@
                                         <li class="breadcrumb-item"><a href="#">North Indian</a></li>
                                     </ol> 
                                 </nav> 
-                            </div>  
-                            <p>Items are listed here</p>
+                            </div> 
+                           
+                            {% for record in data %}
+                                {% if loop.index0 % 4 == 0 %}  
+                                    <div class="row my-3">
+                                {% endif %}
+                                        <div class="col-lg-3 product-container">
+                                            <a href='/showProductDetails/{{ record["item_id"] }} '>
+                                                <img class="img-thumbnail listing-image" src='../static/images/north-indian/{{ record["image"] }}' alt='{{ record["item_name"] }}''>
+                                            </a>
+                                            <div class="mt-2 item-name text-left text-uppercase">
+                                                {{ record["item_name"] }}
+                                            </div>
+                                            <div class="mr-1 mt-1 text-left">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                                </svg>
+                                                <a class="nav-link-text text-decoration-none ml-1" href="#">Add to Wishlist</a>
+                                            </div>
+                                            <div class="text-left mt-1 mb-2">
+                                                &#36; {{ record["price"] }}
+                                            </div>
+                                        </div>
+                                {% if loop.index0 % 4 == 3 %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
                         </div>
                     </div>
                     <!-- Second row with pagination -->
-                    <div class="row justify-content-center">
-                        <ul class="pagination" id="pages">
-    						<li class="page-item">
-      							<a class="page-link" href="#" aria-label="Previous">
-        							<span aria-hidden="true"> &laquo; </span>
-        							<span class="sr-only"> Previous </span>
-      							</a>
-    						</li>
-    						<li class="page-item"> <a class="page-link" href="#"> 1 </a> </li>
-    						<li class="page-item"> <a class="page-link" href="#"> 2 </a> </li>
-    						<li class="page-item"> <a class="page-link" href="#"> 3 </a> </li>
-    						<li class="page-item">
-      							<a class="page-link" href="#" aria-label="Next">
-        							<span aria-hidden="true"> &raquo; </span>
-        							<span class="sr-only"> Next </span>
-      							</a>
-    						</li>
+                    <div class="row w-100">
+                        <ul class="pagination justify-content-center text-center w-100" id="pages">
+    						<li class="page-item active" id="page-1"> <a class="page-link" href="/showNorthIndian/1">1</a> </li>
+    						<li class="page-item" id="page-2"> <a class="page-link" href="/showNorthIndian/2">2</a> </li>
+    						<li class="page-item" id="page-3"> <a class="page-link" href="/showNorthIndian/3">3</a> </li>
  						 </ul>
                     </div>
                 </div>

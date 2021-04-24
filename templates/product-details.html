@@ -31,19 +31,18 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <div class="navbar-nav">
-                    <div class="nav-link mr-1">
+                    <div class="nav-link mr-1" id="logout">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
                             <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
                         </svg>
-                        <a class="nav-link-text text-decoration-none" href="#">Logout</a>
+                        <a class="nav-link-text text-decoration-none" href="/logout">Logout</a>
                     </div>
                     <div class="nav-link mr-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
                             <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
                         </svg>
-                        <!-- temporary link to sign up page -->
-                        <a class="nav-link-text text-decoration-none" href="/showSignUp">Profile</a>
+                        <a class="nav-link-text text-decoration-none" id="profile" href="/showSignIn">Profile</a>
                     </div>
                     <div class="nav-link mr-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
@@ -64,12 +63,12 @@
                         <p class="side-bar-header pl-2">Explore</p>
                         <hr class="side-bar-divider mr-3">
                         <ul class="list-group border-0">
-                            <li class="list-group-item pl-2 border-0"><a href="#">Western</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/showWestern/1">Western</a></li>
                             <li class="list-group-item pl-2 border-0"><a href="/showNorthIndian">North Indian</a></li>
                             <li class="list-group-item pl-2 border-0"><a href="/showSouthIndian">South Indian</a></li>
                             <li class="list-group-item pl-2 border-0"><a href="/showAccessories">Accessories &amp; Lingerie</a></li>
                             <li class="list-group-item pl-2 border-0"><a href="/showJewellery">Jewellery</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/showCosmetics">Cosmetics</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/showCosmetics/1">Cosmetics</a></li>
                         </ul>
                     </div>
                 </div>
@@ -82,9 +81,25 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb bg-white">
                                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="/showWestern/1">Western</a></li>
-                                        <!-- todo add actual product name -->
-                                        <li class="breadcrumb-item"><a href="#">Product Name</a></li>
+                                        {% if data[0]["category_id"] == "west" %}
+                                            <li class="breadcrumb-item"><a href="/showWestern/1">Western</a></li>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "noin" %}
+                                            <li class="breadcrumb-item"><a href="/showNorthIndian/1">North Indian</a></li>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "soin" %}
+                                            <li class="breadcrumb-item"><a href="/showSouthIndian/1">South Indian</a></li>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "jewe" %}
+                                            <li class="breadcrumb-item"><a href="/showJewellery/1">Jewellery</a></li>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "cosm" %}
+                                            <li class="breadcrumb-item"><a href="/showCosmetics/1">Cosmetics</a></li>
+                                        {% endif %}
+                                        {% if data[0]["category_id"] == "acli" %}
+                                            <li class="breadcrumb-item"><a href="/showAccessories/1">Accessories &amp; Lingerie</a></li>
+                                        {% endif %}
+                                        <li class="breadcrumb-item"><a href="#">{{ data[0]["item_name"] }}</a></li>
                                     </ol> 
                                 </nav> 
                             </div>
@@ -97,12 +112,11 @@
                             <!-- todo may be multiple images -->
                             <div class="row flexslider">
                                 <ul class="slides">
+                                    {% for image in images %}
                                     <li>
-                                        <img src="../static/images/western/west_1a.jpeg" class="img-fluid" alt="Product Name">
+                                        <img src='../static/images/western/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
                                     </li>
-                                    <li>
-                                        <img src="../static/images/western/west_1b.jpeg" class="img-fluid" alt="Product Name">
-                                    </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
@@ -110,18 +124,16 @@
                         <div class="col-md-8">
                             <div class="card product-desc-container">
                                 <div class="card-body">
-                                    <h2 class="card-title text-uppercase">Crepe Off-Shoulder Sheath Wedding Dress</h2>
-                                    <h3>&#36; 200</h3>
-                                    <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    <h2 class="card-title text-uppercase">{{ data[0]["item_name"] }}</h2>
+                                    <h3>&#36; {{ data[0]["price"] }}</h3>
+                                    <p class="card-text">{{ data[0]["item_description"] }}</p>
                                     <div class="size-container">
                                         <span class="card-text">Sizes Available: </span>
-                                        <span class="badge size">0</span>
-                                        <span class="badge size">2</span>
-                                        <span class="badge size">4</span>
-                                        <span class="badge size">6</span>
-                                        <span class="badge size">8</span>
-                                        <span class="badge size">10</span>
-                                        <span class="badge size">12</span>
+                                        {% for item_size in sizes %}
+                                            {% if item_size["quantity"] > 0 %}
+                                                <span class="badge size">{{ item_size["size"] }}</span>
+                                            {% endif %}
+                                        {% endfor %}
                                     </div>
                                     <div class="mr-1 mt-3 text-left">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
