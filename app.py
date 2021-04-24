@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, json
+from flask import Flask, render_template, request, redirect, json, session
 from flaskext.mysql import MySQL
 from flask_bcrypt import Bcrypt
 
@@ -91,9 +91,10 @@ def signIn():
 			is_same = bcrypt.check_password_hash(data[0][2], _pwd)
 
 			if(is_same):
+				session['email'] = data[0][0]
 				return redirect("/")
 			else:
-				return render_template("error.html", error = 'Incorrect Details!')
+				return render_template("error.html", error = 'Incorrect Username or Password!')
 		else:
 			return render_template("error.html", error = 'A required field is missing!')
 
@@ -207,6 +208,20 @@ def getProducts(category, page):
 	cxn.close()
 
 	return data
+
+#route to check if user is signed in
+@app.route("/checkSignedIn")
+def checkSignedIn():
+	if('email' in session):
+		return json.dumps({'message': 'Logged In'})
+	else:
+		return json.dumps({'message': 'Logged Out'})
+
+#route to logout
+@app.route("/logout")
+def logout():
+	session.pop('email', None)
+	return redirect("/")
 
 #make sure the right script is being run
 if __name__ == "__main__":

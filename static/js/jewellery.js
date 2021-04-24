@@ -1,16 +1,4 @@
 $(document).ready(function() {
-    $.get({
-        url: '/checkSignedIn',
-        dataType: 'JSON',
-        success: function(response) {
-            $.each(response, function(key, value) {
-                if(value == 'Logged In') {
-                    $("#logout").show();
-                }
-            })
-        }
-    });
-    
     var path = window.location.pathname
 
     if(path.includes(1)) {
@@ -30,4 +18,16 @@ $(document).ready(function() {
         $("#page-2").removeClass("active");
         $("#page-3").addClass("active");
     };
+
+    $.get({
+        url: '/checkSignedIn',
+        dataType: 'JSON',
+        success: function(response) {
+            $.each(response, function(key, value) {
+                if(value == 'Logged In') {
+                    $("#logout").show();
+                }
+            })
+        }
+    });
 });
