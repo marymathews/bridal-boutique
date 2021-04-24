@@ -45,9 +45,9 @@
             </div>
         </nav>
         <!-- Entire middle section -->
-        <div class="container-fluid h-100" id="main-wrapper">
+        <div class="container-fluid" id="main-wrapper">
             <!-- Main row -->
-            <div class="row h-100">
+            <div class="row">
                 <!-- Main column with signIn form-->
 				<form class="sign-in-form mx-auto w-50" method="POST" action="/signIn">
 					<div class="form-group">
@@ -61,7 +61,10 @@
                         <p class="font-italic" id="pwd-validation">Password cannot be empty!</p>
 					</div>
 					<input type="submit" id="submit" class="btn btn-lg btn-block" value="Sign In">
-				</form>			
+				</form>	
+            </div>
+            <div class="row justify-content-center my-4">
+                <p class="text-center"><a href="/showSignUp">New User? Create an Account</a></p>
             </div>
         </div>
          <!-- Bottom row/footer -->

@@ -51,6 +51,7 @@ def signUp():
 			data = cursor.fetchall()
 			if(len(data) == 0):
 				cxn.commit()
+				session['email'] = _email
 				return redirect("/")
 			else:
 				return render_template("error.html", error = 'Something Went Wrong!')
@@ -65,7 +66,6 @@ def signUp():
 	finally:
 		cursor.close()
 		cxn.close()
-#todo - return proper response or redirect to correct page
 
 #route to show signin page
 @app.route("/showSignIn")
