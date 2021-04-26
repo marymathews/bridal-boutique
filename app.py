@@ -223,6 +223,27 @@ def logout():
 	session.pop('email', None)
 	return redirect("/")
 
+#route to user profile
+@app.route("/showUserProfile")
+def showUserProfile():
+	if('email' in session):
+		
+		#connect to db and fetch user details
+		cxn = mysql.connect()
+		cursor = cxn.cursor()
+
+		cursor.execute("SELECT * FROM account WHERE email = %s", (session.get('email')))
+		desc = cursor.description
+		column_names = [col[0] for col in desc]
+		data = [dict(zip(column_names, row))  
+        	for row in cursor.fetchall()]
+		cursor.close()
+		cxn.close()
+
+		return render_template('profile.html', data = data)
+	else:
+		return redirect('/showSignIn')
+
 #make sure the right script is being run
 if __name__ == "__main__":
 	#runs the application from the app variable
