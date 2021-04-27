@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="../static/flexslider/flexslider.css" type="text/css">
         <script src="../static/flexslider/jquery.flexslider.js"></script>
         <script src="../static/js/itemListing.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
         <title>Bridal Boutique</title> 
     </head>
     <body>
@@ -126,11 +128,11 @@
                                             <div class="mt-2 item-name text-left text-uppercase">
                                                 {{ record["item_name"] }}
                                             </div>
-                                            <div class="mr-1 mt-1 text-left">
+                                            <div class="mr-1 mt-1 text-left" id='{{ record["item_id"] }}'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                                     <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                                                 </svg>
-                                                <a class="nav-link-text text-decoration-none ml-1" href="#">Add to Wishlist</a>
+                                                <a class="nav-link-text text-decoration-none ml-1 wishlist" href="#">Add to Wishlist</a>
                                             </div>
                                             <div class="text-left mt-1 mb-2">
                                                 &#36; {{ record["price"] }}
