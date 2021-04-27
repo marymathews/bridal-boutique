@@ -244,6 +244,26 @@ def showUserProfile():
 	else:
 		return redirect('/showSignIn')
 
+#route to add wishlist item
+@app.route("/addToWishlist", methods = ['PUT'])
+def addToWishlist():
+	itemId = request.form.get('item_id')
+	user = session.get('email')
+
+	#connect to db and insert item
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	cursor.execute("INSERT INTO wishlist VALUES (%s, %s)", (user, itemId))
+
+	if(len(cursor.fetchall()) == 0):
+		cxn.commit()
+		cursor.close
+		cxn.close()
+		return json.dumps({'success': 'Item added'})
+	else:
+		return json.dumps({'error': 'Item not added'})
+
 #make sure the right script is being run
 if __name__ == "__main__":
 	#runs the application from the app variable
