@@ -145,14 +145,17 @@
                                     <h3>&#36; {{ data[0]["price"] }}</h3>
                                     <p class="card-text">{{ data[0]["item_description"] }}</p>
                                     <div class="size-container">
-                                        <span class="card-text">Sizes Available: </span>
+                                        <div class="card-text p-1 my-2">Sizes Available: </div>
                                         {% for item_size in sizes %}
                                             {% if item_size["quantity"] > 0 %}
-                                                <span class="badge size">{{ item_size["size"] }}</span>
+                                                <span class="badge-info size badge-pill p-2 text-uppercase">{{ item_size["size"] }}</span>
+                                            {% endif %}
+                                            {% if item_size["quantity"] == 0 %}
+                                                <span class="badge-secondary size badge-pill p-2 text-uppercase"><s>{{ item_size["size"] }}</s></span>
                                             {% endif %}
                                         {% endfor %}
                                     </div>
-                                    <div class="mr-1 mt-3 text-left">
+                                    <div class="mr-1 mt-4 text-left">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                                         </svg>
