@@ -10,12 +10,14 @@ $(document).ready(function() {
                     $("#logout").show();
                     $("#profile").attr('href', '/showUserProfile');
                     $(".wishlist").attr('href', '#');
+                    $("#show-wishlist").attr('href', '/showWishlist');
                 }
                 else {
                     isLoggedIn = false;
                     $("#logout").hide();
                     $("#profile").attr('href', '/showSignIn');
                     $(".wishlist").attr('href', '/showSignIn');
+                    $("#show-wishlist").attr('href', '/showSignIn');
                 }
             })
         }
