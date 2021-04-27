@@ -13,7 +13,9 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../static/flexslider/flexslider.css" type="text/css">
         <script src="../static/flexslider/jquery.flexslider.js"></script>
-        <script src="../static/js/productDetails.js"></script>
+        <script src="../static/js/wishlist.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
         <title>Bridal Boutique</title> 
     </head>
     <body>
@@ -74,38 +76,7 @@
                 </div>
                 <!-- Main column with images and details-->
                 <div class="col-md-9 mt-2">
-                    <!-- First row with breadcrumbs -->
-                    <div class="row">
-                        <div class="col-md-12">
-                        <div class="row justify-content-start">
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb bg-white">
-                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                        {% if data[0]["category_id"] == "west" %}
-                                            <li class="breadcrumb-item"><a href="/showWestern/1">Western</a></li>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "noin" %}
-                                            <li class="breadcrumb-item"><a href="/showNorthIndian/1">North Indian</a></li>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "soin" %}
-                                            <li class="breadcrumb-item"><a href="/showSouthIndian/1">South Indian</a></li>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "jewe" %}
-                                            <li class="breadcrumb-item"><a href="/showJewellery/1">Jewellery</a></li>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "cosm" %}
-                                            <li class="breadcrumb-item"><a href="/showCosmetics/1">Cosmetics</a></li>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "acli" %}
-                                            <li class="breadcrumb-item"><a href="/showAccessories/1">Accessories &amp; Lingerie</a></li>
-                                        {% endif %}
-                                        <li class="breadcrumb-item"><a href="#">{{ data[0]["item_name"] }}</a></li>
-                                    </ol> 
-                                </nav> 
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Row with images and details -->
+                    <!-- Row with wishlist data -->
                     <div class="row">
                         <div class="col-md-4"> 
                             <!-- todo replace alt text with actual product name -->
