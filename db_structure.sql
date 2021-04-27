@@ -65,5 +65,3 @@ CREATE TABLE wishlist (
 	FOREIGN KEY(item_id) REFERENCES item(item_id),
 	FOREIGN KEY(email) REFERENCES account(email)
 );
-
-
