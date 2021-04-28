@@ -44,7 +44,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
                             <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
                         </svg>
-                        <a class="nav-link-text text-decoration-none" id="profile" href="/showSignIn">Profile</a>
+                        <a class="nav-link-text text-decoration-none" id="profile" href="/showUserProfile">Profile</a>
                     </div>
                     <div class="nav-link mr-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
@@ -76,67 +76,56 @@
                 </div>
                 <!-- Main column with images and details-->
                 <div class="col-md-9 mt-2">
-                    <!-- Row with wishlist data -->
-                    <div class="row">
-                        <div class="col-md-4"> 
-                            <!-- todo replace alt text with actual product name -->
-                            <!-- todo may be multiple images -->
-                            <div class="row flexslider">
-                                <ul class="slides">
-                                    {% for image in images %}
-                                    <li>
-                                        {% if data[0]["category_id"] == "west" %}
-                                            <img src='../static/images/western/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "noin" %}
-                                            <img src='../static/images/north-indian/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "soin" %}
-                                            <img src='../static/images/south-indian/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "jewe" %}
-                                            <img src='../static/images/jewellery/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "cosm" %}
-                                            <img src='../static/images/cosmetics/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "acli" %}
-                                            <img src='../static/images/accessories/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
-                                        {% endif %}
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- todo add actual item name, desc, price -->
-                        <div class="col-md-8">
-                            <div class="card product-desc-container">
-                                <div class="card-body">
-                                    <h2 class="card-title text-uppercase">{{ data[0]["item_name"] }}</h2>
-                                    <h3>&#36; {{ data[0]["price"] }}</h3>
-                                    <p class="card-text">{{ data[0]["item_description"] }}</p>
-                                    <div class="size-container">
-                                        <div class="card-text p-1 my-2">Sizes Available: </div>
-                                        {% for item_size in sizes %}
-                                            {% if item_size["quantity"] > 0 %}
-                                                <span class="badge-info size badge-pill p-2 text-uppercase">{{ item_size["size"] }}</span>
-                                            {% endif %}
-                                            {% if item_size["quantity"] == 0 %}
-                                                <span class="badge-secondary size badge-pill p-2 text-uppercase"><s>{{ item_size["size"] }}</s></span>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="mr-1 mt-4 text-left">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                        </svg>
-                                        <a class="text-decoration-none ml-1" href="#">Add to Wishlist</a>
-                                    </div>
-                                </div>
+                    <div class="row mx-1">
+                        <div class="col-md-12">
+                        <div class="row justify-content-start">
+                                <h2 class="px-2 mt-4 font-weight-bold">Wishlisted Items</h2> 
+                                <hr class="w-100">
                             </div>
                         </div>
                     </div>
+                    <!-- Row with wishlist data -->
+                    <div class="row w-100">
+                        {% if data|length == 0 %}
+                            <h3 class="text-center font-weight-bold my-5 mx-4 w-100">Your wishlist is empty!</h3>
+                        {% endif %}
+                        {% if data|length > 0 %}
+                            <ul class="container-fluid">
+                                {% for record in data %}
+                                    <li class="row">
+                                        {% if record["category_id"] == "west" %}
+                                            <img src='../static/images/western/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "noin" %}
+                                            <img src='../static/images/north-indian/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "soin" %}
+                                            <img src='../static/images/south-indian/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "jewe" %}
+                                            <img src='../static/images/jewellery/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "cosm" %}
+                                            <img src='../static/images/cosmetics/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "acli" %}
+                                            <img src='../static/images/accessories/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        <div class="col-md-9 my-2">
+                                            <a class="wishlist-item-name text-decoration-none" href='/showProductDetails/{{ record["item_id"] }}'>{{ record["item_name"] }}</a>
+                                            <p class="wishlist-cost my-2">&#36; {{ record["price"] }}</p>
+                                            <button class="btn btn-outline-dark rounded-pill my-3">
+                                                <a href="#">Remove from Wishlist</a>
+                                            </button>
+                                        </div>
+                                        <hr class="w-100">
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
                 </div>
+                        
             </div>
         </div>
          <!-- Bottom row/footer -->

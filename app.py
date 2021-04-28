@@ -264,6 +264,25 @@ def addToWishlist():
 	else:
 		return json.dumps({'error': 'Item not added'})
 
+#route to show user wishlist
+@app.route("/showWishlist")
+def showWishlist():
+	user = session.get('email')
+
+	#connect to db and fetch user wishlist
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	cursor.execute("SELECT w.email, w.item_id, i.price, i.category_id, i.item_name, i.item_description, (SELECT img.image_id FROM item_images img WHERE img.item_id = i.item_id LIMIT 1) AS image_id FROM wishlist w, item i WHERE w.email = %s AND w.item_id = i.item_id", user)
+	desc = cursor.description
+	column_names = [col[0] for col in desc]
+	data = [dict(zip(column_names, row))  
+        for row in cursor.fetchall()]
+	cursor.close()
+	cxn.close()
+
+	return render_template('wishlist.html', data = data)
+
 #make sure the right script is being run
 if __name__ == "__main__":
 	#runs the application from the app variable
