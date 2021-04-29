@@ -283,6 +283,27 @@ def showWishlist():
 
 	return render_template('wishlist.html', data = data)
 
+#route to delete from wishlist
+@app.route("/deleteFromWishlist/<id>", methods = ['DELETE'])
+def deleteFromWishlist(id):
+	user = session.get('email')
+
+	#connect to db and delete item from wishlist
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	try:
+		cursor.execute("DELETE FROM wishlist WHERE email = %s AND item_id = %s", (user, id))
+		cxn.commit()
+		response = json.dumps({'success': 'Deleted'})
+	except Exception as error:
+		response = json.dumps({'error': str(error)})
+	finally:
+		cursor.close
+		cxn.close()
+
+	return response
+
 #make sure the right script is being run
 if __name__ == "__main__":
 	#runs the application from the app variable
