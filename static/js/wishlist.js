@@ -1,10 +1,14 @@
 $(document).ready(function() {
     $("#logout").show();
     
-    if($(".wishlist-container li").length == 0)
+    if($(".wishlist-container li").length == 0) {
         $("h3").show();
-    else
+        $(".book-appointment").hide();
+    }
+    else {
         $("h3").hide();
+        $(".book-appointment").show();
+    }
 
     var currentItem;
     $(".remove-wishlist").click(function() {
@@ -22,8 +26,10 @@ function deleteItem(id, currentItem) {
             $.each(response, function(key, value) {
                 if(key == 'success' && value == 'Deleted') {
                     $(currentItem).parent().parent().remove();
-                    if($(".wishlist-container li").length == 0)
+                    if($(".wishlist-container li").length == 0) {
                         $("h3").show();
+                        $(".book-appointment").hide();
+                    }
                 }
             });
         },
