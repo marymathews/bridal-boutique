@@ -242,6 +242,17 @@ html, body {
     font-weight: 800;
     font-size: larger;
   }
+  .add-wishlist {
+    vertical-align: middle;
+    font-size: larger;
+  }
+  .add-wishlist-container {
+    display: inline-block;
+  }
+.remove-wishlist {
+    position: relative;
+    float: right;
+  }
   /* .error-container {
     vertical-align: middle;
   } */
