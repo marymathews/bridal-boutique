@@ -54,7 +54,9 @@ CREATE TABLE appointment (
 CREATE TABLE appointment_items (
 	appt_id INT,
 	item_id INT,
-	PRIMARY KEY(appt_id, item_id),
+    size ENUM('one-size', '0', '2', '4', '6', '8', '10', '12', '14', '16', '18', '20'), 
+    quantity INT UNSIGNED NOT NULL, 	
+    PRIMARY KEY(appt_id, item_id, size),
     FOREIGN KEY(item_id) REFERENCES item(item_id),
 	FOREIGN KEY(appt_id) REFERENCES appointment(appt_id)
 );
