@@ -27,7 +27,24 @@ searchVal = "All"
 #set up a route for the default page (root URL)
 @app.route("/")
 def main():
-	return render_template('index.html')
+	isAdmin = None
+
+	#connect to the db
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	#If admin, give special privileges and hide some functionality
+	if('email' in session):
+		_email = session['email']
+		cursor.execute("SELECT is_admin FROM account WHERE email = %s", (_email))
+		user = cursor.fetchall()
+		if(user[0][0] == 1): 
+			isAdmin = 1
+
+	cursor.close()
+	cxn.close()
+
+	return render_template('index.html', user_type = isAdmin)
 
 #route to show signup page
 @app.route("/showSignUp")
@@ -135,8 +152,8 @@ def checkExistingEmail(email):
 #route for showing default/home page for western category
 @app.route("/showWesternHome")
 def showWesternHome():
-	products_info, total = getProducts('west', 1)
-	return render_template("western.html", data = products_info, page_count = ceil(total/20))
+	products_info, total, isAdmin = getProducts('west', 1)
+	return render_template("western.html", data = products_info, page_count = ceil(total/20), user_type = isAdmin)
 
 #route for showing western category page
 @app.route("/showWestern/<page>", methods = ['GET'])
@@ -147,15 +164,15 @@ def showWestern(page):
 		maxVal = request.args['max-price']
 		searchVal = request.args['search']
 
-	products_info, total = getCustomizedProducts('west', page, searchVal, minVal, maxVal)
-	return render_template("western.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal)
+	products_info, total, isAdmin = getCustomizedProducts('west', page, searchVal, minVal, maxVal)
+	return render_template("western.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal, user_type = isAdmin)
 
 
 #route for showing default/home page for cosmetics category
 @app.route("/showCosmeticsHome")
 def showCosmeticsHome():
-	products_info, total = getProducts('cosm', 1)
-	return render_template("cosmetics.html", data = products_info, page_count = ceil(total/20))
+	products_info, total, isAdmin = getProducts('cosm', 1)
+	return render_template("cosmetics.html", data = products_info, page_count = ceil(total/20), user_type = isAdmin)
 
 #route for showing cosmetics category page
 @app.route("/showCosmetics/<page>", methods = ['GET'])
@@ -166,15 +183,15 @@ def showCosmetics(page):
 		maxVal = request.args['max-price']
 		searchVal = request.args['search']
 
-	products_info, total = getCustomizedProducts('cosm', page, searchVal, minVal, maxVal)
-	return render_template("cosmetics.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal)
+	products_info, total, isAdmin = getCustomizedProducts('cosm', page, searchVal, minVal, maxVal)
+	return render_template("cosmetics.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal, user_type = isAdmin)
 
 
 #route for showing default/home page for jewellery category
 @app.route("/showJewelleryHome")
 def showJewelleryHome():
-	products_info, total = getProducts('jewe', 1)
-	return render_template("jewellery.html", data = products_info, page_count = ceil(total/20))
+	products_info, total, isAdmin = getProducts('jewe', 1)
+	return render_template("jewellery.html", data = products_info, page_count = ceil(total/20), user_type = isAdmin)
 
 #route for showing jewellery category page
 @app.route("/showJewellery/<page>", methods = ['GET'])
@@ -185,15 +202,15 @@ def showJewellery(page):
 		maxVal = request.args['max-price']
 		searchVal = request.args['search']
 
-	products_info, total = getCustomizedProducts('jewe', page, searchVal, minVal, maxVal)
-	return render_template("jewellery.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal)
+	products_info, total, isAdmin = getCustomizedProducts('jewe', page, searchVal, minVal, maxVal)
+	return render_template("jewellery.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal, user_type = isAdmin)
 
 
 #route for showing default/home page for accessories and lingerie category
 @app.route("/showAccessoriesHome")
 def showAccessoriesHome():
-	products_info, total = getProducts('acli', 1)
-	return render_template("accessories.html", data = products_info, page_count = ceil(total/20))
+	products_info, total, isAdmin = getProducts('acli', 1)
+	return render_template("accessories.html", data = products_info, page_count = ceil(total/20), user_type = isAdmin)
 
 #route for showing accessories and lingerie category page
 @app.route("/showAccessories/<page>", methods = ['GET'])
@@ -204,15 +221,15 @@ def showAccessories(page):
 		maxVal = request.args['max-price']
 		searchVal = request.args['search']
 
-	products_info, total = getCustomizedProducts('acli', page, searchVal, minVal, maxVal)
-	return render_template("accessories.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal)
+	products_info, total, isAdmin = getCustomizedProducts('acli', page, searchVal, minVal, maxVal)
+	return render_template("accessories.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal, user_type = isAdmin)
 
 
 #route for showing default/home page for south indian category
 @app.route("/showSouthIndianHome")
 def showSouthIndianHome():
-	products_info, total = getProducts('soin', 1)
-	return render_template("south-indian.html", data = products_info, page_count = ceil(total/20))
+	products_info, total, isAdmin = getProducts('soin', 1)
+	return render_template("south-indian.html", data = products_info, page_count = ceil(total/20), user_type = isAdmin)
 
 #route for showing south indian category page
 @app.route("/showSouthIndian/<page>", methods = ['GET'])
@@ -223,15 +240,15 @@ def showSouthIndian(page):
 		maxVal = request.args['max-price']
 		searchVal = request.args['search']
 
-	products_info, total = getCustomizedProducts('soin', page, searchVal, minVal, maxVal)
-	return render_template("south-indian.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal)
+	products_info, total, isAdmin = getCustomizedProducts('soin', page, searchVal, minVal, maxVal)
+	return render_template("south-indian.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal, user_type = isAdmin)
 
 
 #route for showing default/home page for north indian category
 @app.route("/showNorthIndianHome")
 def showNorthIndianHome():
-	products_info, total = getProducts('noin', 1)
-	return render_template("north-indian.html", data = products_info, page_count = ceil(total/20))
+	products_info, total, isAdmin = getProducts('noin', 1)
+	return render_template("north-indian.html", data = products_info, page_count = ceil(total/20), user_type = isAdmin)
 
 #route for showing north indian category page
 @app.route("/showNorthIndian/<page>", methods = ['GET'])
@@ -242,9 +259,8 @@ def showNorthIndian(page):
 		maxVal = request.args['max-price']
 		searchVal = request.args['search']
 
-	products_info, total = getCustomizedProducts('noin', page, searchVal, minVal, maxVal)
-
-	return render_template("north-indian.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal)
+	products_info, total, isAdmin = getCustomizedProducts('noin', page, searchVal, minVal, maxVal)
+	return render_template("north-indian.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal, user_type = isAdmin)
 
 #todo - add parameter to route with id for product, db query and send response to FE
 #route for showing product details
@@ -278,6 +294,8 @@ def showProductDetails(id):
 	return render_template("product-details.html", data = data, images = images, sizes = sizes)
 
 def getProducts(category, page):
+	isAdmin = None
+
 	#connect to the db
 	cxn = mysql.connect()
 	cursor = cxn.cursor()
@@ -297,12 +315,22 @@ def getProducts(category, page):
 	cursor.execute("SELECT *, (SELECT image_id FROM item_images img WHERE img.item_id = it.item_id limit 1) AS image FROM item it WHERE it.category_id = %s AND it.deleted <> 1 ORDER BY it.item_id", (category))
 	count = len(cursor.fetchall())
 
+	#If admin, give special privileges
+	if('email' in session):
+		_email = session['email']
+		cursor.execute("SELECT is_admin FROM account WHERE email = %s", (_email))
+		user = cursor.fetchall()
+		if(user[0][0] == 1): 
+			isAdmin = 1
+
 	cursor.close()
 	cxn.close()
 
-	return data, count
+	return data, count, isAdmin
 
 def getCustomizedProducts(category, page, searchVal, minVal, maxVal):
+	isAdmin = None
+
 	#convert into suitable types
 	minimum = float(minVal)
 	maximum = float(maxVal)
@@ -318,7 +346,7 @@ def getCustomizedProducts(category, page, searchVal, minVal, maxVal):
 
 
 	#Obtains matching records per page
-	if(searchVal == "All"):
+	if(searchVal.lower() == "All".lower()):
 		cursor.execute("SELECT *, (SELECT image_id FROM item_images img WHERE img.item_id = it.item_id limit 1) AS image FROM item it WHERE it.category_id = %s AND it.price >= %s AND it.price <= %s AND it.deleted <> 1 ORDER BY it.item_id LIMIT %s OFFSET %s", (category, minimum, maximum, limit, offset))
 		
 	else:
@@ -330,7 +358,7 @@ def getCustomizedProducts(category, page, searchVal, minVal, maxVal):
         for row in cursor.fetchall()]
 
 	#Obtains count of matching records per page
-	if(searchVal == "All"):
+	if(searchVal.lower() == "All".lower()):
 		cursor.execute("SELECT *, (SELECT image_id FROM item_images img WHERE img.item_id = it.item_id limit 1) AS image FROM item it WHERE it.category_id = %s AND it.price >= %s AND it.price <= %s AND it.deleted <> 1 ORDER BY it.item_id", (category, minimum, maximum))
 		
 	else:
@@ -339,10 +367,18 @@ def getCustomizedProducts(category, page, searchVal, minVal, maxVal):
 	#Finds total customized products
 	count = len(cursor.fetchall())
 
+	#If admin, give special privileges
+	if('email' in session):
+		_email = session['email']
+		cursor.execute("SELECT is_admin FROM account WHERE email = %s", (_email))
+		user = cursor.fetchall()
+		if(user[0][0] == 1): 
+			isAdmin = 1
+
 	cursor.close()
 	cxn.close()
 
-	return data, count
+	return data, count, isAdmin
 
 #route to check if user is signed in
 @app.route("/checkSignedIn")
@@ -374,7 +410,7 @@ def showUserProfile():
         	for row in cursor.fetchall()]
 		cursor.close()
 		cxn.close()
-
+		print(data)
 		return render_template('profile.html', data = data)
 	else:
 		return redirect('/showSignIn')

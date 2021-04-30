@@ -1,4 +1,8 @@
 $(document).ready(function() {
+	// Hide initially
+    $("#range-error").hide();
+    $("#search-error").hide();
+    
     $("#customization").submit(function(event) {
         minVal = $("#min-price").val();
         minVal = (minVal == '') ? 0 : minVal;
