@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, json, session
 from flaskext.mysql import MySQL
 from flask_bcrypt import Bcrypt
+from math import ceil
 
 #instantiate flask and bcrypt
 app = Flask(__name__)
@@ -17,6 +18,11 @@ mysql.init_app(app)
 
 #set up secret key (discuss?)
 app.secret_key = 'Secret Key'
+
+#set defaults for search & filter to persist values across pages
+minVal = 0
+maxVal = 5000
+searchVal = "All"
 
 #set up a route for the default page (root URL)
 @app.route("/")
@@ -75,7 +81,6 @@ def showSignIn():
 #route to sign in existing user
 @app.route("/signIn", methods = ['POST'])
 def signIn():
-
 	try:
 		#read the form data
 		_email = request.form['email']
@@ -127,35 +132,119 @@ def checkExistingEmail(email):
 	else:
 		return ('', 204)
 
+#route for showing default/home page for western category
+@app.route("/showWesternHome")
+def showWesternHome():
+	products_info, total = getProducts('west', 1)
+	return render_template("western.html", data = products_info, page_count = ceil(total/20))
+
 #route for showing western category page
-@app.route("/showWestern/<page>")
+@app.route("/showWestern/<page>", methods = ['GET'])
 def showWestern(page):
-	return render_template("western.html", data = getProducts('west', page))
+	global minVal, maxVal, searchVal
+	if(request.args):
+		minVal = request.args['min-price']
+		maxVal = request.args['max-price']
+		searchVal = request.args['search']
+
+	products_info, total = getCustomizedProducts('west', page, searchVal, minVal, maxVal)
+	return render_template("western.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal)
+
+
+#route for showing default/home page for cosmetics category
+@app.route("/showCosmeticsHome")
+def showCosmeticsHome():
+	products_info, total = getProducts('cosm', 1)
+	return render_template("cosmetics.html", data = products_info, page_count = ceil(total/20))
 
 #route for showing cosmetics category page
-@app.route("/showCosmetics/<page>")
+@app.route("/showCosmetics/<page>", methods = ['GET'])
 def showCosmetics(page):
-	return render_template("cosmetics.html", data = getProducts('cosm', page))
+	global minVal, maxVal, searchVal
+	if(request.args):
+		minVal = request.args['min-price']
+		maxVal = request.args['max-price']
+		searchVal = request.args['search']
+
+	products_info, total = getCustomizedProducts('cosm', page, searchVal, minVal, maxVal)
+	return render_template("cosmetics.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal)
+
+
+#route for showing default/home page for jewellery category
+@app.route("/showJewelleryHome")
+def showJewelleryHome():
+	products_info, total = getProducts('jewe', 1)
+	return render_template("jewellery.html", data = products_info, page_count = ceil(total/20))
 
 #route for showing jewellery category page
-@app.route("/showJewellery/<page>")
+@app.route("/showJewellery/<page>", methods = ['GET'])
 def showJewellery(page):
-	return render_template("jewellery.html", data = getProducts('jewe', page))
+	global minVal, maxVal, searchVal
+	if(request.args):
+		minVal = request.args['min-price']
+		maxVal = request.args['max-price']
+		searchVal = request.args['search']
+
+	products_info, total = getCustomizedProducts('jewe', page, searchVal, minVal, maxVal)
+	return render_template("jewellery.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal)
+
+
+#route for showing default/home page for accessories and lingerie category
+@app.route("/showAccessoriesHome")
+def showAccessoriesHome():
+	products_info, total = getProducts('acli', 1)
+	return render_template("accessories.html", data = products_info, page_count = ceil(total/20))
 
 #route for showing accessories and lingerie category page
-@app.route("/showAccessories/<page>")
+@app.route("/showAccessories/<page>", methods = ['GET'])
 def showAccessories(page):
-	return render_template("accessories.html", data = getProducts('acli', page))
+	global minVal, maxVal, searchVal
+	if(request.args):
+		minVal = request.args['min-price']
+		maxVal = request.args['max-price']
+		searchVal = request.args['search']
 
-#route for showing north indian category page
-@app.route("/showNorthIndian/<page>")
-def showNorthIndian(page):
-	return render_template("north-indian.html", data = getProducts('noin', page))
+	products_info, total = getCustomizedProducts('acli', page, searchVal, minVal, maxVal)
+	return render_template("accessories.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal)
 
-#route for showing north indian category page
-@app.route("/showSouthIndian/<page>")
+
+#route for showing default/home page for south indian category
+@app.route("/showSouthIndianHome")
+def showSouthIndianHome():
+	products_info, total = getProducts('soin', 1)
+	return render_template("south-indian.html", data = products_info, page_count = ceil(total/20))
+
+#route for showing south indian category page
+@app.route("/showSouthIndian/<page>", methods = ['GET'])
 def showSouthIndian(page):
-	return render_template("south-indian.html", data = getProducts('soin', page))
+	global minVal, maxVal, searchVal
+	if(request.args):
+		minVal = request.args['min-price']
+		maxVal = request.args['max-price']
+		searchVal = request.args['search']
+
+	products_info, total = getCustomizedProducts('soin', page, searchVal, minVal, maxVal)
+	return render_template("south-indian.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal)
+
+
+#route for showing default/home page for north indian category
+@app.route("/showNorthIndianHome")
+def showNorthIndianHome():
+	products_info, total = getProducts('noin', 1)
+	return render_template("north-indian.html", data = products_info, page_count = ceil(total/20))
+
+#route for showing north indian category page
+@app.route("/showNorthIndian/<page>", methods = ['GET'])
+def showNorthIndian(page):
+	global minVal, maxVal, searchVal
+	if(request.args):
+		minVal = request.args['min-price']
+		maxVal = request.args['max-price']
+		searchVal = request.args['search']
+
+	products_info, total = getCustomizedProducts('noin', page, searchVal, minVal, maxVal)
+
+	return render_template("north-indian.html", data = products_info, page_count = ceil(total/20), search = searchVal, min = minVal, max = maxVal)
 
 #todo - add parameter to route with id for product, db query and send response to FE
 #route for showing product details
@@ -166,7 +255,7 @@ def showProductDetails(id):
 	cursor = cxn.cursor()
 
 	#query to fetch item data from the db
-	cursor.execute("SELECT * FROM item WHERE item_id = %s", id)
+	cursor.execute("SELECT * FROM item WHERE item_id = %s", id) 
 	desc = cursor.description
 	column_names = [col[0] for col in desc]
 	data = [dict(zip(column_names, row))  
@@ -204,10 +293,56 @@ def getProducts(category, page):
 	data = [dict(zip(column_names, row))  
         for row in cursor.fetchall()]
 
+    #In home page, we should have navigation available for all other pages. So, we need count of total records in the database per category
+	cursor.execute("SELECT *, (SELECT image_id FROM item_images img WHERE img.item_id = it.item_id limit 1) AS image FROM item it WHERE it.category_id = %s AND it.deleted <> 1 ORDER BY it.item_id", (category))
+	count = len(cursor.fetchall())
+
 	cursor.close()
 	cxn.close()
 
-	return data
+	return data, count
+
+def getCustomizedProducts(category, page, searchVal, minVal, maxVal):
+	#convert into suitable types
+	minimum = float(minVal)
+	maximum = float(maxVal)
+
+	#connect to the db
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	#pagination - fetch 20 items per page, offset = 20 * page number - 20
+	limit = 20
+	page = int(page)
+	offset = (page * limit) - limit
+
+
+	#Obtains matching records per page
+	if(searchVal == "All"):
+		cursor.execute("SELECT *, (SELECT image_id FROM item_images img WHERE img.item_id = it.item_id limit 1) AS image FROM item it WHERE it.category_id = %s AND it.price >= %s AND it.price <= %s AND it.deleted <> 1 ORDER BY it.item_id LIMIT %s OFFSET %s", (category, minimum, maximum, limit, offset))
+		
+	else:
+		cursor.execute("SELECT *, (SELECT image_id FROM item_images img WHERE img.item_id = it.item_id limit 1) AS image FROM item it WHERE it.category_id = %s AND it.price >= %s AND it.price <= %s AND it.item_description like %s AND it.deleted <> 1 ORDER BY it.item_id LIMIT %s OFFSET %s", (category, minimum, maximum, "%"+searchVal+"%", limit, offset))
+		
+	desc = cursor.description
+	column_names = [col[0] for col in desc]
+	data = [dict(zip(column_names, row))  
+        for row in cursor.fetchall()]
+
+	#Obtains count of matching records per page
+	if(searchVal == "All"):
+		cursor.execute("SELECT *, (SELECT image_id FROM item_images img WHERE img.item_id = it.item_id limit 1) AS image FROM item it WHERE it.category_id = %s AND it.price >= %s AND it.price <= %s AND it.deleted <> 1 ORDER BY it.item_id", (category, minimum, maximum))
+		
+	else:
+		cursor.execute("SELECT *, (SELECT image_id FROM item_images img WHERE img.item_id = it.item_id limit 1) AS image FROM item it WHERE it.category_id = %s AND it.price >= %s AND it.price <= %s AND it.item_description like %s AND it.deleted <> 1 ORDER BY it.item_id", (category, minimum, maximum, "%"+searchVal+"%"))
+		
+	#Finds total customized products
+	count = len(cursor.fetchall())
+
+	cursor.close()
+	cxn.close()
+
+	return data, count
 
 #route to check if user is signed in
 @app.route("/checkSignedIn")
