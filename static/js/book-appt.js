@@ -29,9 +29,16 @@ $(document).ready(function() {
     });
 
     $("#continue-booking").click(function() {
-        getItems(data);
+        let totalPrice = 0.0;
+        $('.modal-body p').remove();
+
+        totalPrice = getItems(data, totalPrice).toFixed(2);
         if(data.length == 0)
-            Swal.fire("Please select sizes for all items in your wishlist!", "", "error");
+            Swal.fire("No items selected!", "", "error");
+        else {
+            $('.modal-body').append("<p>Total Price of Selected Items: &#36; " + totalPrice + "</p>"); 
+            $('#date-modal').modal('show'); 
+        }
     });
 })
 
@@ -60,7 +67,7 @@ function deleteItem(id, currentItem) {
     });
 }
 
-function getItems(data) {
+function getItems(data, totalPrice) {
     data.length = 0;
     $(".wishlist-container").children().each(function() {
         let item_id = $(this).find(".remove-wishlist").attr("id");
@@ -75,8 +82,10 @@ function getItems(data) {
             }
             if(item_qty <= max_item_qty && item_qty > 0) {
                 let obj = {"item_id": item_id, "item_price": item_price, "item_size": item_size, "item_qty": item_qty};
+                totalPrice += item_qty * item_price;
                 data.push(obj);
             }
         });
     });
+    return totalPrice;
 }

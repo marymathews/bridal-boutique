@@ -253,6 +253,9 @@ html, body {
     position: relative;
     float: right;
   }
+  .modal-title {
+    font-size: larger;
+  }
   /* .error-container {
     vertical-align: middle;
   } */
