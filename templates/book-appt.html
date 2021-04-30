@@ -13,7 +13,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../static/flexslider/flexslider.css" type="text/css">
         <script src="../static/flexslider/jquery.flexslider.js"></script>
-        <script src="../static/js/wishlist.js"></script>
+        <script src="../static/js/book-appt.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
         <title>Bridal Boutique</title> 
@@ -50,7 +50,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                         </svg>
-                        <a class="nav-link-text text-decoration-none" href="#">Wishlist</a>
+                        <a class="nav-link-text text-decoration-none" href="/showWishlist">Wishlist</a>
                     </div>
                 </div>
             </div>
@@ -78,47 +78,56 @@
                 <div class="col-md-9 mt-2">
                     <div class="row mx-1">
                         <div class="col-md-12">
-                        <div class="row justify-content-start">
-                                <h2 class="px-2 mt-4 font-weight-bold mr-3">Wishlisted Items</h2> 
+                            <div class="row justify-content-start">
+                                <h2 class="px-2 mt-4 font-weight-bold mr-3">Book Your Appointment</h2> 
                                 <button class="btn btn-outline-dark rounded-pill mt-3 book-appointment">
-                                    <a href="/showBookAppointment">Book Appointment With Wishlisted Items</a>
+                                    <a href="#">Continue</a>
                                 </button>
                                 <hr class="w-100">
                             </div>
                         </div>
                     </div>
-                    <!-- Row with wishlist data -->
+                    <!-- Row with item data -->
                     <div class="row w-100">
-                        <h3 class="text-center font-weight-bold my-5 mx-4 w-100">Your wishlist is empty!</h3>
                         {% if data|length > 0 %}
                             <ul class="container-fluid wishlist-container">
                                 {% for record in data %}
                                     <li class="row">
-                                        {% if record["category_id"] == "west" %}
-                                            <img src='../static/images/western/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
-                                        {% endif %}
-                                        {% if record["category_id"] == "noin" %}
-                                            <img src='../static/images/north-indian/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
-                                        {% endif %}
-                                        {% if record["category_id"] == "soin" %}
-                                            <img src='../static/images/south-indian/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
-                                        {% endif %}
-                                        {% if record["category_id"] == "jewe" %}
-                                            <img src='../static/images/jewellery/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
-                                        {% endif %}
-                                        {% if record["category_id"] == "cosm" %}
-                                            <img src='../static/images/cosmetics/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
-                                        {% endif %}
-                                        {% if record["category_id"] == "acli" %}
-                                            <img src='../static/images/accessories/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
-                                        {% endif %}
-                                        <div class="col-md-9 my-2">
+                                        <div class="col-12 my-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" id='{{ record["item_id"] }}' width="24" height="24" fill="currentColor" class="bi bi-trash remove-wishlist ml-2" viewBox="0 0 16 16">
                                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                                 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                             </svg>
                                             <a class="wishlist-item-name text-decoration-none" href='/showProductDetails/{{ record["item_id"] }}'>{{ record["item_name"] }}</a>
                                             <p class="wishlist-cost my-2">&#36; {{ record["price"] }}</p>
+                                            <table class="table table-borderless">
+                                                <thead>
+                                                    <th class="size-head">Size</th>
+                                                    <th class="qty-head">Quantity</th>
+                                                </thead>
+                                                {% for item_size in record["sizes"] %}
+                                                    <tr>
+                                                        <td>
+                                                            <button class="btn btn-info rounded-pill mr-2 ml-0 size">{{ item_size["size"] }}</button>
+                                                        </td>
+                                                        <td class="quantity">
+                                                            {% if item_size["quantity"] == 0 %}
+                                                                <p class="unavailable">Currently Unavailable</p>
+                                                            {% endif %}
+                                                            {% if item_size["quantity"] > 0 %}
+                                                                <input class="form-control w-75" value="1" type="number" min="1" max='{{ item_size["quantity"] }}' step="1">
+                                                            {% endif %}
+                                                        </td>
+                                                        {% if item_size["quantity"] > 0 %}
+                                                            <td class="delete">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" id='{{ record["item_id"] }}' width="24" height="24" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                                </svg>
+                                                            </td>
+                                                        {% endif %}
+                                                    </tr>
+                                                    {% endfor %}
+                                            </table>
                                         </div>
                                         <hr class="w-100">
                                     </li>
@@ -126,8 +135,7 @@
                             </ul>
                         {% endif %}
                     </div>
-                </div>
-                        
+                </div>          
             </div>
         </div>
          <!-- Bottom row/footer -->

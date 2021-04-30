@@ -304,6 +304,37 @@ def deleteFromWishlist(id):
 
 	return response
 
+#route to book appointment page
+@app.route("/showBookAppointment")
+def showBookAppointment():
+	user = session.get('email')
+
+	#connect to db and fetch user wishlist
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	cursor.execute("SELECT w.email, w.item_id, i.price, i.category_id, i.item_name, i.item_description, (SELECT img.image_id FROM item_images img WHERE img.item_id = i.item_id LIMIT 1) AS image_id FROM wishlist w, item i WHERE w.email = %s AND w.item_id = i.item_id", user)
+
+	desc = cursor.description
+	column_names = [col[0] for col in desc]
+	items = cursor.fetchall()
+	result = []
+
+	for row in items:
+		data = dict(zip(column_names, row))
+		cursor.execute('SELECT * FROM item_size WHERE item_id = %s', row[1])
+		desc_sizes = cursor.description
+		column_names_sizes = [col[0] for col in desc_sizes]
+		sizes = [dict(zip(column_names_sizes, row))  
+        	for row in cursor.fetchall()]
+		data['sizes'] = sizes
+		result.append(data)
+
+	cursor.close()
+	cxn.close()
+
+	return render_template('book-appt.html', data = result)
+
 #make sure the right script is being run
 if __name__ == "__main__":
 	#runs the application from the app variable
