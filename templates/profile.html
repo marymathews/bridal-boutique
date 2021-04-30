@@ -44,12 +44,14 @@
                         </svg>
                         <a class="nav-link-text text-decoration-none" id="profile" href="#">Profile</a>
                     </div>
-                    <div class="nav-link mr-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                        </svg>
-                        <a class="nav-link-text text-decoration-none" href="#">Wishlist</a>
-                    </div>
+                    {% if data[0]["is_admin"] != 1 %}
+                        <div class="nav-link mr-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                            </svg>
+                            <a class="nav-link-text text-decoration-none" href="#">Wishlist</a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </nav>
@@ -60,7 +62,14 @@
                 <!-- Left-most column with filters, search, and categories-->
                 <div class="col-md-3">                   
                     <div class="categories mt-3">
-                        <p class="side-bar-header pl-2">Explore</p>
+                        {% if data[0]["is_admin"] != 1 %}
+                            <p class="side-bar-header pl-2">Explore</p>
+                        {% endif %}
+
+                        {% if data[0]["is_admin"] == 1 %}
+                            <p class="side-bar-header pl-2">Choose from the below to Add/Update</p>
+                        {% endif %}
+
                         <hr class="side-bar-divider mr-3">
                         <ul class="list-group border-0">
                             <li class="list-group-item pl-2 border-0"><a href="/showWesternHome">Western</a></li>
@@ -91,14 +100,22 @@
                                	<td>Email ID</td>
                                	<th scope="row">{{ data[0]["email"] }}</th>
                             </tr>
+                            {% if data[0]["is_admin"] == 1 %}
+                                <tr>
+                                    <td>User Type</td>
+                                    <th scope="row">Admin User</th>
+                                </tr>
+                            {% endif %}
                        	</table>
                     </div>
 				   	<!-- Row with account history link -->
-				   	<div class="row my-4 px-1 mx-1">
-						<button class="btn btn-outline-dark rounded-pill">
-							<a href="#">View Appointment History</a>
-						</button>
-				   	</div>
+				   	{% if data[0]["is_admin"] != 1 %}
+                        <div class="row my-4 px-1 mx-1">
+						  <button class="btn btn-outline-dark rounded-pill">
+							 <a href="#">View Appointment History</a>
+						  </button>
+				   	    </div>
+                    {% endif %}   
                 </div>
             </div>
         </div>
