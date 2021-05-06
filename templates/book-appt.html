@@ -99,6 +99,7 @@
                                             </svg>
                                             <a class="wishlist-item-name text-decoration-none" href='/showProductDetails/{{ record["item_id"] }}'>{{ record["item_name"] }}</a>
                                             <p class="wishlist-cost my-2">&#36; {{ record["price"] }}</p>
+                                            <p class="mb-0 font-italic">Select item size and quantity:</p>
                                             <table class="table table-borderless">
                                                 <thead>
                                                     <th class="size-head">Size</th>
@@ -115,6 +116,7 @@
                                                             {% endif %}
                                                             {% if item_size["quantity"] > 0 %}
                                                                 <input class="form-control w-75" value="1" type="number" min="1" max='{{ item_size["quantity"] }}' step="1">
+                                                                <p class="text-secondary font-italic invalid-qty">Please select a quantity between 1 and {{ item_size["quantity"] }}</p>
                                                             {% endif %}
                                                         </td>
                                                         {% if item_size["quantity"] > 0 %}
@@ -155,12 +157,16 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-group">
-                        </form>
+                        <div id="date-container">
+                            <form class="form-group"></form>
+                        </div>
+                        <div id="time-container">
+                            <form class="form-group"></form>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-info">Finish</button>
+                        <button type="button" class="btn btn-info">Confirm</button>
                     </div>
                 </div>
             </div>

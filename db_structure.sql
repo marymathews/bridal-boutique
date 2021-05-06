@@ -48,7 +48,7 @@ CREATE TABLE appointment (
 	appt_id INT PRIMARY KEY AUTO_INCREMENT,
 	email VARCHAR(320) NOT NULL,
 	appt_date DATE NOT NULL,	
-	appt_start_time TIME NOT NULL,
+	appt_start_time ENUM('10', '12', '2', '4') NOT NULL,
 	FOREIGN KEY(email) REFERENCES account(email)
 );
 CREATE TABLE appointment_items (

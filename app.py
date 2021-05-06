@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, json, session
 from flaskext.mysql import MySQL
 from flask_bcrypt import Bcrypt
+import datetime
 
 #instantiate flask and bcrypt
 app = Flask(__name__)
@@ -334,6 +335,41 @@ def showBookAppointment():
 	cxn.close()
 
 	return render_template('book-appt.html', data = result)
+
+#route to get available dates and times for booking an apppointment
+@app.route("/getDates")
+def getDates():
+	days = list()
+	bookings = dict()
+	times = set(('10', '12', '2', '4'))
+
+	#get dates for next 4 days
+	for i in range(1, 5):
+		days.append((datetime.datetime.today() + datetime.timedelta(days = i)).strftime('%Y-%m-%d'))
+
+	#connect to db and get booked times for these dates
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	for day in days:
+		cursor.execute("SELECT appt_start_time FROM appointment WHERE appt_date = %s", day)
+		data = cursor.fetchall()
+
+		dbData = set()
+		for item in data: 
+			dbData.add(item[0])
+
+		availableTimes = list(times.difference(dbData))
+		if(len(availableTimes) > 0):
+			bookings[day] = availableTimes
+		
+	cursor.close()
+	cxn.close()
+
+	if(len(bookings) > 0):
+		return json.dumps(bookings)
+	else:
+		return json.dumps({'error': 'No appointments available'})
 
 #make sure the right script is being run
 if __name__ == "__main__":

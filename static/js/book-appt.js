@@ -1,5 +1,6 @@
 $(document).ready(function() {
     let data = [];
+    var apptInfo = new Map();
 
     $("#logout").show();
 
@@ -29,16 +30,80 @@ $(document).ready(function() {
     });
 
     $("#continue-booking").click(function() {
-        let totalPrice = 0.0;
         $('.modal-body p').remove();
+        $('.modal-body form').empty();
 
-        totalPrice = getItems(data, totalPrice).toFixed(2);
-        if(data.length == 0)
-            Swal.fire("No items selected!", "", "error");
-        else {
-            $('.modal-body').append("<p>Total Price of Selected Items: &#36; " + totalPrice + "</p>"); 
-            $('#date-modal').modal('show'); 
+        let result = getItems(data); 
+        if(result.flag == 0) {
+            if(data.length == 0)
+                Swal.fire("No items selected!", "", "error");
+            else {
+                apptInfo.clear();
+                $('.modal-body').append("<p>Total Price of Selected Items: &#36; " + result.totalPrice.toFixed(2) + "</p>"); 
+                $.ajax({
+                    url: '/getDates',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        $.each(response, function(key, value) {
+                            if(key == 'error' && value == 'No appointments available') {
+                                $('.modal-body #date-container form').append('<p>No appointments are available currently! Please try again later.</p>');
+                            }
+                            else {
+                                apptInfo.set(key, value);
+                                key = key.split("-").reverse().join("/");
+                                $('.modal-body #date-container form').append('\
+                                <div class="form-check my-1">\
+                                    <input class="form-check-input dates" type="radio" name="flexRadioDefault id="' + key + '">\
+                                    <label class="form-check-label for="' + key + '">\
+                                    ' + key + '\
+                                    </label>\
+                                </div>');
+                            }
+                        });
+                        $('.modal-body #date-container form').append('<hr>');
+                        $('#date-modal').modal('show');
+                    },
+                    error: function(response) {
+                        Swal.fire("Something Went Wrong!", "Please try again later.");
+                    }
+                }); 
+            }
         }
+        else {
+            Swal.fire("Invalid item quantity entered!", "", "error");
+        }
+    });
+
+    $(".modal-body #date-container form").on('click', '.dates', function() {
+        $(".times").remove();
+        date = $(this).siblings().text().trim();
+        date = date.split("/").reverse().join("-");
+        times = apptInfo.get(date);
+        $.each(times, function(key, value) {
+            if(value == 10) {
+                $('.modal-body #time-container form').append('\
+                    <div class="form-check my-1 times">\
+                        <input class="form-check-input" type="radio" name="flexRadioDefault id="' + value + '">\
+                        <label class="form-check-label for="' + value + '">\
+                        ' + value + ' AM\
+                        </label>\
+                    </div>'
+                );
+            }
+            else {
+                $('.modal-body #time-container form').append('\
+                    <div class="form-check my-1 times">\
+                        <input class="form-check-input" type="radio" name="flexRadioDefault id="' + value + '">\
+                        <label class="form-check-label for="' + value + '">\
+                        ' + value + ' PM\
+                        </label>\
+                    </div>'
+                );
+            }
+            if(key == times.length - 1)
+                $('.modal-body #time-container form').append('<hr class="times">');
+        });
     });
 })
 
@@ -67,14 +132,16 @@ function deleteItem(id, currentItem) {
     });
 }
 
-function getItems(data, totalPrice) {
+function getItems(data) {
+    let totalPrice = 0.0;
+    let flag = 0;
     data.length = 0;
     $(".wishlist-container").children().each(function() {
         let item_id = $(this).find(".remove-wishlist").attr("id");
         let item_price = parseFloat($(this).find(".wishlist-cost").text().split(" ")[1]);
         $(this).find("table").find("tr").each(function() {
             let item_size = $(this).find(".size").text();
-            let item_qty = 0;
+            let item_qty = -1;
             let max_item_qty = -1;
             if($(this).find("input").length && $(this).find("input").is(':visible')) {
                 item_qty = parseInt($(this).find("input").val());
@@ -85,7 +152,10 @@ function getItems(data, totalPrice) {
                 totalPrice += item_qty * item_price;
                 data.push(obj);
             }
+            else if(item_qty != -1 && max_item_qty != -1) {
+                flag = 1;
+            }
         });
     });
-    return totalPrice;
+    return {totalPrice, flag};
 }
