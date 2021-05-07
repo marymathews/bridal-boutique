@@ -32,19 +32,11 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <div class="navbar-nav">
-                    {% if user_type == 1 %}
-                    <div class="nav-link mr-1" id="add">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                        </svg>
-                        <a class="nav-link-text text-decoration-none" href="#">Add item</a>
-                    </div>
-                    {% endif %}
                     <div class="nav-link mr-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
                             <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
                         </svg>
-                        <a class="nav-link-text text-decoration-none" id="profile" href="/showSignIn">Profile</a>
+                        <a class="nav-link-text text-decoration-none" id="profile" href="/SignInPage">Profile</a>
                     </div>
                     <div class="nav-link mr-1" id="logout">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
@@ -53,14 +45,12 @@
                         </svg>
                         <a class="nav-link-text text-decoration-none" href="/logout">Logout</a>
                     </div>
-                    {% if user_type != 1 %}
-                        <div class="nav-link mr-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                            </svg>
-                            <a class="nav-link-text text-decoration-none" href="#">Wishlist</a>
-                        </div>
-                    {% endif %}
+                    <div class="nav-link mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                        </svg>
+                        <a class="nav-link-text text-decoration-none" href="#">Wishlist</a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -70,53 +60,46 @@
             <div class="row h-100">
                 <!-- Left-most column with filters, search, and categories-->
                 <div class="col-md-3">
-                    <form action="/showNorthIndian/1" method="GET" id="customization">
+                    <form action="/northIndian/1" method="GET" id="customization">
                         <div id="search-and-filter">
                             <p class="side-bar-header pl-2 mt-18"> Customize your Search </p>
                             <hr class="side-bar-divider mr-3">
                             <div class="input-group pl-2 search-bar">
-                                <input class="form-control my-auto mr-3 pl-2" type="search" placeholder="Search" aria-label="search" name="search" id="search" value={{search}}>
+                                <input class="form-control my-auto mr-20 pl-2" type="search" placeholder="Search" aria-label="search" name="search" id="search" value={{search}}>
                             </div>       
                             <div class="filter">
-                                <ul class="list-group filter border-0">
-                                    <li class="list-group-item pl-2 border-0">
+                                <ul class="list-group border-0">
+                                    <li class="list-group-item pl-2 pd-0 border-0">
                                         <div class="form-group">
-                                            <label for="min-price">From $</label>
-                                            <input class="form-control" type="number" placeholder="0" name="min-price" id="min-price" value={{min}}>
+                                            <label for="min-price">Minimum Price ( $ ) </label>
+                                            <input class="form-control" type="number" placeholder="0" name="min-price" id="min-price" min="0" max="5000" value={{min}}>
                                         </div>
                                     </li>
-                                    <li class="list-group-item pl-2 border-0">
+                                    <li class="list-group-item pl-2 pt-0 border-0">
                                         <div class="form-group">
-                                            <label for="max-price">To $</label>
-                                            <input class="form-control" type="number" placeholder="5000" name="max-price" id="max-price" value={{max}}>
+                                            <label for="max-price">Maximum Price ( $ ) </label>
+                                            <input class="form-control" type="number" placeholder="5000" name="max-price" id="max-price" min="0" max="5000" value={{max}}>
                                         </div>
                                     </li>                              
                                 </ul>
                                 <p class="font-italic pl-2 mt-5p" id="range-error">Enter valid price range!</p>
                                 <p class="font-italic pl-2 mt-5p" id="search-error">Enter valid search word!</p>
+                                <button class="btn search-button form-control ml-8" type="submit" id="applyPref">
+                                    Apply Preferences
+                                </button>
                             </div>
-                            <button class="btn search-button form-control mr-3" type="submit" id="applyPref">
-                            Apply Preferences
-                            </button>
                         </div>
                     </form>             
                     <div class="categories">
-                        {% if user_type == 1 %}
-                            <p class="side-bar-header pl-2">Choose from the below to Add/Update</p>
-                        {% endif %}
-
-                        {% if user_type != 1 %}
-                            <p class="side-bar-header pl-2">Explore</p>
-                        {% endif %}
-
+                        <p class="side-bar-header pl-2">Explore</p>
                         <hr class="side-bar-divider mr-3">
                         <ul class="list-group border-0">
-                            <li class="list-group-item pl-2 border-0"><a href="/showWesternHome">Western</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/westernHome">Western</a></li>
                             <li class="list-group-item pl-2 border-0"><a href="#">North Indian</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/showSouthIndianHome">South Indian</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/showAccessoriesHome">Accessories &amp; Lingerie</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/showJewelleryHome">Jewellery</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/showCosmeticsHome">Cosmetics</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/southIndianHome">South Indian</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/accessoriesHome">Accessories &amp; Lingerie</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/jewelleryHome">Jewellery</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/cosmeticsHome">Cosmetics</a></li>
                         </ul>
                     </div>
                 </div>
@@ -140,37 +123,18 @@
                                     <div class="row my-3">
                                 {% endif %}
                                         <div class="col-lg-3 product-container">
-                                            <a href='/showProductDetails/{{ record["item_id"] }} '>
+                                            <a href='/ProductDetails/{{ record["item_id"] }} '>
                                                 <img class="img-thumbnail listing-image" src='../static/images/north-indian/{{ record["image"] }}' alt='{{ record["item_name"] }}''>
                                             </a>
                                             <div class="mt-2 item-name text-left text-uppercase">
                                                 {{ record["item_name"] }}
                                             </div>
-                                            {% if user_type != 1 %}
-                                                <div class="mr-1 mt-1 text-left">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                                    </svg>
-                                                    <a class="nav-link-text text-decoration-none ml-1" href="#">Add to Wishlist</a>
-                                                </div>
-                                            {% endif %}
-
-                                            {% if user_type == 1 %}
-                                            <div class="navbar-nav admin-options">
-                                                <div class="nav-link admin-mr-2" id="edit">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-                                                        <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-                                                    </svg>
-                                                    <a class="nav-link-text text-decoration-none" href="#">Update</a>
-                                                </div>
-                                                <div class="nav-link mr-1" id="delete">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                                    </svg>
-                                                    <a class="nav-link-text text-decoration-none" href="#">Delete</a>
-                                                </div>
+                                            <div class="mr-1 mt-1 text-left">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                                </svg>
+                                                <a class="nav-link-text text-decoration-none ml-1" href="#">Add to Wishlist</a>
                                             </div>
-                                            {% endif %}
                                             <div class="text-left mt-1 mb-2"> Price: &nbsp; 
                                                 &#36; {{ record["price"] }}
                                             </div>
@@ -179,7 +143,6 @@
                                     </div>
                                 {% endif %}
                             {% endfor %}
-
                         </div>
                     </div>
                     <!-- Second row with pagination -->
@@ -187,7 +150,7 @@
                         <ul class="pagination justify-content-center text-center w-100" id="pages">
                         {% for n in range(1, page_count + 1, 1) %}
                         {% set page_id = page ~ n %}
-                            <li class="page-item" id={{page_id}}> <a class="page-link" href="/showNorthIndian/{{n}}">{{n}}</a> </li>
+                            <li class="page-item" id={{page_id}}> <a class="page-link" href="/northIndian/{{n}}">{{n}}</a> </li>
                         {% endfor %}
  						</ul>
                     </div>
