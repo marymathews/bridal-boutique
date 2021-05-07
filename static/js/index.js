@@ -8,11 +8,11 @@ $(document).ready(function() {
             $.each(response, function(key, value) {
                 if(value == 'Logged In') {
                     $("#logout").show();
-                    $("#profile").attr('href', '/showUserProfile');
+                    $("#profile").attr('href', '/userProfile');
                 }
                 else {
                     $("#logout").hide();
-                    $("#profile").attr('href', '/showSignIn');
+                    $("#profile").attr('href', '/signInPage');
                 }
             })
         }

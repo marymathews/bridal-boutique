@@ -9,8 +9,17 @@ html, body {
 	  font-family: 'Mulish', sans-serif!important;
 	  font-weight: 600;
   }
-  a:hover {
+  .delete-btn:hover, a:hover {
 	  color: #cc7c68!important;
+  }
+  @media only screen and (max-width: 480px) {
+  .container-fluid{
+        flex-direction: column !important;
+    }
+  }
+  .admin-flex {
+    display: flex; 
+    flex-direction: row;
   }
   .nav-link-text {
 	  vertical-align: middle;
@@ -25,24 +34,88 @@ html, body {
 	  font-family: Lobster, Verdana, Geneva, Tahoma, sans-serif;
 	  font-size: x-large!important;
   }
+  .admin-price {
+    margin-top: 10px;
+    margin-left: 2rem;
+  }
+  .mr-20 {
+    margin-right: 18px !important;
+  }
+  .pd-0 {
+    padding-bottom: 0px !important;
+  }
+  .ml-8 {
+    margin-left: 8px;
+  }
+  .pt-0 {
+    padding-top: 0px !important;
+  }
+  .btn-color {
+    background-color: #391306;
+    color: white;
+  }
   .list-group-item.heading {
 	  background-color: #17a2b8;
 	  color: #efefef;
+  }
+  .m12{
+    margin-right: 12px;
+  }
+  .mt-15p {
+    margin-top: 15px !important;
+  }
+  .mt-8p {
+    margin-top: 8px !important;
+  }
+  .m5{
+    margin-right: 5px;
+  }
+  .center {
+    text-align: center;
   }
   .admin-options {
     display: flex;
     flex-direction: row;
   }
+  .del-btn, .edit-btn {
+    color: #391306;
+    font-family: 'Mulish', sans-serif!important;
+    font-weight: 600;
+    padding-left: 0px !important;
+  }
   .admin-mr-2 {
     margin-right: 2rem!important;
   }
-  /* li a {
-	  color: #17a2b8!important;
-  } */
-  /* .card a {
-	  color: #17a2b8!important;
-	  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  } */
+  .dropdown-cat {
+    width: 100%;
+    height: 2.4rem;
+    border-radius: 5px;
+    padding-left: 0rem !important;
+    margin-bottom: 1rem;
+  }
+  .confirm-dialog {
+    display: flex;
+    flex-direction: row;
+  }
+  .modal {
+    width: fit-content;
+    background-color: #f9f1f1;
+  }
+  .confirm-btns {
+    width: 50%;
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
+  .mr-1 {
+    margin-right: 1rem;
+  }
+  .mr-2 {
+    margin-right: 2rem;
+  }
+  .delete-btn:focus,.delete-btn:active {
+    outline: none !important;
+    box-shadow: none;
+  }
   p {
 	  font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
@@ -81,7 +154,7 @@ html, body {
     height: -3rem; 
     margin-top: 20rem!important;
   }
-  #pwd-validation, #email-validation, #existing-email, #range-error, #search-error {
+  #pwd-validation, #email-validation, #existing-email, #range-error, #search-error, #confirmation {
     display: none;
   }
   .error-text {
@@ -111,6 +184,9 @@ html, body {
   .search-button:hover {
     color: aliceblue;
   }
+  .form-group-2 {
+    margin-bottom: 0.5rem;
+  }
   .form-control:focus {
     border-color: #f9f1f1;
     box-shadow: 0 0 0 0.1rem rgba(167, 40, 61, 0.25);
@@ -118,6 +194,20 @@ html, body {
   .listing-image {
     padding: 0!important;
     border: 0!important;
+  }
+  .pl-0 {
+    padding-left: 0px !important;
+  }
+  .pr-0 {
+    padding-right: 0px !important;
+  }
+  .product-image {
+    width: fit-content !important;
+  }
+  .admin-listing {
+     padding: 0!important;
+     border: 0!important;
+     width: 40px !important;
   }
   .item-name {
     font-family:  'Mulish', Lobster, Verdana, Geneva, Tahoma, sans-serif;
