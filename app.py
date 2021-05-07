@@ -421,6 +421,26 @@ def bookAppointment():
 
 	return json.dumps({'success': 'Booked'})
 
+#route to show appointment history
+@app.route("/appointments")
+def getAppointments():
+	user = session.get('email')
+
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	cursor.execute("SELECT a.appt_date, a.appt_start_time, ai.item_id, ai.size, ai.quantity, i.price, i.category_id, i.item_name, (SELECT image_id FROM item_images img WHERE img.item_id = ai.item_id LIMIT 1) image_id FROM appointment a, appointment_items ai, item i WHERE email = %s AND a.appt_id = ai.appt_id AND i.deleted != 1 AND i.item_id = ai.item_id ORDER BY a.appt_date DESC, a.appt_start_time", user)
+	
+	desc = cursor.description
+	column_names = [col[0] for col in desc]
+	data = [dict(zip(column_names, row))  
+        for row in cursor.fetchall()]
+
+	cursor.close()
+	cxn.close()
+
+	return render_template('appointment-history.html', data = data)
+
 #make sure the right script is being run
 if __name__ == "__main__":
 	#runs the application from the app variable

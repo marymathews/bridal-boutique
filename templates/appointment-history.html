@@ -13,7 +13,9 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../static/flexslider/flexslider.css" type="text/css">
         <script src="../static/flexslider/jquery.flexslider.js"></script>
-		<script src="../static/js/profile.js"></script>
+        <script src="../static/js/appointment-history.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
         <title>Bridal Boutique</title> 
     </head>
     <body>
@@ -42,13 +44,13 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
                             <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
                         </svg>
-                        <a class="nav-link-text text-decoration-none" id="profile" href="#">Profile</a>
+                        <a class="nav-link-text text-decoration-none" id="profile" href="/showUserProfile">Profile</a>
                     </div>
                     <div class="nav-link mr-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                         </svg>
-                        <a class="nav-link-text text-decoration-none" id="show-wishlist" href="/showWishlist">Wishlist</a>
+                        <a class="nav-link-text text-decoration-none" href="/showWishlist">Wishlist</a>
                     </div>
                 </div>
             </div>
@@ -72,34 +74,62 @@
                         </ul>
                     </div>
                 </div>
+                <!-- Main column with images and details-->
                 <div class="col-md-9 mt-2">
                     <div class="row mx-1">
                         <div class="col-md-12">
                         <div class="row justify-content-start">
-                                <h2 class="px-2 my-4 font-weight-bold">Account Overview</h2> 
+                                <h2 class="px-2 mt-4 font-weight-bold mr-3">Your Appointment History</h2> 
+                                <hr class="w-100">
                             </div>
                         </div>
                     </div>
-                    <!-- Row with profile details -->
-                    <div class="row mx-1">
-                       	<table class="table">
-                           	<tr>
-                               	<td>Name</td>
-                               	<th scope="row">{{ data[0]["name"] }}</th>
-                           	</tr>
-                          	<tr>
-                               	<td>Email ID</td>
-                               	<th scope="row">{{ data[0]["email"] }}</th>
-                            </tr>
-                       	</table>
+                    <!-- Row with wishlist data -->
+                    <div class="row w-100">
+                        <h3 class="text-center font-weight-bold my-5 mx-4 w-100">You have not booked any appointments yet!</h3>
+                        {% if data|length > 0 %}
+                            <ul class="container-fluid wishlist-container">
+                                {% for record in data %}
+                                    <li class="row">
+                                        {% if record["category_id"] == "west" %}
+                                            <img src='../static/images/western/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "noin" %}
+                                            <img src='../static/images/north-indian/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "soin" %}
+                                            <img src='../static/images/south-indian/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "jewe" %}
+                                            <img src='../static/images/jewellery/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "cosm" %}
+                                            <img src='../static/images/cosmetics/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "acli" %}
+                                            <img src='../static/images/accessories/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        <div class="col-md-9 my-2">
+                                            <a class="wishlist-item-name text-decoration-none" href='/showProductDetails/{{ record["item_id"] }}'>{{ record["item_name"] }}</a>
+                                            <p class="wishlist-cost my-2">&#36; {{ record["price"] }}</p>
+                                            <p class="my-2">Size: {{ record["size"] }}</p>
+                                            <p class="my-2">Quantity: {{ record["quantity"] }}</p>
+                                            <p class="my-2">Date of Appointment: {{ record["appt_date"].strftime('%d/%m/%Y') }}</p>
+                                            {% if record["appt_start_time"] == '10' %}
+                                                <p class="my-2">Appointment Time: {{ record["appt_start_time"] }} AM</p>
+                                            {% endif %}
+                                            {% if record["appt_start_time"] != '10' %}
+                                                <p class="my-2">Appointment Time: {{ record["appt_start_time"] }} PM</p>
+                                            {% endif %}
+                                        </div>
+                                        <hr class="w-100">
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     </div>
-				   	<!-- Row with account history link -->
-				   	<div class="row my-4 px-1 mx-1">
-						<button class="btn btn-outline-dark rounded-pill">
-							<a href="/appointments">View Appointment History</a>
-						</button>
-				   	</div>
                 </div>
+                        
             </div>
         </div>
          <!-- Bottom row/footer -->
