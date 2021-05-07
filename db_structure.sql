@@ -65,3 +65,14 @@ CREATE TABLE wishlist (
 	FOREIGN KEY(item_id) REFERENCES item(item_id),
 	FOREIGN KEY(email) REFERENCES account(email)
 );
+
+DELIMITER $$
+
+CREATE TRIGGER update_inventory 
+AFTER INSERT 
+ON appointment_items FOR EACH ROW 
+BEGIN
+    UPDATE item_size SET quantity = (quantity - NEW.quantity) WHERE item_id = NEW.item_id AND size = NEW.size; 
+END$$
+
+DELIMITER ;

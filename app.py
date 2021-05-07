@@ -381,7 +381,6 @@ def bookAppointment():
 	itemQtys = list()
 
 	for item in items:
-		#print(item)
 		if("date" in item):
 			date = item.split(":")[1]
 		elif("time" in item):
