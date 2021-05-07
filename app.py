@@ -16,7 +16,7 @@ app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_PORT'] = 8889
 mysql.init_app(app)
 
-#set up secret key (discuss?)
+#set up secret key
 app.secret_key = 'Secret Key'
 
 #set up a route for the default page (root URL)
@@ -158,7 +158,6 @@ def showNorthIndian(page):
 def showSouthIndian(page):
 	return render_template("south-indian.html", data = getProducts('soin', page))
 
-#todo - add parameter to route with id for product, db query and send response to FE
 #route for showing product details
 @app.route("/showProductDetails/<id>") 
 def showProductDetails(id):

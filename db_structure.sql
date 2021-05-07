@@ -7,9 +7,7 @@ CREATE TABLE account (
 );
 CREATE TABLE category (
     category_id CHAR(4) PRIMARY KEY, 
-    category_name VARCHAR(50), 
-    /* todo remove frame_id if not used */
-    frame_id VARCHAR(10)
+    category_name VARCHAR(50)
 );
 CREATE TABLE item ( 
     item_id INT PRIMARY KEY AUTO_INCREMENT, 
@@ -32,17 +30,6 @@ CREATE TABLE item_images (
     image_id VARCHAR(20),
     PRIMARY KEY(image_id, item_id),
     CONSTRAINT image_item_fk FOREIGN KEY(item_id) REFERENCES item(item_id)
-);
-CREATE TABLE tag ( 
-    tag_id INT PRIMARY KEY AUTO_INCREMENT, 
-    tag_name VARCHAR(30) NOT NULL 
-);
-CREATE TABLE item_tag (
-	item_id INT,
-	tag_id INT,
-	PRIMARY KEY(item_id, tag_id),
-	FOREIGN KEY(item_id) REFERENCES item(item_id),
-	FOREIGN KEY(tag_id) REFERENCES tag(tag_id)
 );
 CREATE TABLE appointment (
 	appt_id INT PRIMARY KEY AUTO_INCREMENT,

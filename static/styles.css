@@ -29,13 +29,6 @@ html, body {
 	  background-color: #17a2b8;
 	  color: #efefef;
   }
-  /* li a {
-	  color: #17a2b8!important;
-  } */
-  /* .card a {
-	  color: #17a2b8!important;
-	  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  } */
   p {
 	  font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
@@ -81,7 +74,6 @@ html, body {
   }
   .side-bar-header {
     font-weight: bold;
-    /* font-style: italic; */
     font-size: large; 
     font-family: 'Domine', 'Mulish', Lobster, Verdana, Geneva, Tahoma, sans-serif;
   }
@@ -159,15 +151,6 @@ html, body {
     cursor: default;
     background: #8f746d;
   }
-  /* .hovereffect .overlay {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    padding: 50px 20px;
-  } */
   
   .hovereffect img {
     display: block;
@@ -176,8 +159,6 @@ html, body {
     width: calc(100% + 20px);
     -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, transform 0.35s;
-    /* -webkit-transform: translate3d(-10px,0,0); */
-    /* transform: translate3d(-10px,0,0); */
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
@@ -256,10 +237,4 @@ html, body {
   .modal-title {
     font-size: larger;
   }
-  /* .error-container {
-    vertical-align: middle;
-  } */
-  /* #main-wrapper {
-    margin-bottom: 5rem;
-  } */
   
