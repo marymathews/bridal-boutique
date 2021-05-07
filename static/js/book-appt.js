@@ -1,6 +1,8 @@
 $(document).ready(function() {
     let data = [];
     var apptInfo = new Map();
+    var selectedDate;
+    var selectedTime;
 
     $("#logout").show();
 
@@ -32,6 +34,8 @@ $(document).ready(function() {
     $("#continue-booking").click(function() {
         $('.modal-body p').remove();
         $('.modal-body form').empty();
+        selectedDate = null;
+        selectedTime = null;
 
         let result = getItems(data); 
         if(result.flag == 0) {
@@ -80,6 +84,8 @@ $(document).ready(function() {
         date = $(this).siblings().text().trim();
         date = date.split("/").reverse().join("-");
         times = apptInfo.get(date);
+        selectedDate = date;
+        selectedTime = null;
         $.each(times, function(key, value) {
             if(value == 10) {
                 $('.modal-body #time-container form').append('\
@@ -104,6 +110,37 @@ $(document).ready(function() {
             if(key == times.length - 1)
                 $('.modal-body #time-container form').append('<hr class="times">');
         });
+    });
+
+    $(".modal-body #time-container form").on('click', '.times input', function() {
+        selectedTime = $(this).siblings().text().trim().split(" ")[0];
+    });
+
+    $("#confirm-selections").click(function() {
+        if(selectedDate == null || selectedTime == null)
+            Swal.fire("Please select a date and time!");
+        else {
+            let obj = {"date": selectedDate, "time": selectedTime};
+            data.push(obj);
+            $('#date-modal').modal('hide');
+            $.post({
+                url: '/bookAppointment',
+                dataType: 'json',
+                data: JSON.stringify(data),
+                success: function(response) {
+                    $.each(response, function(key, _) {
+                        if(key == 'error')
+                            Swal.fire("Something Went Wrong!", "Please try again later.");
+                        else {
+                            Swal.fire("Your appointment has been booked!", "", "success");
+                        }
+                    });
+                },
+                error: function(error) {
+                    Swal.fire("Something Went Wrong!", "Please try again later.");
+                }
+            });
+        }
     });
 })
 

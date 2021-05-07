@@ -371,6 +371,57 @@ def getDates():
 	else:
 		return json.dumps({'error': 'No appointments available'})
 
+@app.route("/bookAppointment", methods = ['POST'])
+def bookAppointment():
+	req = request.form.to_dict()
+	data = list(req.keys())[0]
+	items = data.split(",")
+	itemIds = list()
+	itemSizes = list()
+	itemQtys = list()
+
+	for item in items:
+		#print(item)
+		if("date" in item):
+			date = item.split(":")[1]
+		elif("time" in item):
+			time = item.split(":")[1]
+			time = time[0: len(time) - 2]
+		elif("item_id" in item):
+			itemId = item.split(":")[1]
+			itemId = itemId[1 : len(itemId) - 1]
+			itemIds.append(itemId)
+		elif("item_size" in item):
+			itemSize = item.split(":")[1]
+			itemSize = itemSize[1 : len(itemSize) - 1]
+			itemSizes.append(itemSize)
+		elif("item_qty" in item):
+			itemQty = item.split(":")[1]
+			itemQty = itemQty[: len(itemQty) - 1]
+			itemQtys.append(itemQty)
+
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+	
+	cursor.execute("INSERT INTO appointment(email, appt_date, appt_start_time) VALUES(%s, %s, %s)", (session.get('email'), date[1 : len(date) - 1], time[1 : len(time) - 1]))
+	if(len(cursor.fetchall()) == 0):
+		cxn.commit()
+
+		cursor.execute("SELECT LAST_INSERT_ID()")
+		apptId = cursor.fetchall()[0][0]
+	
+		for i in range(len(itemIds)):
+			cursor.execute("INSERT INTO appointment_items VALUES (%s, %s, %s, %s)", (apptId, itemIds[i], itemSizes[i], itemQtys[i]))
+		if(len(cursor.fetchall()) != 0):
+			return json.dumps({'error': 'Not booked'})
+		else:
+			cxn.commit()
+
+	else:
+		return json.dumps({'error': 'Not booked'})
+
+	return json.dumps({'success': 'Booked'})
+
 #make sure the right script is being run
 if __name__ == "__main__":
 	#runs the application from the app variable
