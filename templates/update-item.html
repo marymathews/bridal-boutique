@@ -14,8 +14,6 @@
         <link rel="stylesheet" href="../static/flexslider/flexslider.css" type="text/css">
         <script src="../static/flexslider/jquery.flexslider.js"></script>
         <script src="../static/js/productDetails.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
-        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
         <title>Bridal Boutique</title> 
     </head>
     <body>
@@ -50,7 +48,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                         </svg>
-                        <a class="nav-link-text text-decoration-none" id="show-wishlist" href="/showSignIn">Wishlist</a>
+                        <a class="nav-link-text text-decoration-none" href="#">Wishlist</a>
                     </div>
                 </div>
             </div>
@@ -110,6 +108,7 @@
                     <!-- Row with images and details -->
                     <div class="row">
                         <div class="col-md-4"> 
+                            <!-- todo replace alt text with actual product name -->
                             <!-- todo may be multiple images -->
                             <div class="row flexslider">
                                 <ul class="slides">
@@ -142,25 +141,38 @@
                         <div class="col-md-8">
                             <div class="card product-desc-container">
                                 <div class="card-body">
-                                    <h2 class="card-title text-uppercase">{{ data[0]["item_name"] }}</h2>
-                                    <h3>&#36; {{ data[0]["price"] }}</h3>
-                                    <p class="card-text">{{ data[0]["item_description"] }}</p>
+                                    <div class="form-group">
+                                        <label for="name">Name:</label>
+                                        <input class="form-control" name="name" value={{data[0][item_name]}} id="name" value=required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">Price:</label>
+                                        <input type="price" class="form-control" value={{data[0][price]}} name="price" id="price" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="desc">Description:</label>
+                                        <textarea class="form-control" value={{data[0][item_description]}} name="desc" id="desc" required> </textarea>
+                                        <p class="font-italic" id="pwd-validation">Enter product details</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="qty">Quantity:</label>
+                                        <input class="form-control" name="qty" id="qty" required/>
+                                        <p class="font-italic" id="pwd-validation"></p>
+                                    </div>
+
+                                    
                                     <div class="size-container">
-                                        <div class="card-text p-1 my-2">Sizes Available: </div>
+                                        <span class="card-text">Sizes Available: </span>
                                         {% for item_size in sizes %}
                                             {% if item_size["quantity"] > 0 %}
-                                                <span class="badge-info size badge-pill p-2 text-uppercase">{{ item_size["size"] }}</span>
-                                            {% endif %}
-                                            {% if item_size["quantity"] == 0 %}
-                                                <span class="badge-secondary size badge-pill p-2 text-uppercase"><s>{{ item_size["size"] }}</s></span>
+                                                <span class="badge size">{{ item_size["size"] }}</span>
                                             {% endif %}
                                         {% endfor %}
                                     </div>
-                                    <div class="mr-1 mt-4 text-left border border-dark rounded-pill p-2 add-wishlist-container" id='{{data[0]["item_id"]}}'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                        </svg>
-                                        <a class="text-decoration-none ml-1 my-auto add-wishlist" id="wishlist" href="#">Add to Wishlist</a>
+                                    <div class="row my-4 px-1 mx-1">
+                                        <button class="btn btn-outline-dark rounded-pill">
+                                            <a href="#">Save Changes</a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

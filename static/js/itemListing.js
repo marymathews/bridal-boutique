@@ -8,16 +8,16 @@ $(document).ready(function() {
                 if(value == 'Logged In') {
                     isLoggedIn = true;
                     $("#logout").show();
-                    $("#profile").attr('href', '/showUserProfile');
+                    $("#profile").attr('href', '/userProfile');
                     $(".wishlist").attr('href', '#');
                     $("#show-wishlist").attr('href', '/showWishlist');
                 }
                 else {
                     isLoggedIn = false;
                     $("#logout").hide();
-                    $("#profile").attr('href', '/showSignIn');
-                    $(".wishlist").attr('href', '/showSignIn');
-                    $("#show-wishlist").attr('href', '/showSignIn');
+                    $("#profile").attr('href', '/signInPage');
+                    $(".wishlist").attr('href', '/signInPage');
+                    $("#show-wishlist").attr('href', '/signInPage');
                 }
             })
         }

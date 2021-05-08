@@ -14,9 +14,8 @@
         <link rel="stylesheet" href="../static/flexslider/flexslider.css" type="text/css">
         <script src="../static/flexslider/jquery.flexslider.js"></script>
         <script src="../static/js/itemListing.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
-        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
         <script src="../static/js/setDefaults.js"></script>
+        <script src="../static/js/southIndian.js"></script>
         <title>Bridal Boutique</title> 
     </head>
     <body>
@@ -34,6 +33,12 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <div class="navbar-nav">
+                    <div class="nav-link mr-1" id="add">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                        </svg>
+                        <a class="nav-link-text text-decoration-none" href="/new">Add item</a>
+                    </div>
                     <div class="nav-link mr-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
                             <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
@@ -47,12 +52,6 @@
                         </svg>
                         <a class="nav-link-text text-decoration-none" href="/logout">Logout</a>
                     </div>
-                    <div class="nav-link mr-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                        </svg>
-                        <a class="nav-link-text text-decoration-none" id="show-wishlist" href="/showSignIn">Wishlist</a>
-                    </div>
                 </div>
             </div>
         </nav>
@@ -61,10 +60,10 @@
             <!-- Main row -->
             <div class="row h-100">
                 <!-- Left-most column with filters, search, and categories-->
-                <div class="col-md-3">
-                    <form action="/cosmetics/1" method="GET" id="customization">
+                <div class="col-md-3 items-view">
+                    <form action="/southIndian/1" method="GET" id="customization">
                         <div id="search-and-filter">
-                            <p class="side-bar-header pl-2 mt-18"> Customize your Search </p>
+                            <p class="side-bar-header pl-2 mt-18"> Filter Products </p>
                             <hr class="side-bar-divider mr-3">
                             <div class="input-group pl-2 search-bar">
                                 <input class="form-control my-auto mr-20 pl-2" type="search" placeholder="Search" aria-label="search" name="search" id="search" value={{search}}>
@@ -86,22 +85,23 @@
                                 </ul>
                                 <p class="font-italic pl-2 mt-5p" id="range-error">Enter valid price range!</p>
                                 <p class="font-italic pl-2 mt-5p" id="search-error">Enter valid search word!</p>
-                                <button class="btn search-button form-control ml-8" type="submit" id="applyPref">
-                                    Apply Preferences
-                                </button>
                             </div>
+                            <button class="btn search-button form-control ml-8" type="submit" id="applyPref">
+                                Apply Preferences
+                            </button>
                         </div>
                     </form>                    
                     <div class="categories mt-3">
-                        <p class="side-bar-header pl-2">Explore</p>
+                        <p class="side-bar-header pl-2">Choose Catgeories</p>
                         <hr class="side-bar-divider mr-3">
+
                         <ul class="list-group border-0">
                             <li class="list-group-item pl-2 border-0"><a href="/westernHome">Western</a></li>
                             <li class="list-group-item pl-2 border-0"><a href="/northIndianHome">North Indian</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/southIndianHome">South Indian</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="#">South Indian</a></li>
                             <li class="list-group-item pl-2 border-0"><a href="/accessoriesHome">Accessories &amp; Lingerie</a></li>
                             <li class="list-group-item pl-2 border-0"><a href="/jewelleryHome">Jewellery</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="#">Cosmetics</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/cosmeticsHome">Cosmetics</a></li>
                         </ul>
                     </div>
                 </div>
@@ -115,44 +115,75 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb bg-white">
                                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Cosmetics</a></li>
+                                        <li class="breadcrumb-item"><a href="#">South Indian</a></li>
                                     </ol> 
-                                </nav> 
+                                </nav>
                             </div> 
                            
                             {% for record in data %}
                                 {% if loop.index0 % 4 == 0 %}  
-                                    <div class="row my-3">
+                                    <ul class="list-group">
                                 {% endif %}
-                                        <div class="col-lg-3 product-container">
-                                            <a href='/ProductDetails/{{ record["item_id"] }} '>
-                                                <img class="img-thumbnail listing-image" src='../static/images/cosmetics/{{ record["image"] }}' alt='{{ record["item_name"] }}''>
-                                            </a>
-                                            <div class="mt-2 item-name text-left text-uppercase">
-                                                {{ record["item_name"] }}
+                                    <li class="list-group-item">
+                                        <div class="admin-flex">
+                                            <div class="product-image col-md-1">
+                                                <a href='/productDetails/{{ record["item_id"] }} '>
+                                                    <img class="img-thumbnail pr-0 admin-listing" src='../static/images/south-indian/{{record["image"]}}' alt='{{ record["item_name"] }}'>
+                                                </a>
                                             </div>
-                                            <div class="mr-1 mt-1 text-left" id='{{ record["item_id"] }}'>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                                </svg>
-                                                <a class="nav-link-text text-decoration-none ml-1 wishlist" href="#">Add to Wishlist</a>
-                                            </div>
-                                            <div class="text-left mt-1 mb-2"> Price: &nbsp; 
-                                                &#36; {{ record["price"] }}
+                                            <div class="item-info col-md-11 admin-flex">
+                                                <span class="mt-2 item-name text-left col-md-7 pl-0">
+                                                    {{ record["item_name"] }}
+                                                </span>
+                                                <div class="navbar-nav admin-options col-md-5">
+                                                    <div class="nav-link admin-mr-2" id="edit">
+                                                        <form method="PUT" action="product/{{record['item_id']}}">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                                            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                                            </svg>
+                                                            <button type="submit" class="text-decoration-none delete-btn btn btn-link edit-btn">Edit</button>
+                                                        </form>
+                                                    </div>
+
+                                                    {% if record["deleted"] == 1 %}
+                                                        <form id="south-indian-delete-{{record['item_id']}}" class="mt-8p" type="submit" method="POST">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
+                                                            </svg>
+                                                            <button type="submit" id="{{record['item_id']}}" class="text-decoration-none delete-btn btn btn-link del-btn">Include</button>
+                                                        </form>
+                                                    {% endif %}
+
+                                                    {% if record["deleted"] == 0 %}
+                                                        <form id="south-indian-delete-{{record['item_id']}}" class="mt-8p delete_form" type="submit" method="POST">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                                            </svg> 
+                                                            <button type="submit" id="{{record['item_id']}}" class="text-decoration-none delete-btn btn btn-link del-btn">Delete</button>
+                                                        </form>
+                                                    {% endif %}
+
+                                                    <div class="text-left mt-15p item-name admin-price"> 
+                                                        &#36; {{ record["price"] }}
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                    </li>
+
                                 {% if loop.index0 % 4 == 3 %}
-                                    </div>
+                                    </ul>
                                 {% endif %}
                             {% endfor %}
                         </div>
                     </div>
+
                     <!-- Second row with pagination -->
                     <div class="row w-100">
                         <ul class="pagination justify-content-center text-center w-100" id="pages">
                         {% for n in range(1, page_count + 1, 1) %}
                         {% set page_id = page ~ n %}
-                            <li class="page-item" id={{page_id}}> <a class="page-link" href="/cosmetics/{{n}}">{{n}}</a> </li>
+                            <li class="page-item" id={{page_id}}> <a class="page-link" href="/southIndian/{{n}}">{{n}}</a> </li>
                         {% endfor %}
                         </ul>
                     </div>

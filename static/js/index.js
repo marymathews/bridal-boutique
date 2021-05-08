@@ -8,13 +8,13 @@ $(document).ready(function() {
             $.each(response, function(key, value) {
                 if(value == 'Logged In') {
                     $("#logout").show();
-                    $("#profile").attr('href', '/showUserProfile');
+                    $("#profile").attr('href', '/userProfile');
                     $("#show-wishlist").attr('href', '/showWishlist');
                 }
                 else {
                     $("#logout").hide();
-                    $("#profile").attr('href', '/showSignIn');
-                    $("#show-wishlist").attr('href', '/showSignIn');
+                    $("#profile").attr('href', '/signInPage');
+                    $("#show-wishlist").attr('href', '/signInPage');
                 }
             })
         }
