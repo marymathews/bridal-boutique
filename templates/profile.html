@@ -67,7 +67,7 @@
                         {% endif %}
 
                         {% if data[0]["is_admin"] == 1 %}
-                            <p class="side-bar-header pl-2">Choose from the below to Add/Update</p>
+                            <p class="side-bar-header pl-2">Choose from the categories below to add or update items</p>
                         {% endif %}
 
                         <hr class="side-bar-divider mr-3">
@@ -109,21 +109,13 @@
                        	</table>
                     </div>
 				   	<!-- Row with account history link -->
-<<<<<<< HEAD
-				   	<div class="row my-4 px-1 mx-1">
-						<button class="btn btn-outline-dark rounded-pill">
-							<a href="/appointments">View Appointment History</a>
-						</button>
-				   	</div>
-=======
 				   	{% if data[0]["is_admin"] != 1 %}
                         <div class="row my-4 px-1 mx-1">
 						  <button class="btn btn-outline-dark rounded-pill">
-							 <a href="#">View Appointment History</a>
+                            <a href="/appointments">View Appointment History</a>
 						  </button>
 				   	    </div>
                     {% endif %}   
->>>>>>> master
                 </div>
             </div>
         </div>
