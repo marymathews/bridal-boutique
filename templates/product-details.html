@@ -65,12 +65,12 @@
                         <p class="side-bar-header pl-2">Explore</p>
                         <hr class="side-bar-divider mr-3">
                         <ul class="list-group border-0">
-                            <li class="list-group-item pl-2 border-0"><a href="/Western/1">Western</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/NorthIndian/1">North Indian</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/SouthIndian/1">South Indian</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/Accessories/1">Accessories &amp; Lingerie</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/Jewellery/1">Jewellery</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/Cosmetics/1">Cosmetics</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/westernHome">Western</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/northIndianHome">North Indian</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/southIndianHome">South Indian</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/accessoriesHome">Accessories &amp; Lingerie</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/jewelleryHome">Jewellery</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/cosmeticsHome">Cosmetics</a></li>
                         </ul>
                     </div>
                 </div>
@@ -84,22 +84,22 @@
                                     <ol class="breadcrumb bg-white">
                                         <li class="breadcrumb-item"><a href="/">Home</a></li>
                                         {% if data[0]["category_id"] == "west" %}
-                                            <li class="breadcrumb-item"><a href="/Western/1">Western</a></li>
+                                            <li class="breadcrumb-item"><a href="/westernHome">Western</a></li>
                                         {% endif %}
                                         {% if data[0]["category_id"] == "noin" %}
-                                            <li class="breadcrumb-item"><a href="/NorthIndian/1">North Indian</a></li>
+                                            <li class="breadcrumb-item"><a href="/northIndianHome">North Indian</a></li>
                                         {% endif %}
                                         {% if data[0]["category_id"] == "soin" %}
-                                            <li class="breadcrumb-item"><a href="/SouthIndian/1">South Indian</a></li>
+                                            <li class="breadcrumb-item"><a href="/southIndianHome">South Indian</a></li>
                                         {% endif %}
                                         {% if data[0]["category_id"] == "jewe" %}
-                                            <li class="breadcrumb-item"><a href="/Jewellery/1">Jewellery</a></li>
+                                            <li class="breadcrumb-item"><a href="/jewelleryHome">Jewellery</a></li>
                                         {% endif %}
                                         {% if data[0]["category_id"] == "cosm" %}
-                                            <li class="breadcrumb-item"><a href="/Cosmetics/1">Cosmetics</a></li>
+                                            <li class="breadcrumb-item"><a href="/cosmeticsHome">Cosmetics</a></li>
                                         {% endif %}
                                         {% if data[0]["category_id"] == "acli" %}
-                                            <li class="breadcrumb-item"><a href="/Accessories/1">Accessories &amp; Lingerie</a></li>
+                                            <li class="breadcrumb-item"><a href="/accessoriesHome">Accessories &amp; Lingerie</a></li>
                                         {% endif %}
                                         <li class="breadcrumb-item"><a href="#">{{ data[0]["item_name"] }}</a></li>
                                     </ol> 

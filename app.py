@@ -3,6 +3,8 @@ from flaskext.mysql import MySQL
 from flask_bcrypt import Bcrypt
 import datetime
 import math
+import os
+from werkzeug.utils import secure_filename
 
 #instantiate flask and bcrypt
 app = Flask(__name__)
@@ -23,6 +25,17 @@ app.secret_key = 'Secret Key'
 #set defaults for search & filter to persist values across pages
 minVal, maxVal, searchVal = 0, 5000, "All"
 
+#Get current path
+path = os.getcwd()
+#For file Upload
+UPLOAD_FOLDER_WEST = os.path.join(path, 'static/images/western')
+UPLOAD_FOLDER_NORTH = os.path.join(path, 'static/images/north-indian')
+UPLOAD_FOLDER_SOUTH = os.path.join(path, 'static/images/south-indian')
+UPLOAD_FOLDER_JEWE = os.path.join(path, 'static/images/jewellery')
+UPLOAD_FOLDER_COSM = os.path.join(path, 'static/images/cosmetics')
+UPLOAD_FOLDER_ACLI = os.path.join(path, 'static/images/accessories')
+
+
 #set up a route for the default page (root URL)
 @app.route("/")
 def main():
@@ -42,7 +55,7 @@ def main():
 
 	cursor.close()
 	cxn.close()
-	print(isAdmin)
+
 	return render_template('index.html', user_type = isAdmin)
 
 #route to show signup page
@@ -148,15 +161,349 @@ def checkExistingEmail(email):
 	else:
 		return ('', 204)
 
-#route to add new item
-@app.route("/new")
-def newItem():
-	return render_template("add-item.html")
 
-#route to show delete confirmation dialog
-@app.route("/confirmDelete")
-def confirmDelete():
-	return render_template("delete-dialog.html")
+#route to render new item page
+@app.route("/newPage")
+def newItemPage():
+	isAdmin = None
+
+	#connect to the db
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	#If admin, give special privileges and hide some functionality
+	if('email' in session):
+		_email = session['email']
+		cursor.execute("SELECT is_admin FROM account WHERE email = %s", (_email))
+		user = cursor.fetchall()
+		if(user[0][0] == 1): 
+			isAdmin = 1
+		
+	if isAdmin == 1:
+		return render_template("add-item.html")
+	else:
+		return render_template("error.html", error = 'You are not logged in OR You cannot access this page')
+
+	cursor.close()
+	cxn.close()	
+
+#route to add new item
+@app.route("/new", methods=['POST'])
+def newItem():
+	#retrieving data from the data dictionary used
+	keys = request.form.keys()
+	_name = request.form["name"]
+	_price = request.form["price"]
+	_category = request.form["categories"]
+	_description = request.form["desc"]
+	_deleted = request.form["delStatus"]
+
+	#as there are multiple values of size & quantity, we store them in this dictionary
+	_sizeInfo = {}
+	for key in keys:
+		if "size" in key:
+			_sizeInfo[key] = request.form[key]
+
+	#sizes is a dummy key used to allow further addition of sizes. So, we remove it here.
+	del _sizeInfo['sizes']
+
+	#save sizes with corresponding quantities
+	_sizeQty = {}
+	sKeys = _sizeInfo.keys()
+	for key in sKeys:
+		value = _sizeInfo[key]
+		size_and_qty = value.split(' ')
+
+		size_info = size_and_qty[0]
+		size = size_info[5 :]
+		qty_info = size_and_qty[1]
+		qty = qty_info[9 :]
+		_sizeQty[size] = qty
+
+	#accessing files from file list and preprocessing them to handle images
+	images = request.files.getlist('image_data')
+	
+	for img in images:
+		fname = secure_filename(img.filename)
+		if fname != '':
+			if _category == 'west':
+				img.save(os.path.join(UPLOAD_FOLDER_WEST, fname))
+			elif _category == 'noin':
+				img.save(os.path.join(UPLOAD_FOLDER_NORTH, fname))
+			elif _category == 'soin':
+				img.save(os.path.join(UPLOAD_FOLDER_SOUTH, fname))
+			elif _category == 'acli':
+				img.save(os.path.join(UPLOAD_FOLDER_ACLI, fname))
+			elif _category == 'cosm':
+				img.save(os.path.join(UPLOAD_FOLDER_COSM, fname))
+			else:
+				img.save(os.path.join(UPLOAD_FOLDER_JEWE, fname))
+
+	#connect to the db
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	#insert into item table
+	cursor.execute("INSERT INTO item (price, category_id, item_name, item_description, deleted) VALUES (%s, %s, %s, %s, %s)", (float(_price), _category, _name, _description, _deleted))
+	cxn.commit()
+
+	#first retrieve item_id
+	cursor.execute("SELECT item_id FROM item WHERE price = %s AND category_id = %s AND item_name = %s AND item_description = %s AND deleted = %s", (float(_price), _category, _name, _description, _deleted))
+	data = cursor.fetchall()
+	_id = data[0][0]
+
+	#insert into item_images table
+	for img in images:
+		fname = secure_filename(img.filename)
+		if fname != '':
+			cursor.execute("INSERT INTO item_images VALUES (%s, %s)", (_id, fname))
+			cxn.commit()
+
+	#insert into item_size table
+	for sq in _sizeQty:
+		size = sq
+		qty = _sizeQty[sq]
+		cursor.execute("INSERT INTO item_size VALUES (%s, %s, %s)", (_id, size, qty))
+		cxn.commit()
+
+	return redirect(request.referrer)
+
+#route to show edit item form
+@app.route("/productInfo/<id>", methods = ['GET'])
+def editProduct(id):
+	isAdmin = None
+
+	#connect to the db
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	#If admin, give special privileges and hide some functionality
+	if('email' in session):
+		_email = session['email']
+		cursor.execute("SELECT is_admin FROM account WHERE email = %s", (_email))
+		user = cursor.fetchall()
+		if(user[0][0] == 1): 
+			isAdmin = 1
+		
+	if isAdmin == 1:
+		#get product data from db
+		cursor.execute("SELECT * FROM item WHERE item_id = %s", id)
+		data = cursor.fetchall()
+
+		cursor.execute("SELECT * FROM item_size WHERE item_id = %s", id)
+		size_qty = cursor.fetchall()
+
+		available = []
+		for sq in size_qty:
+			available.append(sq[1])
+
+		cursor.execute("SELECT * FROM item_images WHERE item_id = %s", id)
+		images = cursor.fetchall()
+
+		cursor.close()
+		cxn.close()
+
+		all_sizes = ['one-size','0','2','4','6','8','10','12','14','16','18','20']
+
+		return render_template("update-item.html", data = data, size_qty = size_qty, images = images, all_sizes = all_sizes, available = available)
+		
+	else:
+		return render_template("error.html", error = 'You are not logged in OR You cannot access this page')
+
+#route to update selected product
+#as HTML does not allow PUT method, we are using POST to update data
+@app.route("/productData/<id>", methods = ['POST'])
+def productUpdate(id):
+	isAdmin = None
+
+	#connect to the db
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	#If admin, give special privileges and hide some functionality
+	if('email' in session):
+		_email = session['email']
+		cursor.execute("SELECT is_admin FROM account WHERE email = %s", (_email))
+		user = cursor.fetchall()
+		if(user[0][0] == 1): 
+			isAdmin = 1
+		
+	if isAdmin == 1:
+		#retrieving data from the data dictionary used
+		_name = request.form["name"]
+		_price = request.form["price"]
+		_category = request.form["cate"]
+		_description = request.form["desc"]
+		_keys = request.form.keys()
+
+		#as there are multiple values of size & quantity, we store them in this dictionary
+		#similarly, we obtain the removed image file names
+		_sizeInfo = {}
+		_removedImgs = {}
+		for key in _keys:
+			if "size" in key:
+				_sizeInfo[key] = request.form[key]
+			if "removeImage_" in key:
+				_removedImgs[key] = request.form[key]
+
+		#sizes is a dummy key used to allow further addition of sizes. So, we remove it here.
+		del _sizeInfo['sizes']
+
+		#save sizes with corresponding quantities
+		_sizeQty = {}
+		sKeys = _sizeInfo.keys()
+		for key in sKeys:
+			value = _sizeInfo[key]
+			size_and_qty = value.split(' ')
+
+			#for those already present in the table
+			if len(size_and_qty) == 4:
+				size = size_and_qty[1]
+				qty = size_and_qty[3]
+
+			#for those newly entered/updated
+			else:
+				size_info = size_and_qty[0]
+				size = size_info[5 :]
+				qty_info = size_and_qty[1]
+				qty = qty_info[9 :]
+
+			_sizeQty[size] = qty
+
+		#accessing files from file list and preprocessing them to handle images
+		images = request.files.getlist('image_data')
+		
+		for img in images:
+			fname = secure_filename(img.filename)
+			if fname != '':
+				if _category == 'west':
+					img.save(os.path.join(UPLOAD_FOLDER_WEST, fname))
+				elif _category == 'noin':
+					img.save(os.path.join(UPLOAD_FOLDER_NORTH, fname))
+				elif _category == 'soin':
+					img.save(os.path.join(UPLOAD_FOLDER_SOUTH, fname))
+				elif _category == 'acli':
+					img.save(os.path.join(UPLOAD_FOLDER_ACLI, fname))
+				elif _category == 'cosm':
+					img.save(os.path.join(UPLOAD_FOLDER_COSM, fname))
+				else:
+					img.save(os.path.join(UPLOAD_FOLDER_JEWE, fname))
+
+		#connect to the db
+		cxn = mysql.connect()
+		cursor = cxn.cursor()
+
+		#update item table
+		cursor.execute("UPDATE item SET price = %s, item_name = %s, item_description = %s WHERE item_id = %s", (float(_price), _name, _description, id))
+		cxn.commit()
+
+		#update item_images table
+		#insert new images (if any)
+		for img in images:
+			fname = secure_filename(img.filename)
+			if fname != '':
+				cursor.execute("INSERT INTO item_images VALUES (%s, %s)", (id, fname))
+				cxn.commit()
+
+		#obtain list of any removed images
+		imgNames = []
+		for r_img in _removedImgs:
+			name = r_img[12 :]
+			imgNames.append(name)
+
+		#delete identified images from the db
+		for img in imgNames:
+			cursor.execute("DELETE FROM item_images WHERE item_id = %s AND image_id = %s", (id, img))
+			cxn.commit()
+
+		for img in imgNames:
+			if _category == 'west':
+				os.remove(os.path.join(UPLOAD_FOLDER_WEST, img))
+			elif _category == 'noin':
+				os.remove(os.path.join(UPLOAD_FOLDER_NORTH, img))
+			elif _category == 'soin':
+				os.remove(os.path.join(UPLOAD_FOLDER_SOUTH, img))
+			elif _category == 'acli':
+				os.remove(os.path.join(UPLOAD_FOLDER_ACLI, img))
+			elif _category == 'cosm':
+				os.remove(os.path.join(UPLOAD_FOLDER_COSM, img))
+			else:
+				os.remove(os.path.join(UPLOAD_FOLDER_JEWE, img))
+
+		#update item_size table
+		#first we retrieve existing size entries from the table
+		cursor.execute("SELECT size FROM item_size WHERE item_id = %s", id)
+		sizeData = cursor.fetchall()
+		
+		table_sizes = []
+		for sz in sizeData:
+			table_sizes.append(sz[0])
+
+		iKeys = _sizeQty.keys()
+		input_sizes = []
+		for key in iKeys:
+			input_sizes.append(key)
+
+		for sq in _sizeQty:
+			size = sq
+			qty = _sizeQty[sq]
+
+			#we update size values for sizes modified by user
+			if size in table_sizes:
+				cursor.execute("UPDATE item_size SET quantity = %s WHERE item_id = %s AND size = %s", (qty, id, size))
+				cxn.commit()
+
+			#we insert size values if they do not exist already in the table
+			else:
+				cursor.execute("INSERT INTO item_size VALUES (%s, %s, %s)", (id, size, qty))
+				cxn.commit()
+
+		#we remove existing entries if they are now deleted by user
+		for size in table_sizes:
+			if size not in input_sizes:
+				cursor.execute("DELETE FROM item_size WHERE item_id = %s AND size = %s", (id, size))
+				cxn.commit()
+
+		if _category == "west":
+			return redirect('/westernHome')
+		elif _category == "noin":
+			return redirect('/northIndianHome')
+		elif _category == "soin":
+			return redirect('/southIndianHome')
+		elif _category == "jewe":
+			return redirect('/jewelleryHome')
+		elif _category == "cosm":
+			return redirect('/cosmeticsHome')
+		else:
+			return redirect('/accessoriesHome')
+
+	else:
+		return render_template("error.html", error = 'You are not logged in OR You cannot access this page')
+	
+
+#route to delete selected product - As it is soft delete, we use POST
+@app.route("/product/<id>", methods = ['POST'])
+def product(id):
+	#connect to the db
+	cxn = mysql.connect()
+	cursor = cxn.cursor()
+
+	#We toggle deletion status. So, we initially retrieve deleted flag
+	cursor.execute("SELECT deleted FROM item WHERE item_id = %s", id)
+	data = cursor.fetchall()
+
+	#set delete flag (1-0 = 1 & 1-1 = 0) Toggles the value
+	_deleted = 1 - data[0][0]
+
+	#As the delete is soft delete, we just update the deleted flag
+	cursor.execute("UPDATE item SET deleted = %s WHERE item_id = %s", (_deleted, id))
+	cxn.commit()
+
+	cursor.close()
+	cxn.close()
+
+	return redirect(request.referrer)
+
 
 #route for showing default/home page for western category
 @app.route("/westernHome")
@@ -327,34 +674,6 @@ def northIndian(page):
 		return render_template("north-indian-admin.html", data = products_info, page_count = math.ceil(total/20), search = searchVal, min = minVal, max = maxVal)
 	else:
 		return render_template("north-indian.html", data = products_info, page_count = math.ceil(total/20), search = searchVal, min = minVal, max = maxVal)
-
-#route to delete selected product - As it is soft delete, we use POST
-@app.route("/product/<id>", methods = ['POST'])
-def product(id):
-	#connect to the db
-	cxn = mysql.connect()
-	cursor = cxn.cursor()
-
-	#We toggle deletion status. So, we initially retrieve deleted flag
-	cursor.execute("SELECT deleted FROM item WHERE item_id = %s", id)
-	data = cursor.fetchall()
-
-	#set delete flag (1-0 = 1 & 1-1 = 0)
-	_deleted = 1 - data[0][0]
-
-	#As the delete is soft delete, we just update the deleted flag
-	cursor.execute("UPDATE item SET deleted = %s WHERE item_id = %s", (_deleted, id))
-	cxn.commit()
-
-	cursor.close()
-	cxn.close()
-
-	return redirect(request.referrer)
-
-#route to update selected product
-@app.route("/product/<id>", methods = ['PUT'])
-def productUpdate(id):
-	print("update")
 
 #route for showing product details
 @app.route("/productDetails/<id>") 
