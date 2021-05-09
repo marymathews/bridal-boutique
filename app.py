@@ -678,6 +678,8 @@ def northIndian(page):
 #route for showing product details
 @app.route("/productDetails/<id>") 
 def productDetails(id):
+	isAdmin = 0
+
 	#connect to the db
 	cxn = mysql.connect()
 	cursor = cxn.cursor()
@@ -702,8 +704,19 @@ def productDetails(id):
 	column_names = [col[0] for col in desc]
 	sizes = [dict(zip(column_names, row))  
         for row in cursor.fetchall()]
+	
+	#query to fetch user type from the db
+	if('email' in session):
+		_email = session['email']
+		cursor.execute("SELECT is_admin FROM account WHERE email = %s", (_email))
+		user = cursor.fetchall()
+		if(user[0][0] == 1): 
+			isAdmin = 1
 
-	return render_template("product-details.html", data = data, images = images, sizes = sizes)
+	cursor.close()
+	cxn.close()
+
+	return render_template("product-details.html", data = data, images = images, sizes = sizes, user_type = isAdmin)
 
 def getProducts(category, page):
 	isAdmin = None

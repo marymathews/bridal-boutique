@@ -12,14 +12,14 @@ $(document).ready(function() {
                     $("#logout").show();
                     $("#profile").attr('href', '/userProfile');
                     $("#wishlist").attr('href', '#');
-                    $("#show-wishlist").attr('href', '/showWishlist')
+                    $("#show-wishlist").attr('href', '/wishlist')
                 }
                 else {
                     isLoggedIn = false;
                     $("#logout").hide();
                     $("#profile").attr('href', '/signInPage');
-                    $("#wishlist").attr('href', '/showSignIn');
-                    $("#show-wishlist").attr('href', '/showSignIn')
+                    $("#wishlist").attr('href', '/signInPage');
+                    $("#show-wishlist").attr('href', '/signInPage')
                 }
             })
         }
@@ -28,7 +28,7 @@ $(document).ready(function() {
     $("#wishlist").click(function() {
         if(isLoggedIn) {
             $.ajax({
-                url: '/addToWishlist',
+                url: '/wishlist',
                 type: 'PUT',
                 dataType: 'json',
                 data: {item_id: $(this).parent().attr('id')},
