@@ -37,7 +37,7 @@ $(document).ready(function() {
     $(".wishlist").click(function() {
         if(isLoggedIn) {
             $.ajax({
-                url: '/addToWishlist',
+                url: '/wishlist',
                 type: 'PUT',
                 dataType: 'json',
                 data: {item_id: $(this).parent().attr('id')},
