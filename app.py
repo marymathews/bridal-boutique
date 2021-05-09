@@ -845,7 +845,7 @@ def userProfile():
 		return redirect('/signInPage')
 
 #route to add wishlist item
-@app.route("/addToWishlist", methods = ['PUT'])
+@app.route("/wishlist", methods = ['PUT'])
 def addToWishlist():
 	itemId = request.form.get('item_id')
 	user = session.get('email')
@@ -865,7 +865,7 @@ def addToWishlist():
 		return json.dumps({'error': 'Item not added'})
 
 #route to show user wishlist
-@app.route("/showWishlist")
+@app.route("/wishlist")
 def showWishlist():
 	user = session.get('email')
 
@@ -884,7 +884,7 @@ def showWishlist():
 	return render_template('wishlist.html', data = data)
 
 #route to delete from wishlist
-@app.route("/deleteFromWishlist/<id>", methods = ['DELETE'])
+@app.route("/wishlist/<id>", methods = ['DELETE'])
 def deleteFromWishlist(id):
 	user = session.get('email')
 
@@ -905,7 +905,7 @@ def deleteFromWishlist(id):
 	return response
 
 #route to book appointment page
-@app.route("/showBookAppointment")
+@app.route("/appointment")
 def showBookAppointment():
 	user = session.get('email')
 
@@ -936,7 +936,7 @@ def showBookAppointment():
 	return render_template('book-appt.html', data = result)
 
 #route to get available dates and times for booking an apppointment
-@app.route("/getDates")
+@app.route("/dates")
 def getDates():
 	days = list()
 	bookings = dict()
@@ -970,7 +970,7 @@ def getDates():
 	else:
 		return json.dumps({'error': 'No appointments available'})
 
-@app.route("/bookAppointment", methods = ['POST'])
+@app.route("/appointment", methods = ['POST'])
 def bookAppointment():
 	req = request.form.to_dict()
 	data = list(req.keys())[0]

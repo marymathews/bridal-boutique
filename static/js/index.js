@@ -9,7 +9,7 @@ $(document).ready(function() {
                 if(value == 'Logged In') {
                     $("#logout").show();
                     $("#profile").attr('href', '/userProfile');
-                    $("#show-wishlist").attr('href', '/showWishlist');
+                    $("#show-wishlist").attr('href', '/wishlist');
                 }
                 else {
                     $("#logout").hide();
