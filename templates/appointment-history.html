@@ -13,10 +13,9 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../static/flexslider/flexslider.css" type="text/css">
         <script src="../static/flexslider/jquery.flexslider.js"></script>
-        <script src="../static/js/itemListing.js"></script>
+        <script src="../static/js/appointment-history.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
-        <script src="../static/js/setDefaults.js"></script>
         <title>Bridal Boutique</title> 
     </head>
     <body>
@@ -45,13 +44,13 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
                             <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
                         </svg>
-                        <a class="nav-link-text text-decoration-none" id="profile" href="/SignInPage">Profile</a>
+                        <a class="nav-link-text text-decoration-none" id="profile" href="/userProfile">Profile</a>
                     </div>
                     <div class="nav-link mr-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                         </svg>
-                        <a class="nav-link-text text-decoration-none" id="show-wishlist" href="/showSignIn">Wishlist</a>
+                        <a class="nav-link-text text-decoration-none" href="/wishlist">Wishlist</a>
                     </div>
                 </div>
             </div>
@@ -61,43 +60,13 @@
             <!-- Main row -->
             <div class="row h-100">
                 <!-- Left-most column with filters, search, and categories-->
-                <div class="col-md-3">
-                    <form action="/northIndian/1" method="GET" id="customization">
-                        <div id="search-and-filter">
-                            <p class="side-bar-header pl-2 mt-18"> Customize your Search </p>
-                            <hr class="side-bar-divider mr-3">
-                            <div class="input-group pl-2 search-bar">
-                                <input class="form-control my-auto mr-20 pl-2" type="search" placeholder="Search" aria-label="search" name="search" id="search" value={{search}}>
-                            </div>       
-                            <div class="filter">
-                                <ul class="list-group border-0">
-                                    <li class="list-group-item pl-2 pd-0 border-0">
-                                        <div class="form-group">
-                                            <label for="min-price">Minimum Price ( $ ) </label>
-                                            <input class="form-control" type="number" placeholder="0" name="min-price" id="min-price" min="0" max="5000" value={{min}}>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item pl-2 pt-0 border-0">
-                                        <div class="form-group">
-                                            <label for="max-price">Maximum Price ( $ ) </label>
-                                            <input class="form-control" type="number" placeholder="5000" name="max-price" id="max-price" min="0" max="5000" value={{max}}>
-                                        </div>
-                                    </li>                              
-                                </ul>
-                                <p class="font-italic pl-2 mt-5p" id="range-error">Enter valid price range!</p>
-                                <p class="font-italic pl-2 mt-5p" id="search-error">Enter valid search word!</p>
-                                <button class="btn search-button form-control" type="submit" id="applyPref">
-                                    Apply Preferences
-                                </button>
-                            </div>
-                        </div>
-                    </form>             
+                <div class="col-md-3">                   
                     <div class="categories mt-3">
                         <p class="side-bar-header pl-2">Explore</p>
                         <hr class="side-bar-divider mr-3">
                         <ul class="list-group border-0">
                             <li class="list-group-item pl-2 border-0"><a href="/westernHome">Western</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="#">North Indian</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/northIndianHome">North Indian</a></li>
                             <li class="list-group-item pl-2 border-0"><a href="/southIndianHome">South Indian</a></li>
                             <li class="list-group-item pl-2 border-0"><a href="/accessoriesHome">Accessories &amp; Lingerie</a></li>
                             <li class="list-group-item pl-2 border-0"><a href="/jewelleryHome">Jewellery</a></li>
@@ -105,58 +74,62 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Main column with images, details, and thumbnails-->
+                <!-- Main column with images and details-->
                 <div class="col-md-9 mt-2">
-                    <!-- First row with image and details -->
-                    <div class="row">
-                        <!-- Column with image and caption -->
+                    <div class="row mx-1">
                         <div class="col-md-12">
-                            <div class="row justify-content-start">
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb bg-white">
-                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">North Indian</a></li>
-                                    </ol> 
-                                </nav> 
-                            </div> 
-                           
-                            {% for record in data %}
-                                {% if loop.index0 % 4 == 0 %}  
-                                    <div class="row my-3">
-                                {% endif %}
-                                        <div class="col-lg-3 product-container">
-                                            <a href='/productDetails/{{ record["item_id"] }} '>
-                                                <img class="img-thumbnail listing-image" src='../static/images/north-indian/{{ record["image"] }}' alt='{{ record["item_name"] }}''>
-                                            </a>
-                                            <div class="mt-2 item-name text-left text-uppercase">
-                                                {{ record["item_name"] }}
-                                            </div>
-                                            <div class="mr-1 mt-1 text-left" id='{{ record["item_id"] }}'>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                                </svg>
-                                                <a class="nav-link-text text-decoration-none ml-1 wishlist" href="#">Add to Wishlist</a>
-                                            </div>
-                                            <div class="text-left mt-1 mb-2"> Price: &nbsp; 
-                                                &#36; {{ record["price"] }}
-                                            </div>
-                                        </div>
-                                {% if loop.index0 % 4 == 3 %}
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
+                        <div class="row justify-content-start">
+                                <h2 class="px-2 mt-4 font-weight-bold mr-3">Your Appointment History</h2> 
+                                <hr class="w-100">
+                            </div>
                         </div>
                     </div>
-                    <!-- Second row with pagination -->
+                    <!-- Row with wishlist data -->
                     <div class="row w-100">
-                        <ul class="pagination justify-content-center text-center w-100" id="pages">
-                        {% for n in range(1, page_count + 1, 1) %}
-                        {% set page_id = page ~ n %}
-                            <li class="page-item" id={{page_id}}> <a class="page-link" href="/northIndian/{{n}}">{{n}}</a> </li>
-                        {% endfor %}
- 						</ul>
+                        <h3 class="text-center font-weight-bold my-5 mx-4 w-100">You have not booked any appointments yet!</h3>
+                        {% if data|length > 0 %}
+                            <ul class="container-fluid wishlist-container">
+                                {% for record in data %}
+                                    <li class="row">
+                                        {% if record["category_id"] == "west" %}
+                                            <img src='../static/images/western/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "noin" %}
+                                            <img src='../static/images/north-indian/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "soin" %}
+                                            <img src='../static/images/south-indian/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "jewe" %}
+                                            <img src='../static/images/jewellery/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "cosm" %}
+                                            <img src='../static/images/cosmetics/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        {% if record["category_id"] == "acli" %}
+                                            <img src='../static/images/accessories/{{ record["image_id"] }}' class="img-thumbnail col-md-3 border-0" alt='{{ record["item_name"] }}'>
+                                        {% endif %}
+                                        <div class="col-md-9 my-2">
+                                            <a class="wishlist-item-name text-decoration-none" href='/productDetails/{{ record["item_id"] }}'>{{ record["item_name"] }}</a>
+                                            <p class="wishlist-cost my-2">&#36; {{ record["price"] }}</p>
+                                            <p class="my-2">Size: {{ record["size"] }}</p>
+                                            <p class="my-2">Quantity: {{ record["quantity"] }}</p>
+                                            <p class="my-2">Date of Appointment: {{ record["appt_date"].strftime('%d/%m/%Y') }}</p>
+                                            {% if record["appt_start_time"] == '10' %}
+                                                <p class="my-2">Appointment Time: {{ record["appt_start_time"] }} AM</p>
+                                            {% endif %}
+                                            {% if record["appt_start_time"] != '10' %}
+                                                <p class="my-2">Appointment Time: {{ record["appt_start_time"] }} PM</p>
+                                            {% endif %}
+                                        </div>
+                                        <hr class="w-100">
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     </div>
                 </div>
+                        
             </div>
         </div>
          <!-- Bottom row/footer -->

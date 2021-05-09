@@ -9,10 +9,12 @@ $(document).ready(function() {
                 if(value == 'Logged In') {
                     $("#logout").show();
                     $("#profile").attr('href', '/userProfile');
+                    $("#show-wishlist").attr('href', '/wishlist');
                 }
                 else {
                     $("#logout").hide();
                     $("#profile").attr('href', '/signInPage');
+                    $("#show-wishlist").attr('href', '/signInPage');
                 }
             })
         }

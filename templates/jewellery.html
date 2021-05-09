@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="../static/flexslider/flexslider.css" type="text/css">
         <script src="../static/flexslider/jquery.flexslider.js"></script>
         <script src="../static/js/itemListing.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
         <script src="../static/js/setDefaults.js"></script>
         <title>Bridal Boutique</title> 
     </head>
@@ -32,12 +34,6 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <div class="navbar-nav">
-                    <div class="nav-link mr-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-                            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
-                        </svg>
-                        <a class="nav-link-text text-decoration-none" id="profile" href="/SignInPage">Profile</a>
-                    </div>
                     <div class="nav-link mr-1" id="logout">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
@@ -46,10 +42,16 @@
                         <a class="nav-link-text text-decoration-none" href="/logout">Logout</a>
                     </div>
                     <div class="nav-link mr-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+                        </svg>
+                        <a class="nav-link-text text-decoration-none" id="profile" href="/SignInPage">Profile</a>
+                    </div>
+                    <div class="nav-link mr-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                         </svg>
-                        <a class="nav-link-text text-decoration-none" href="#">Wishlist</a>
+                        <a class="nav-link-text text-decoration-none" id="show-wishlist" href="/showSignIn">Wishlist</a>
                     </div>
                 </div>
             </div>
@@ -84,7 +86,7 @@
                                 </ul>
                                 <p class="font-italic pl-2 mt-5p" id="range-error">Enter valid price range!</p>
                                 <p class="font-italic pl-2 mt-5p" id="search-error">Enter valid search word!</p>
-                                <button class="btn search-button form-control ml-8" type="submit" id="applyPref">
+                                <button class="btn search-button form-control" type="submit" id="applyPref">
                                     Apply Preferences
                                 </button>
                             </div>
@@ -129,11 +131,11 @@
                                             <div class="mt-2 item-name text-left text-uppercase">
                                                 {{ record["item_name"] }}
                                             </div>
-                                            <div class="mr-1 mt-1 text-left">
+                                            <div class="mr-1 mt-1 text-left" id='{{ record["item_id"] }}'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                                     <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                                                 </svg>
-                                                <a class="nav-link-text text-decoration-none ml-1" href="#">Add to Wishlist</a>
+                                                <a class="nav-link-text text-decoration-none ml-1 wishlist" href="#">Add to Wishlist</a>
                                             </div>
                                             <div class="text-left mt-1 mb-2"> Price: &nbsp; 
                                                 &#36; {{ record["price"] }}

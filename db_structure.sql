@@ -7,9 +7,7 @@ CREATE TABLE account (
 );
 CREATE TABLE category (
     category_id CHAR(4) PRIMARY KEY, 
-    category_name VARCHAR(50), 
-    /* todo remove frame_id if not used */
-    frame_id VARCHAR(10)
+    category_name VARCHAR(50)
 );
 CREATE TABLE item ( 
     item_id INT PRIMARY KEY AUTO_INCREMENT, 
@@ -33,22 +31,11 @@ CREATE TABLE item_images (
     PRIMARY KEY(image_id, item_id),
     CONSTRAINT image_item_fk FOREIGN KEY(item_id) REFERENCES item(item_id)
 );
-CREATE TABLE tag ( 
-    tag_id INT PRIMARY KEY AUTO_INCREMENT, 
-    tag_name VARCHAR(30) NOT NULL 
-);
-CREATE TABLE item_tag (
-	item_id INT,
-	tag_id INT,
-	PRIMARY KEY(item_id, tag_id),
-	FOREIGN KEY(item_id) REFERENCES item(item_id),
-	FOREIGN KEY(tag_id) REFERENCES tag(tag_id)
-);
 CREATE TABLE appointment (
 	appt_id INT PRIMARY KEY AUTO_INCREMENT,
 	email VARCHAR(320) NOT NULL,
 	appt_date DATE NOT NULL,	
-	appt_start_time TIME NOT NULL,
+	appt_start_time ENUM('10', '12', '2', '4') NOT NULL,
 	FOREIGN KEY(email) REFERENCES account(email)
 );
 CREATE TABLE appointment_items (
@@ -67,3 +54,14 @@ CREATE TABLE wishlist (
 	FOREIGN KEY(item_id) REFERENCES item(item_id),
 	FOREIGN KEY(email) REFERENCES account(email)
 );
+
+DELIMITER $$
+
+CREATE TRIGGER update_inventory 
+AFTER INSERT 
+ON appointment_items FOR EACH ROW 
+BEGIN
+    UPDATE item_size SET quantity = (quantity - NEW.quantity) WHERE item_id = NEW.item_id AND size = NEW.size; 
+END$$
+
+DELIMITER ;
