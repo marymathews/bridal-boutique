@@ -19,7 +19,7 @@ $(document).ready(function() {
 
 function deleteItem(id, currentItem) {
     $.ajax({
-        url: '/deleteFromWishlist/' + id,
+        url: '/wishlist/' + id,
         type: 'DELETE',
         dataType: 'json',
         success: function(response) {
