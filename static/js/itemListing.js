@@ -10,7 +10,7 @@ $(document).ready(function() {
                     $("#logout").show();
                     $("#profile").attr('href', '/userProfile');
                     $(".wishlist").attr('href', '#');
-                    $("#show-wishlist").attr('href', '/showWishlist');
+                    $("#show-wishlist").attr('href', '/wishlist');
                 }
                 else {
                     isLoggedIn = false;
