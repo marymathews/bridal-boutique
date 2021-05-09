@@ -135,10 +135,6 @@ html, body {
     display: flex;
     flex-direction: row;
   }
-  .modal {
-    width: fit-content;
-    background-color: #f9f1f1;
-  }
   .confirm-btns {
     width: 50%;
     margin-right: 2rem;
