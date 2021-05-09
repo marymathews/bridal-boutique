@@ -103,6 +103,7 @@
                     </div>
                     <label for="qty-size">Size &amp; Quantity:</label>
                     <div class="add-items-input">
+                        <span class="click-msg"> Click the box to delete </span>
                         <ul class="list-group mb-10" id="add-items-list"></ul>
                     </div>
                     <div class="form-group input-group size-qty">
@@ -132,11 +133,11 @@
                      <div class="form-group" id="delDD">
                         <label for="delStatus">Deletion Status:</label> <br/>
                         <select class="dropdown-cat input-group form-control" name="delStatus" id="delStatus" required>
-                            <option value="1">Deleted</option>
                             <option value="0">Included</option>
+                            <option value="1">Deleted</option>
                         </select>
                     </div>
-					<input type="submit" id="add-submit" class="btn btn-lg btn-block" value="Add Product">
+					<input type="submit" id="add-submit" class="btn btn-lg btn-block btn-color" value="Add Product">
                     <label id="success-msg"> </label>
 				</form>			
             </div>

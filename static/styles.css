@@ -12,14 +12,25 @@ html, body {
   .delete-btn:hover, a:hover {
 	  color: #cc7c68!important;
   }
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 350px) {
   .container-fluid{
         flex-direction: column !important;
+    }
+    .mcol {
+      flex-direction: column !important;
     }
   }
   .flexR{
     display: flex;
     flex-direction: row;
+  }
+  .admin-item-name {
+    font-size: 20px !important;
+    font-weight:  900;
+    padding-right: 2rem;
+  }
+  .admin-btn-item {
+    font-size: 18px !important;
   }
   .auto-w {
     width: auto;
@@ -55,6 +66,7 @@ html, body {
   .admin-flex {
     display: flex; 
     flex-direction: row;
+    margin-right: 2rem;
   }
   .nav-link-text {
 	  vertical-align: middle;
@@ -71,7 +83,7 @@ html, body {
   }
   .admin-price {
     margin-top: 10px;
-    margin-left: 2rem;
+    margin-right: 1.5rem;
   }
   .del-icon {
     font-size:30px;
@@ -122,7 +134,7 @@ html, body {
     padding-left: 0px !important;
   }
   .admin-mr-2 {
-    margin-right: 2rem!important;
+    margin-right: 1.3rem!important;
   }
   .dropdown-cat {
     width: 100%;
@@ -261,7 +273,7 @@ html, body {
   .admin-listing {
      padding: 0!important;
      border: 0!important;
-     width: 40px !important;
+     min-width: 40px !important;
   }
   .item-name {
     font-family:  'Domine', 'Mulish', Lobster, Verdana, Geneva, Tahoma, sans-serif;
