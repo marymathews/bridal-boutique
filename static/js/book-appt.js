@@ -132,7 +132,7 @@ $(document).ready(function() {
                         if(key == 'error')
                             Swal.fire("Something Went Wrong!", "Please try again later.");
                         else {
-                            Swal.fire("Your appointment has been booked!", "", "success");
+                            window.location.replace("/appointments")
                         }
                     });
                 },
