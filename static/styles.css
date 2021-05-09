@@ -44,7 +44,7 @@ html, body {
     text-align: center;
     width: inherit;
   }
-  .img-container .img-btn: hover {
+  .img-container .img-btn:hover {
     background-color: black;
   }
   .quan {
@@ -408,5 +408,9 @@ html, body {
   }
   .modal-title {
     font-size: larger;
+  }
+  .active {
+    background-color: #f9f1f1!important;
+    color: #cc7c68!important;
   }
   
