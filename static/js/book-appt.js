@@ -45,7 +45,7 @@ $(document).ready(function() {
                 apptInfo.clear();
                 $('.modal-body').append("<p>Total Price of Selected Items: &#36; " + result.totalPrice.toFixed(2) + "</p>"); 
                 $.ajax({
-                    url: '/getDates',
+                    url: '/dates',
                     type: 'GET',
                     dataType: 'json',
                     success: function(response) {
@@ -124,7 +124,7 @@ $(document).ready(function() {
             data.push(obj);
             $('#date-modal').modal('hide');
             $.post({
-                url: '/bookAppointment',
+                url: '/appointment',
                 dataType: 'json',
                 data: JSON.stringify(data),
                 success: function(response) {
@@ -146,7 +146,7 @@ $(document).ready(function() {
 
 function deleteItem(id, currentItem) {
     $.ajax({
-        url: '/deleteFromWishlist/' + id,
+        url: '/wishlist/' + id,
         type: 'DELETE',
         dataType: 'json',
         success: function(response) {
