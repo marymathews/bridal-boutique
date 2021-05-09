@@ -57,7 +57,7 @@
                 <!-- Left-most column with filters, search, and categories-->
                 <div class="col-md-3 items-view"> 
                     <div class="categories mt-3">
-                        <p class="side-bar-header pl-2">Choose Catgeories</p>
+                        <p class="side-bar-header pl-2">Choose Category</p>
                         <hr class="side-bar-divider mr-3">
 
                         <ul class="list-group border-0">
@@ -101,8 +101,6 @@
                         <!-- HTML does not allow PUT method in form action-->
                         <form class="flexR" action="/productData/{{data[0][0]}}" method="POST" enctype="multipart/form-data"> 
                             <div class="col-md-4"> 
-                                <!-- todo replace alt text with actual product name -->
-                                <!-- todo may be multiple images -->
                                 <div class="row flexslider">
                                     <ul class="slides">
                                         {% for image in images %}
@@ -128,7 +126,6 @@
                                 </div>
                             </div>
 
-                            <!-- todo add actual item name, desc, price -->
                             <div class="col-md-8">
                                 <div class="card product-desc-container">
                                     <div class="card-body">   
