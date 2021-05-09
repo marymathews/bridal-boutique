@@ -12,8 +12,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../static/flexslider/flexslider.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="../static/flexslider/jquery.flexslider.js"></script>
         <script src="../static/js/productDetails.js"></script>
+        <script src="../static/js/addSizeQty.js"></script>
+        <script src="../static/js/deleteFile.js"></script>
         <title>Bridal Boutique</title> 
     </head>
     <body>
@@ -44,12 +47,6 @@
                         </svg>
                         <a class="nav-link-text text-decoration-none" id="profile" href="/SignIn">Profile</a>
                     </div>
-                    <div class="nav-link mr-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#391306" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                        </svg>
-                        <a class="nav-link-text text-decoration-none" href="#">Wishlist</a>
-                    </div>
                 </div>
             </div>
         </nav>
@@ -58,17 +55,18 @@
             <!-- Main row -->
             <div class="row h-100">
                 <!-- Left-most column with filters, search, and categories-->
-                <div class="col-md-3">                   
+                <div class="col-md-3 items-view"> 
                     <div class="categories mt-3">
-                        <p class="side-bar-header pl-2">Explore</p>
+                        <p class="side-bar-header pl-2">Choose Catgeories</p>
                         <hr class="side-bar-divider mr-3">
+
                         <ul class="list-group border-0">
-                            <li class="list-group-item pl-2 border-0"><a href="/Western/1">Western</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/NorthIndian/1">North Indian</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/SouthIndian/1">South Indian</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/Accessories/1">Accessories &amp; Lingerie</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/Jewellery/1">Jewellery</a></li>
-                            <li class="list-group-item pl-2 border-0"><a href="/Cosmetics/1">Cosmetics</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/westernHome">Western</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/northIndianHome">North Indian</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/southIndianHome">South Indian</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/accessoriesHome">Accessories &amp; Lingerie</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/jewelleryHome">Jewellery</a></li>
+                            <li class="list-group-item pl-2 border-0"><a href="/cosmeticsHome">Cosmetics</a></li>
                         </ul>
                     </div>
                 </div>
@@ -76,103 +74,108 @@
                 <div class="col-md-9 mt-2">
                     <!-- First row with breadcrumbs -->
                     <div class="row">
-                        <div class="col-md-12">
                         <div class="row justify-content-start">
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb bg-white">
-                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                        {% if data[0]["category_id"] == "west" %}
-                                            <li class="breadcrumb-item"><a href="/Western/1">Western</a></li>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "noin" %}
-                                            <li class="breadcrumb-item"><a href="/NorthIndian/1">North Indian</a></li>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "soin" %}
-                                            <li class="breadcrumb-item"><a href="/SouthIndian/1">South Indian</a></li>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "jewe" %}
-                                            <li class="breadcrumb-item"><a href="/Jewellery/1">Jewellery</a></li>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "cosm" %}
-                                            <li class="breadcrumb-item"><a href="/Cosmetics/1">Cosmetics</a></li>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "acli" %}
-                                            <li class="breadcrumb-item"><a href="/Accessories/1">Accessories &amp; Lingerie</a></li>
-                                        {% endif %}
-                                        <li class="breadcrumb-item"><a href="#">{{ data[0]["item_name"] }}</a></li>
-                                    </ol> 
-                                </nav> 
-                            </div>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb bg-white">
+                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                    {% if data[0][2] == "west" %}
+                                        <li class="breadcrumb-item"><a href="/westernHome">Western</a></li>
+                                    {% elif data[0][2] == "noin" %}
+                                        <li class="breadcrumb-item"><a href="/northIndianHome">North Indian</a></li>
+                                    {% elif data[0][2] == "soin" %}
+                                        <li class="breadcrumb-item"><a href="/southIndianHome">South Indian</a></li>
+                                    {% elif data[0][2] == "jewe" %}
+                                        <li class="breadcrumb-item"><a href="/jewelleryHome">Jewellery</a></li>
+                                    {% elif data[0][2] == "cosm" %}
+                                        <li class="breadcrumb-item"><a href="/cosmeticsHome">Cosmetics</a></li>
+                                    {% elif data[0][2] == "acli" %}
+                                        <li class="breadcrumb-item"><a href="/accessoriesHome">Accessories &amp; Lingerie</a></li>
+                                    {% endif %}
+                                </ol> 
+                            </nav> 
                         </div>
                     </div>
                     <!-- Row with images and details -->
                     <div class="row">
-                        <div class="col-md-4"> 
-                            <!-- todo replace alt text with actual product name -->
-                            <!-- todo may be multiple images -->
-                            <div class="row flexslider">
-                                <ul class="slides">
-                                    {% for image in images %}
-                                    <li>
-                                        {% if data[0]["category_id"] == "west" %}
-                                            <img src='../static/images/western/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "noin" %}
-                                            <img src='../static/images/north-indian/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "soin" %}
-                                            <img src='../static/images/south-indian/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "jewe" %}
-                                            <img src='../static/images/jewellery/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "cosm" %}
-                                            <img src='../static/images/cosmetics/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
-                                        {% endif %}
-                                        {% if data[0]["category_id"] == "acli" %}
-                                            <img src='../static/images/accessories/{{ image["image_id"] }}' class="img-fluid" alt='{{ data[0]["item_name"] }}'>
-                                        {% endif %}
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- todo add actual item name, desc, price -->
-                        <div class="col-md-8">
-                            <div class="card product-desc-container">
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="name">Name:</label>
-                                        <input class="form-control" name="name" value={{data[0][item_name]}} id="name" value=required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="price">Price:</label>
-                                        <input type="price" class="form-control" value={{data[0][price]}} name="price" id="price" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="desc">Description:</label>
-                                        <textarea class="form-control" value={{data[0][item_description]}} name="desc" id="desc" required> </textarea>
-                                        <p class="font-italic" id="pwd-validation">Enter product details</p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="qty">Quantity:</label>
-                                        <input class="form-control" name="qty" id="qty" required/>
-                                        <p class="font-italic" id="pwd-validation"></p>
-                                    </div>
-
-                                    
-                                    <div class="size-container">
-                                        <span class="card-text">Sizes Available: </span>
-                                        {% for item_size in sizes %}
-                                            {% if item_size["quantity"] > 0 %}
-                                                <span class="badge size">{{ item_size["size"] }}</span>
+                        <div class="col-md-12">
+                        <!-- HTML does not allow PUT method in form action-->
+                        <form class="flexR" action="/productData/{{data[0][0]}}" method="POST" enctype="multipart/form-data"> 
+                            <div class="col-md-4"> 
+                                <!-- todo replace alt text with actual product name -->
+                                <!-- todo may be multiple images -->
+                                <div class="row flexslider">
+                                    <ul class="slides">
+                                        {% for image in images %}
+                                        <li class="img-container">
+                                            {% if data[0][2] == "west" %}
+                                                <img src='../static/images/western/{{image[1]}}' class="img-fluid" alt='{{data[0][3]}}'>
+                                            {% elif data[0][2] == "noin" %}
+                                                <img src='../static/images/north-indian/{{image[1]}}' class="img-fluid" alt='{{data[0][3]}}'>
+                                            {% elif data[0][2] == "soin" %}
+                                                <img src='../static/images/south-indian/{{image[1]}}' class="img-fluid" alt='{{data[0][3]}}'>
+                                            {% elif data[0][2] == "jewe" %}
+                                                <img src='../static/images/jewellery/{{image[1]}}' class="img-fluid" alt='{{data[0][3]}}'>
+                                            {% elif data[0][2] == "cosm" %}
+                                                <img src='../static/images/cosmetics/{{image[1]}}' class="img-fluid" alt='{{data[0][3]}}'>
+                                            {% elif data[0][2] == "acli" %}
+                                                <img src='../static/images/accessories/{{image[1]}}' class="img-fluid" alt='{{data[0][3]}}'>
                                             {% endif %}
+                                            <span id='{{image[1]}}' class="btn deleteImage del-icon button-style"><i class="fa fa-trash"></i></span> 
+                                            <span class="imgTag"></span>
+                                        </li>
                                         {% endfor %}
-                                    </div>
-                                    <div class="row my-4 px-1 mx-1">
-                                        <button class="btn btn-outline-dark rounded-pill">
-                                            <a href="#">Save Changes</a>
-                                        </button>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- todo add actual item name, desc, price -->
+                            <div class="col-md-8">
+                                <div class="card product-desc-container">
+                                    <div class="card-body">   
+                                        <!-- To pass Category info -->
+                                        <input type="hidden" name="cate" value="{{data[0][2]}}"> 
+                                        <div class="form-group">
+                                            <label for="name">Name:</label>
+                                            <input class="form-control" name="name" value="{{data[0][3]}}" id="name" value=required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="price">Price:</label>
+                                            <input type="price" class="form-control" value={{data[0][1]}} name="price" id="price" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="desc">Description:</label>
+                                            <textarea class="form-control" rows="5" name="desc" id="desc" required>{{data[0][4]}}</textarea>
+                                            <p class="font-italic" id="pwd-validation">Enter product details</p>
+                                        </div>
+                                        <label for="qty-size">Size &amp; Quantity:</label>
+                                        <div class="add-items-input">
+                                            <ul class="list-group" id="add-items-list">
+                                                {% for size in size_qty %}
+                                                    <input type="text" class="size-new size-info" name="size{{size[1]}}" id="{{size[1]}}" value="Size: {{size[1]}} Quantity: {{size[2]}}" readonly/>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                        <div class="form-group input-group size-qty">
+                                            <select id="add-item-dropdown" class="sizes dropdown-cat form-control" name="sizes" required>
+                                                {% for size in all_sizes %}
+                                                    {% if size not in available %}
+                                                        <option value={{size}}> {{size}} </option>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </select>
+                                            <input id="add-item-quantity" type="number" placeholder="Quantity" class="quan form-control" min="0" max="100" value="0" required>
+                                            <button class="add-entry btn btn-block btn-color auto-w"> Add </button>
+                                        </div>
+                                        <div class="form-group" id="file-upload">
+                                            <label for="file" class="form-label form-group-2">Images:</label>
+                                            <div id="images">
+                                                <input type="file" id="image_data" name="image_data" accept="image/*" multiple>
+                                            </div>
+                                        </div>
+                                        <div class="deleted_img_info">
+                                        </div>
+                                        <input type="submit" id="submit" class="btn btn-lg btn-color btn-block" value="Save Changes">
+                                        </form>
                                     </div>
                                 </div>
                             </div>
