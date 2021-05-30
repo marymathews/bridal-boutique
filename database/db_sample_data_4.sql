@@ -1,4 +1,3 @@
--- Cosmetics item details
 INSERT INTO item(price, category_id, item_name, item_description, deleted) VALUES (
     23.80, 
     'cosm', 

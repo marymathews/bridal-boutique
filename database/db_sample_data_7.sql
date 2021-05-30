@@ -1,4 +1,3 @@
--- Jewellery info
 INSERT INTO item(price, category_id, item_name, item_description, deleted) VALUES (
     106.65, 
     'jewe', 

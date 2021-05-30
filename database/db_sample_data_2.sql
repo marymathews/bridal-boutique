@@ -1,4 +1,3 @@
--- Item details for Western Category
 INSERT INTO item(price, category_id, item_name, item_description, deleted) VALUES (
     549.00, 
     'west', 

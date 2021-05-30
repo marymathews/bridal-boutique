@@ -1,4 +1,3 @@
--- North Indian Items info
 INSERT INTO item(price, category_id, item_name, item_description, deleted) VALUES (
     1060.65, 
     'noin', 

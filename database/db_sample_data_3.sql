@@ -1,4 +1,3 @@
--- Accessories & Lingerie Category details
 INSERT INTO item(price, category_id, item_name, item_description, deleted) VALUES (
     84.95, 
     'acli', 

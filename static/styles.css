@@ -174,7 +174,6 @@ html, body {
   }
   .admin-add {
     font-weight: bold !important;
-    /* font-style: italic; */
     font-size: large !important; 
     font-family: 'Domine', 'Mulish', Lobster, Verdana, Geneva, Tahoma, sans-serif !important;
   }
