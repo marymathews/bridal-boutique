@@ -31,7 +31,7 @@ Besides this, the admin module provides a straightforward method to add, delete,
 ***
 ![Book Appointment](https://github.com/marymathews/bridal-boutique/blob/master/screenshots/book_appointment.png)
 ***
-![Admin Dashboard](https://github.com/marymathews/bridal-boutique/blob/master/screenshots/admin_edit_item.png)
+![Admin Dashboard](https://github.com/marymathews/bridal-boutique/blob/master/screenshots/admin_dashboard.png)
 ***
 ![Admin Edit Item](https://github.com/marymathews/bridal-boutique/blob/master/screenshots/admin_edit_item.png)
 ***
