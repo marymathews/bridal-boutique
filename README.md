@@ -5,7 +5,7 @@ Features such as searching for products, filtering based on price and category, 
 Besides this, the admin module provides a straightforward method to add, delete, and edit items.   
 
 ### Architecture:
-![Project Architecture] (https://github.com/marymathews/bridal-boutique/blob/master/architecture.png)
+![Project Architecture](https://github.com/marymathews/bridal-boutique/blob/master/architecture.png)
 
 ### Technologies Used:
 1. Front-End
@@ -23,17 +23,17 @@ Besides this, the admin module provides a straightforward method to add, delete,
 * MySQL
 
 ### Main Functionalities
-![Item Listing] (https://github.com/marymathews/bridal-boutique/blob/master/screenshots/item_listing.png)
+![Item Listing](https://github.com/marymathews/bridal-boutique/blob/master/screenshots/item_listing.png)
 ***
-![Product Details] (https://github.com/marymathews/bridal-boutique/blob/master/screenshots/product_details.png)
+![Product Details](https://github.com/marymathews/bridal-boutique/blob/master/screenshots/product_details.png)
 ***
-![Wishlist] (https://github.com/marymathews/bridal-boutique/blob/master/screenshots/wishlist.png)
+![Wishlist](https://github.com/marymathews/bridal-boutique/blob/master/screenshots/wishlist.png)
 ***
-![Book Appointment] (https://github.com/marymathews/bridal-boutique/blob/master/screenshots/book_appointment.png)
+![Book Appointment](https://github.com/marymathews/bridal-boutique/blob/master/screenshots/book_appointment.png)
 ***
-![Admin Dashboard] (https://github.com/marymathews/bridal-boutique/blob/master/screenshots/admin_edit_item.png)
+![Admin Dashboard](https://github.com/marymathews/bridal-boutique/blob/master/screenshots/admin_edit_item.png)
 ***
-![Admin Edit Item] (https://github.com/marymathews/bridal-boutique/blob/master/screenshots/admin_edit_item.png)
+![Admin Edit Item](https://github.com/marymathews/bridal-boutique/blob/master/screenshots/admin_edit_item.png)
 ***
 
-### [See More] (https://github.com/marymathews/bridal-boutique/blob/master/report.pdf)
+### [See More](https://github.com/marymathews/bridal-boutique/blob/master/report.pdf)
